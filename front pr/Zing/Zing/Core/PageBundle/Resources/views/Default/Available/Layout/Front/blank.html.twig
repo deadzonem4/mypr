@@ -1,0 +1,26 @@
+{% extends "ZingCoreFrontBundle::layout.html.twig" %}
+
+{% block body %}
+
+                {% for blocks in blocks[1] %}
+                    {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                    {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+                {% endfor %}
+                
+
+
+    
+            {% for blocks in blocks[2] %}
+                {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+            {% endfor %}   
+
+{% endblock %}
+
+{% block javascript %}
+    {{ include('ZingCorePageBundle:Default:Available/Layout/load_javascript.html.twig') }}
+{% endblock %}
+
+{% block header %}
+    {{ include('ZingCorePageBundle:Default:Available/Layout/load_css.html.twig') }}
+{% endblock %}

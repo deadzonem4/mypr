@@ -1,0 +1,82 @@
+<footer id="footer">
+      <section class="container footer-main">
+          <div class="row">
+            <aside class="col-sm-4 col-md-3 footer-logo">
+              <a href="/"><img src="<?php echo bloginfo('template_directory'); ?>/assets/images/easy-london-removals.png" alt="Easy London Removals logo"></a>
+            </aside>
+            <aside class="col-sm-8 col-md-9">
+              <?php dynamic_sidebar( 'footer-text' ); ?>
+            </aside>
+          </div>
+
+
+<div class="enquire">
+    <?php wp_nav_menu( array( 'theme_location' => 'enquire-buttons' ) ); ?>
+</div>
+
+
+
+
+<div class="col-md-2 col-sm-3 footer-right-ul">
+                      <?php wp_nav_menu( array( 'theme_location' => 'footer-menu-right' ) ); ?>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 991px){
+	.menu-main-menu-container{
+		display:none;
+	}
+	.header-menu-content img{
+		width:100px;
+	}
+	.hamburger{
+		display:block;
+		font-size:20px;
+		margin:24px 0;
+		float:right;
+	}
+	.menu-main-menu-container{
+		display: block;
+    	position: absolute;
+    	right: -15px;
+    	background: #fff;
+    	top: 130px;
+    	width: 110%;
+    	text-align: center;
+	}
+	#menu-main-menu{
+		width:100%;
+		margin-top: 20px;
+
+	}
+	#menu-main-menu li{
+		margin-bottom: 15px;
+    	width: 100%;
+    	display: block;
+	}
+	#menu-item-23 .sub-menu{
+		width:100%;
+		left:-2px;
+		padding:10px 0;
+		background: #009cd7;
+	}
+
+}

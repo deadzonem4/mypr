@@ -1,0 +1,69 @@
+{# Call media image manager #}
+{% set image_manager   = request_service('zing.component.media.image') %}
+
+{# Get the article 300px width image #}
+{% set images300px = image_manager.getImagesByWidth(300, blocks.getBlock().getContentByType('static')['image']) %}
+
+{% if images300px|length > 0 %}
+    {% for image in images300px %}
+        {% set image = '/' ~ image['name'] %}
+        {% if image %}
+            <img src="{{ image }}" alt="{{ image }}" class="mb10 mr10">
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{#{% set image_manager   = request_service('zing.component.media.image') %}#}
+{#{% set image_container = blocks.getBlock().getContentByType('static')['image'] %}#}
+
+{#Size: width = 100px<br />#}
+{#{% set images100px = image_manager.getImagesByWidth(100, image_container) %}#}
+{#{% for image100px in images100px %}#}
+    {#<ul>#}
+        {#<li><b>{{ image100px['name'] }}</b></li>#}
+        {#<li><b>{{ image100px['w'] }}</b></li>#}
+        {#<li><b>{{ image100px['h'] }}</b></li>#}
+        {#<li><b>{{ image100px['preview'] }}</b></li>#}
+        {#<li><b>{{ image100px['flag'] }}</b></li>#}
+    {#</ul>#}
+{#{% endfor %}#}
+{#<br /><hr />#}
+
+{#Size: width = 300px<br />#}
+{#{% set images300px = image_manager.getImagesByWidth(300, image_container) %}#}
+{#{% for image300px in images300px %}#}
+    {#<ul>#}
+        {#<li><b>{{ image300px['name'] }}</b></li>#}
+        {#<li><b>{{ image300px['w'] }}</b></li>#}
+        {#<li><b>{{ image300px['h'] }}</b></li>#}
+        {#<li><b>{{ image300px['preview'] }}</b></li>#}
+        {#<li><b>{{ image300px['flag'] }}</b></li>#}
+    {#</ul>#}
+{#{% endfor %}#}
+{#<br /><hr />#}
+
+{#Flag: Original<br />#}
+{#{% set imagesOriginal = image_manager.getImagesByFlag('original', image_container) %}#}
+{#{% for imageOriginal in imagesOriginal %}#}
+    {#<ul>#}
+        {#<li><b>{{ imageOriginal['name'] }}</b></li>#}
+        {#<li><b>{{ imageOriginal['w'] }}</b></li>#}
+        {#<li><b>{{ imageOriginal['h'] }}</b></li>#}
+        {#<li><b>{{ imageOriginal['preview'] }}</b></li>#}
+        {#<li><b>{{ imageOriginal['flag'] }}</b></li>#}
+    {#</ul>#}
+{#{% endfor %}#}
+{#<br /><hr />#}
+
+{#Preview: image<br />#}
+{#{% set imagesPreview = image_manager.getImagesByPreview(image_container) %}#}
+{#{% for imagePreview in imagesPreview %}#}
+    {#<ul>#}
+        {#<li><b>{{ imagePreview['name'] }}</b></li>#}
+        {#<li><b>{{ imagePreview['w'] }}</b></li>#}
+        {#<li><b>{{ imagePreview['h'] }}</b></li>#}
+        {#<li><b>{{ imagePreview['preview'] }}</b></li>#}
+        {#<li><b>{{ imagePreview['flag'] }}</b></li>#}
+    {#</ul>#}
+{#{% endfor %}#}
+{#<br /><hr />#}

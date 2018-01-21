@@ -1,0 +1,130 @@
+// Core variables and mixins
+@import "defaults/elements.less";
+@import "bootstrap/variables.less";
+@import "bootstrap/mixins.less";
+@import "defaults/variables.less";
+
+.welcome-wrap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 0;
+	background-color: #fff;
+	overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  	&:before {
+  		content: '';
+  		display: inline-block;
+  		height: 100%;
+  		vertical-align: middle
+  	}
+
+  	.va-middle {
+  		display: inline-block;
+  		vertical-align: middle;
+  		width: 100%;
+  		font-size: @font-size-base;
+  	}
+		
+		.box {
+			background-color: #f0f0f0;
+		  border-radius: 10px;
+		  .text-center;
+		  .box-shadow(inset 0px 2px 0px 0px rgba(255, 255, 255, 0.004));
+
+		  	h1 {
+		  		color: #646464;
+		  		font-family: @avenir-book;
+		  		font-weight: normal;
+		  		line-height: 1.3;
+		  	}
+
+		  	p {
+		  		color: #646464;
+		  		font-family: @avenir-light;
+		  		line-height: 1.3;
+		  	}
+		}
+}
+
+@media screen and (min-width: @screen-md-min) {
+	
+		.welcome-wrap {
+			padding: 40px 15px;
+
+				.box {
+					padding: 50px;
+					width: 820px;
+
+						h1 {
+							margin-bottom: 40px;
+							font-size: 60px;
+						}
+
+						p {
+							font-size: 48px;
+						}
+
+						.btn-default {
+							margin-top: 110px;
+						}
+				}
+		}
+}
+
+@media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+	
+		.welcome-wrap {
+			padding: 30px 15px;
+
+				.box {
+					padding: 30px;
+					width: 620px;
+
+						h1 {
+							margin-bottom: 30px;
+							font-size: 40px;
+						}
+
+						p {
+							font-size: 28px;
+						}
+
+						.btn-default {
+							margin-top: 70px;
+						}
+				}
+		}
+}
+
+@media screen and (max-width: @screen-xs-max) {
+	
+		.welcome-wrap {
+			padding: 30px 15px;
+
+				.box {
+					padding: 30px;
+					width: 420px;
+					max-width: 100%;
+
+						h1 {
+							margin-bottom: 20px;
+							font-size: 25px;
+						}
+
+						p {
+							font-size: 18px;
+						}
+
+						.btn-default {
+							margin-top: 30px;
+						}
+				}
+		}
+}

@@ -1,0 +1,3 @@
+zing_sitemap_admin_index:
+      path:     /admincp/sitemap
+      defaults: { _controller: ZingComponentSitemapBundle:SitemapAdmin:index }

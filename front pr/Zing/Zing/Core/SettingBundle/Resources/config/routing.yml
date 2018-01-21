@@ -1,0 +1,15 @@
+zing_setting_admin_index:
+    path:     /admincp/settings
+    defaults: { _controller: ZingCoreSettingBundle:SettingAdmin:index }
+    
+zing_setting_admin_general:
+    path:     /admincp/settings/general
+    defaults: { _controller: ZingCoreSettingBundle:SettingAdmin:general }
+
+zing_setting_setting_rollbackbundle:
+    path:     /admincp/settings/rollback/bundle/{type}/{bundle_name}
+    defaults: { _controller: ZingCoreSettingBundle:Setting:rollBackBundle }
+    
+zing_setting_setting_rollbackbuilt:
+    path:     /admincp/settings/rollback/built/{built_id}
+    defaults: { _controller: ZingCoreSettingBundle:Setting:rollBackBuilt }

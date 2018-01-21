@@ -1,0 +1,7 @@
+parameters:
+#    zing_component_language.example.class: Zing\Component\LanguageBundle\Example
+
+services:
+#    zing_component_language.example:
+#        class: %zing_component_language.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

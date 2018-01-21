@@ -1,0 +1,9 @@
+{
+    "name":"MediaBundle",
+    "version":"0.1",
+    "status": true,
+    "friendly_name": "MEDIA",
+    "icon": "fa fa-file-image-o animated",
+    "admin_route": "/admincp/media",
+    "type": "Component"
+}

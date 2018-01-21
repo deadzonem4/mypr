@@ -1,0 +1,75 @@
+.appear{
+	display: none;
+	opacity: 0;
+}
+.left-sidebar{
+	position: fixed;
+    top: 70px;
+    margin-top: 15vh;
+    left: 0;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+}
+#element{
+	background-color: #f0f0f0;
+	margin: 5px 0;
+	width: 80px;
+	height: 80px;
+	-webkit-transition: .5s ease-out;
+ 	-moz-transition: .5s ease-out;
+  	transition: .5s ease-out;
+}
+.element-container{
+	padding: 15px;
+}
+#element:first-of-type{
+	margin: 0 2px 5px;
+}
+#element:hover .appear{
+	display: block;
+	line-height: 24px;
+	display: block;
+	opacity: 1;
+}
+#element:hover .disappear{
+	display: none;
+}
+#element:hover{
+	background-color: #e9e9e9;
+	width: 360px;
+	-webkit-transition: .5s ease-out;
+ 	-moz-transition: .5s ease-out;
+  	transition: .5s ease-out;
+}
+#element:hover .element-img{
+	opacity: .8;
+	display: table-cell;
+    margin-right: 10px;
+    vertical-align: top;
+}
+#element:hover .element-text{
+    opacity: 1;
+    display: table-cell;
+    -webkit-transition: 1.5s ease-out;
+    -moz-transition: 1.5s ease-out;
+    transition: 1.5s ease-out;
+    overflow: hidden;
+    vertical-align: top;
+    width: 280px;
+}
+.element-text{.element-text
+	width: 280px;
+	max-width: 280px;
+	margin: 0 10px;
+	opacity: 0;
+}
+.element-text p{
+	font-size: 18px;
+	color: #a9a9a9;
+	font-family: 'AvenirLTStdLight';
+    font-weight: normal;
+}
+.element-img{
+	opacity: .8;
+	text-align: center;
+}

@@ -1,0 +1,9 @@
+parameters:
+    zing.component.contact.contact.class: Zing\Component\ContactBundle\Controller\Manager\Contact
+
+services:
+   zing.component.contact.contact:
+       class: %zing.component.contact.contact.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"

@@ -1,0 +1,90 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    <div id="content-column" class="col-lg-12 col-md-12">
+        <div class="box">
+            <form>
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">
+                    {% trans %}Menus{% endtrans %}
+                    <div class="box-title-options">
+                        <a class="btn btn-default custome-visible-sm" href="#filters-column"><i class="fa fa-filter"></i> {% trans %}Filters{% endtrans %}</a>
+
+                        <a class="btn btn-default" href="/admincp/menus/menu/{{ category_id }}/reorder"><i class="fa fa-reorder"></i> {% trans %}Reorder{% endtrans %}</a>
+                        <a class="btn btn-default" href="/admincp/menus/menu/{{ category_id }}/create"><i class="fa fa-plus"></i> {% trans %}Add menu{% endtrans %}</a>
+                        <a id="filters-column-trigger" class="btn btn-sm btn-primary hidden-sm hidden-xs" href="#"><i class="fa fa-filter"></i> {% trans %}Filters{% endtrans %}</a>
+                    </div><!-- /.box-title-options -->
+                </div>
+                <div class="box-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <th width="20">{% trans %}ID{% endtrans %}</th>
+                                <th>{% trans %}Name{% endtrans %}</th>
+                                <th>{% trans %}Url{% endtrans %}</th>
+                                <th>{% trans %}Category{% endtrans %}</th>
+                                <th>{% trans %}Date added{% endtrans %}</th>
+                                <th>{% trans %}Date modified{% endtrans %}</th>
+                                <th width="130">{% trans %}Status{% endtrans %}</th>
+                                <th width="80">{% trans %}Options{% endtrans %}</th>
+                            </tr>
+                            {% for menu in menus %}
+                                <tr>
+                                    <td>{{ menu.getId() }}</td>
+                                    <td><span class="filter-name">{{ menu.getName() }}</span></td>
+                                    <td><span class="filter-name">{{ menu.getUrl() }}</span></td>
+                                    <td><span class="filter-name"><a href="/admincp/menus/category/edit/{{ menu.getCategory().getId() }}">{{ menu.getCategory().getName() }}</a></span></td>
+                                    <td><span class="filter-date-added">{{ menu.getDateAdded()|date("Y-m-d H:i:s") }}</span></td>
+                                    <td><span class="filter-date-modified">{{ menu.getDateModified()|date("Y-m-d H:i:s") }}</span></td>
+                                    <td><span class="filter-status {% if menu.getStatus() == 1 %}text-success{% else %}text-danger{% endif %}">{% if menu.getStatus() == 1 %}{% trans %}Active{% endtrans %}{% else %}{% trans %}Unactive{% endtrans %}{% endif %}</span></td>
+                                    <td class="form-inline options">
+                                        <a class="btn btn-sm btn-default" title="{% trans %}Edit{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/menus/menu/{{ category_id }}/edit/{{ menu.getId() }}">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-default btn-remove" data-element="{{ menu.getName() }}" title="{% trans %}Delete{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/menus/menu/{{ category_id }}/remove/{{ menu.getId() }}">
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div><!-- /table-responsive -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-9 -->
+
+    <div class="col-lg-3 col-md-4" id="filters-column">
+        <div class="box">
+            <div class="box-title">{% trans %}Filters{% endtrans %}</div>
+            <div class="box-content">
+                <div class="form-group filter">
+                    <label>{% trans %}Name{% endtrans %}</label>
+                    <input type="text" name="filter-name" class="form-control" placeholder="{% trans %}Enter Title{% endtrans %}...">
+                </div>
+
+                <div class="form-group filter">
+                    <label>{% trans %}Url{% endtrans %}</label>
+                    <input type="text" name="filter-url" class="form-control" placeholder="{% trans %}End Url{% endtrans %}...">
+                </div>
+
+                <div class="row">
+                    <div class="col-xlg-4 col-lg-6 col-md-6 col-sm-4">
+                        <div class="form-group filter mb0">
+                            <label>{% trans %}Status{% endtrans %}</label>
+                            <ul class="list-unstyled">
+                                <li><div class="checkbox"><input type="checkbox" name="filter-status" value="active" id="f-active" checked> <label for="f-active">{% trans %}Active{% endtrans %}</label></div></li>
+                                <li><div class="checkbox"><input type="checkbox" name="filter-status" value="unactive" id="f-unactive" checked> <label for="f-unactive">{% trans %}Unactive{% endtrans %}</label></div></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-3 -->
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{asset('bundles/zing/admin/js/jwebsidebar.js')}}"></script>
+{% endblock %}

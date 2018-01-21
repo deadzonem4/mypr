@@ -1,0 +1,30 @@
+parameters:
+    zing.component.poll.poll.class: Zing\Component\PollBundle\Controller\Manager\Poll
+    zing.component.poll.question.class: Zing\Component\PollBundle\Controller\Manager\PollQuestion
+    zing.component.poll.question_content.class: Zing\Component\PollBundle\Controller\Manager\PollQuestionContent
+    zing.component.poll.voted_question.class: Zing\Component\PollBundle\Controller\Manager\PollVotedQuestion
+
+services:
+   zing.component.poll.poll:
+       class: %zing.component.poll.poll.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+           
+   zing.component.poll.question_content:
+      class: %zing.component.poll.question_content.class%
+      arguments:
+          doctrine: "@doctrine"
+          service_container: "@service_container"
+
+   zing.component.poll.question:
+      class: %zing.component.poll.question.class%
+      arguments:
+          doctrine: "@doctrine"
+          service_container: "@service_container"
+
+   zing.component.poll.voted_question:
+      class: %zing.component.poll.voted_question.class%
+      arguments:
+          doctrine: "@doctrine"
+          service_container: "@service_container"

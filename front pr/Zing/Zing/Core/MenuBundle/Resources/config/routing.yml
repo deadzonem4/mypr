@@ -1,0 +1,41 @@
+zing_menu_category_admin_index:
+    path:     /admincp/menus
+    defaults: { _controller: ZingCoreMenuBundle:CategoryAdmin:index }
+
+zing_menu_category_admin_create:
+     path:     /admincp/menus/category
+     defaults: { _controller: ZingCoreMenuBundle:CategoryAdmin:category }
+
+zing_menu_category_admin_remove:
+     path:     /admincp/menus/category/remove/{category_id}
+     defaults: { _controller: ZingCoreMenuBundle:CategoryAdmin:remove }
+
+zing_menu_category_admin_edit:
+     path:     /admincp/menus/category/edit/{category_id}
+     defaults: { _controller: ZingCoreMenuBundle:CategoryAdmin:edit }
+
+zing_menu_admin_index:
+    path:     /admincp/menus/menu/{category_id}
+    defaults: { _controller: ZingCoreMenuBundle:MenuAdmin:indexMenu }
+
+zing_menu_admin_create:
+     path:     /admincp/menus/menu/{category_id}/create
+     defaults: { _controller: ZingCoreMenuBundle:MenuAdmin:menu }
+
+zing_menu_admin_reorder:
+     path:     /admincp/menus/menu/{category_id}/reorder
+     defaults: { _controller: ZingCoreMenuBundle:MenuAdmin:reorder }
+
+zing_menu_admin_reorder_api:
+     path:     /admincp/menus/menu/reorder/api
+     defaults: { _controller: ZingCoreMenuBundle:MenuApiAdmin:reorder }
+
+zing_menu_admin_remove:
+     path:     /admincp/menus/menu/{category_id}/remove/{menu_id}
+     defaults: { _controller: ZingCoreMenuBundle:MenuAdmin:remove }
+
+zing_menu_admin_edit:
+     path:     /admincp/menus/menu/{category_id}/edit/{menu_id}
+     defaults: { _controller: ZingCoreMenuBundle:MenuAdmin:edit }
+
+

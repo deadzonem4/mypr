@@ -1,0 +1,17 @@
+zing_component_media_index:
+    path:     /admincp/media
+    defaults: { _controller: ZingComponentMediaBundle:MediaAdmin:index }
+
+zing_component_media_image_upload:
+    path:     /media/upload/image/{random}
+    defaults: { _controller: ZingComponentMediaBundle:MediaImageApi:imageUpload }
+
+zing_component_media_crop_upload:
+    path:     /media/crop/image/{random}
+    defaults: { _controller: ZingComponentMediaBundle:MediaImageApi:imageCroping }
+
+zing_component_media_remove_upload:
+    path:    /media/remove/image/{random}
+    defaults: { _controller: ZingComponentMediaBundle:MediaImageApi:imageRemove }
+
+

@@ -1,0 +1,10 @@
+{% if zing_form_errors %}
+	<div class="p10">
+	    {% for zing_form_error in zing_form_errors %}
+	        <div class="alert alert-danger">
+	            <button class="close" aria-hidden="true" data-dismiss="alert" type="button"><i class="fa fa-times"></i></button>
+	            {{zing_form_error}}
+	        </div>
+	    {% endfor %}
+    </div>
+{% endif %}

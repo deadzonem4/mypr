@@ -1,0 +1,5 @@
+{% if blocks.getBlock().getContentByType('bg')['title'] %}
+	<{% if blocks.getBlock().getContentByType('static')['header_tag'] %}{{ blocks.getBlock().getContentByType('static')['header_tag'] }}{% else %}h1{% endif %} class="{{ blocks.getBlock().getContentByType('static')['skin'] }}">
+		{{ blocks.getBlock().getContentByType('bg')['title'] }}
+	</{% if blocks.getBlock().getContentByType('static')['header_tag'] %}{{ blocks.getBlock().getContentByType('static')['header_tag'] }}{% else %}h1{% endif %}>
+{% endif %}

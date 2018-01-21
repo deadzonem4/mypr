@@ -1,0 +1,45 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    <div class="submenu">
+        <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-2"><a class="box" href="/admincp/settings"><i class="fa fa-list animated"></i> <span>{% trans %}Builts{% endtrans %}</span></a></div>
+        <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-2"><a class="box" href="/admincp/settings/general"><i class="fa fa-cogs animated"></i> <span>{% trans %}General{% endtrans %}</span></a></div>
+    </div><!-- /.submenu -->
+
+    <div class="col-lg-12">
+        <div class="box">
+            <div class="box-title">
+                {% trans %}Builts{% endtrans %}
+                <div class="box-title-options">
+                    <a class="btn btn-default custome-visible-sm" href="#filters"><i class="fa fa-filter"></i> {% trans %}Filters{% endtrans %}</a>
+                </div><!-- /.box-title-options -->
+            </div>
+            <div class="box-content">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="filters-content">
+                        <tr>
+                            <th width="20">{% trans %}ID{% endtrans %}</th>
+                            <th>{% trans %}Modify date{% endtrans %}</th>
+                            <th width="80">{% trans %}Options{% endtrans %}</th>
+                        </tr>
+                        {% if buildings != null %}
+                            {% set counter = 0 %}
+                            {% for built in buildings %}
+                                <tr>
+                                  <td>{{ built.getId() }}</td>
+                                  <td><span class="filter-lastlogin">{{ built.getModify()|date('d/m/Y h:m:s') }}</span></td>
+                                  <td class="form-inline options">
+                                      <a class="btn btn-sm btn-default" title="{% trans %}Select a built{% endtrans %}" data-placement="top" data-toggle="tooltip" {% if counter == 0 %}href="#"{% else %}href="/admincp/settings/rollback/built/{{ built.getId() }}"{% endif %}><i class="fa {% if counter == 0 %}fa-bookmark{% else %}fa-bookmark-o{% endif %}"></i></a>
+                                      <a class="btn btn-sm btn-default" title="{% trans %}Delete{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/users/remove/1"><i class="fa fa-trash-o"></i></a>
+                                  </td>
+                                </tr>
+                            {% set counter = counter+1 %}
+                           {% endfor %}
+                        {% endif %}
+                    </table>
+                </div><!-- /table-responsive -->
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}

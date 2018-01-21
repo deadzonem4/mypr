@@ -1,0 +1,33 @@
+<div class="col-sm-6">
+<label">
+[select* menu-187 "Sale" "Rent"]</label>
+
+<label> 
+    [text your-property placeholder "Property type"] </label>
+<label>
+    [text* your-location placeholder "Location"] </label>
+<label>
+[text* your-price placeholder "Price(ˆ)"] </label></div>
+<div class="col-sm-6"><label>
+[textarea your-message placeholder "Description"] </label></div>
+<div class="col-sm-12"><h5>Photo/Documents:</h5></div>
+<div class="col-sm-4"><label>
+<button type="button" onclick="document.querySelector('#my-file').click();">Choose file</button><input type="file" onchange="call()" id="my-file"><span id="choosen"></span>
+</label></div>
+<div class="col-sm-4"><label>
+<button type="button" onclick="document.querySelector('#my-file-two').click();">Choose file</button><input type="file" onchange="calll()" id="my-file-two"><span id="choosen-two"></span></label></div>
+<div class="col-sm-4"><label>
+<button type="button" onclick="document.querySelector('#my-file-three').click();">Choose file</button><input type="file" onchange="callll()" id="my-file-three"><span id="choosen-three"></span></label></div>
+<div class="text-center col-sm-12">
+<div class="dotted-line"></div></div>
+<div class="col-sm-6">
+<label>
+    [text* your-name placeholder "Name*"] </label>
+<label>
+    [email* your-email placeholder "Email*"] </label>
+<label>
+[tel tel-487 placeholder "Phone"]</label>
+[submit "Send"]</div>
+<script>function call(){ var fileInput = document.getElementById('my-file'); var filename = fileInput.files[0].name; document.getElementById('choosen').innerHTML=filename; }
+function calll(){ var fileInput = document.getElementById('my-file-two'); var filename = fileInput.files[0].name; document.getElementById('choosen-two').innerHTML=filename; }
+function callll(){ var fileInput = document.getElementById('my-file-three'); var filename = fileInput.files[0].name; document.getElementById('choosen-three').innerHTML=filename; }</script>

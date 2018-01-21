@@ -1,0 +1,9 @@
+{
+    "name":"ClientRequestBundle",
+    "version":"0.1",
+    "status":false,
+    "friendly_name": "CLIENT REQUEST",
+    "icon": "fa fa-comments-o animated",
+    "admin_route": "/admincp/client/request",
+    "type": "Component"
+}

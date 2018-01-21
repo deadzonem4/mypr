@@ -1,0 +1,66 @@
+{% set limit = blocks.getBlock().getContentByType('static')['limit'] %}
+
+{% if limit is null %}
+	{% set limit = 4 %}
+{% endif %}
+
+{# Call article manager (news manager) #}
+{% set article_manager = request_service('zing.component.news.news') %}
+
+{# Call media image manager #}
+{% set image_manager   = request_service('zing.component.media.image') %}
+
+{% set category_manager = request_service('zing.component.news.category_url') %}
+<section class="pb80">
+ <section class="blog container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2>Блог</h2>
+                    </div>
+	{% for article in article_manager.getLastNewsBy([], limit) %}
+
+		{# Set default article image #}
+		{% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+		{# Get the article 660px width image #}
+		{% set images660px = image_manager.getImagesByWidth(660, article.getContentByType('static')['image']) %}
+
+		{# If article has main image, set the image #}
+		{% if article.getContentByType('static')['main_image'] is not null %}
+
+			{# Loop in all 660px width images #}
+			{% for image660px in images660px %}
+
+				{# Split image name to exclude extension in check below #}
+				{% set main_image = article.getContentByType('static')['main_image']|split('.') %}
+
+				{# Check if the looped image is equal with the main image name #}
+				{% if main_image[0] in image660px['name'] %}
+
+					{# Assign the choosen main image #}
+					{% set image = '/' ~ image660px['name'] %}
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+
+                        <div class="box-index-news col-sm-4">
+			<a rel="bookmark" href="/news{{ category_manager.fullCategoryPath(article.getCategory().getUrlByType('bg')) ~ article.getUrlByType('bg') }}">
+				<div class="box-news-cont">
+					<img src="{{ image }}" alt="Fonio Новина"/>
+
+				<div class="box-news-text">
+					<h4>
+				{{ article.getContentByType('bg')['title'] }}
+			</h4>
+				</div>
+				<a class="box-read-more" href="/news{{ category_manager.fullCategoryPath(article.getCategory().getUrlByType('bg')) ~ article.getUrlByType('bg') }}"><span class="fa fa-angle-right"></span></a>
+                <a class="box-read-more-show" href="/news{{ category_manager.fullCategoryPath(article.getCategory().getUrlByType('bg')) ~ article.getUrlByType('bg') }}">прочети<span class="fa fa-angle-right"></span></a></div>
+			</a>
+		</div>
+	{% endfor %}
+</div>
+</section>
+<div class="col-sm-12 blog-link">
+            	<a href="/news">Научете всичко ново в нашия блог</a>
+</div>
+</section>

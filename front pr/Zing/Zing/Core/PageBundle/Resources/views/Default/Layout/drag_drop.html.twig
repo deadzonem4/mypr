@@ -1,0 +1,80 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+<div id="layout-column" class="col-lg-12 col-md-12">
+    <div class="box layout-positions">
+        <div class="box-title">
+            {% trans %}Layout{% endtrans %}
+            <div class="box-title-options">
+                <a class="btn btn-sm btn-default" href="/admincp/pages/layout/page/{{ page }}"> {% trans %}Change Layout{% endtrans %}</a>
+                <a id="blocks-column-trigger" class="btn btn-sm btn-primary" href="#"> {% trans %}Blocks{% endtrans %}</a>
+            </div><!-- /.box-title-options -->
+        </div>
+        <div class="box-content">
+            {% if file_exists(layout_file_path~'Admin/'~layout.getLayoutFile()) %}
+                {% set layout_id = layout.getId() %}
+                {{ include('ZingCorePageBundle:Default/Available/Layout/Admin:' ~ layout.getLayoutFile()) }}
+            {% endif %}
+        </div><!-- /.box-content -->
+    </div><!-- /.box -->
+</div><!-- /.col-lg-12 -->
+
+<div id="blocks-column" class="col-lg-3 col-md-4">
+    <div class="box" id="blocks">
+        <div class="box-title">
+            {% trans %}Blocks{% endtrans %} <span class="help">/ {% trans %}Dragable{% endtrans %}</span>
+            <div class="box-title-options">
+                <a id="remove-block-trigger" class="btn btn-sm btn-default" href="#" data-toggle="tooltip" data-placement="bottom" title="{% trans %}Delete{% endtrans %}"><i class="fa fa-trash-o"></i></a>
+                <a id="add-block-trigger" class="btn btn-sm btn-primary" href="#" data-toggle="tooltip" data-placement="bottom" title="{% trans %}Add Block{% endtrans %}"><i class="fa fa-plus"></i></a>
+            </div><!-- /.box-title-options -->
+        </div>
+        <div class="box-content">
+            <div class="ajax_var" data-page-id="{{ page }}" data-user-key="{{ user_key }}" data-layout="{{ layout_id }}"></div>
+            <div class="blocks-container" data-position-id="0">{{ thumb_block_position_non|raw }}</div><!-- /.blocks-container -->
+        </div><!-- /.box-content -->
+    </div><!-- /.box -->
+
+    <div class="box" id="add-block">
+        <div class="box-title">
+            {% trans %}Add Blocks{% endtrans %}
+            <div class="box-title-options">
+                <a id="back-to-blocks-trigger" class="btn btn-sm btn-primary" href="#" data-toggle="tooltip" data-placement="bottom" title="{% trans %}Back To Block{% endtrans %}"><i class="fa fa-arrow-left"></i> {% trans %}Back{% endtrans %}</a>
+            </div><!-- /.box-title-options -->
+        </div>
+        <div class="box-content">
+            <div class="available-blocks">
+                <div class="form-group filter">
+                    <input class="form-control" type="text" placeholder="{% trans %}Search block{% endtrans %}..." name="filter-name">
+                </div>
+
+                {% for block_type in block_types %}
+                    <div class="block" data-block-type-id="{{ block_type.getId() }}">
+                        <div class="block-title">
+                            <span class="block-in-use-count"> - </span>
+                            {{ block_type.getName() }}
+                            <button class="btn btn-xs btn-default add_block"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div><!-- /.block -->
+                {% endfor %}
+
+            </div><!-- /.available-blocks -->
+        </div><!-- /.box-content -->
+    </div><!-- /.box -->
+</div><!-- /.col-lg-3 -->
+{% endblock %}
+
+{% block javascript %}
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="{{asset('bundles/zing/admin/js/jquery.Jcrop.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/jquery.Jcrop.multiple.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/hb.image.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/ckeditor/adapters/jquery.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/jweblayout.js')}}"></script>
+
+    <script type="text/javascript">
+        // $('.ckedited').ckeditor();
+        $('.tabs').tabs();
+    </script>
+{% endblock %}

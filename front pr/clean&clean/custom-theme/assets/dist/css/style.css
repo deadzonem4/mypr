@@ -1,0 +1,506 @@
+/*
+Theme Name: Custom Theme
+Theme URI: www.3web.bg	
+Version: 1.0
+*/
+/*-------------------------------- Basic ---------------------------------*/
+*{
+	font-family:inherit;
+}
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+body a,body a:hover,body a:focus{
+	text-decoration:none;
+}
+/*--------------------------------HEADER BLACK LINE------------------------*/
+.black-line{
+    background-color:  #323232;
+}
+
+.black-line-content p{
+    color: #FFF;
+    display: inline;
+    margin-left: 5px;
+}
+
+.upper-header{
+    margin-top: 15px;
+}
+
+.black-line-content button{
+    color: #FFF;
+    background-color: #009cd7;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    margin: 12px 0px;
+}
+
+.black-line-content button:focus{
+    outline: none;
+}
+
+/*------------------------------------ HEADER NAVIGATION--------------------------*/
+
+.header-menu-content img{
+	float: left;
+	margin: 10px 0px;
+}
+
+.hamburger{
+	display:none;
+}
+
+#menu-main-menu{
+	float: right;
+	display: inline;
+	margin-top: 40px;
+}
+
+#menu-main-menu li{
+	display: inline;
+	list-style: none;
+  	border-right: 1px solid rgba(57, 51, 51, .3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0px 8px;
+}
+
+#menu-main-menu a{
+	padding: 7px;
+	font-size: 12px;
+	color: #000000;
+	font-weight:400;
+}
+
+#menu-item-19{
+	border: none!important;
+	padding-right: 0px!important;
+}
+
+#menu-item-19 a{
+	padding-right: 0px!important;
+}
+
+#menu-item-23{
+	position: relative;
+}
+
+#menu-item-23>a:after{
+	font-family: 'Glyphicons Halflings';
+	content: "\e259";
+	margin-left:5px;
+}
+
+#menu-item-23 .sub-menu{
+	display: none;
+    position: absolute;
+    background: #eee;
+    z-index: 20;
+    padding: 0px;
+    width: 230px;
+    top: 27px;
+    left: 0;
+}
+
+#menu-item-23 .sub-menu a{
+	display: block;
+	padding: 7px 5px;
+}
+
+#menu-item-23 .sub-menu a:hover{
+	border:none;
+}
+
+#menu-item-23 .sub-menu li{
+	border:none;
+	display: block;
+}
+
+#menu-item-23 .sub-menu li:hover{
+	border:none;
+	background-color: #31708f;
+}
+
+
+/*------------------------------------------MAIN-----------------*/
+
+.index-form{
+	padding-bottom: 80px;
+}
+
+.index-form-container{
+	display: inline-block;
+	border-radius: 10px;
+  	background-color: #8fd1e9;
+
+}
+
+.index-form-container h4{
+	font-size: 16px;
+	font-weight: 300;
+  	color: #ffffff;
+  	margin: 20px 0px;
+}
+
+.index-form .wpcf7 {
+    text-align: center;
+}
+
+.index-form .wpcf7-submit{
+	border-radius: 10px;
+  	background-color: #009cd7;
+  	padding: 4px 35px;
+  	border:none;
+  	color: #FFF;
+  	margin: 25px 0px;
+}
+
+.index-form .wpcf7-form-control-wrap input{
+	border-radius: 10px;
+  	background-color: #f4f7fa;
+  	width: 60%;
+    padding: 10px;
+    border:none;
+    margin: 10px 0px;
+    font-weight: 300;
+}
+
+.index-form .wpcf7-form-control-wrap input:focus{
+	 border: solid 1px #009cd7;
+	 outline: none;
+	 padding: 9px;
+}
+
+
+::-webkit-input-placeholder, 
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder {
+  color: #3c3c3c;
+}
+
+.index-form .text-center img{
+	padding: 0px 25px;
+}
+
+.index-form .text-center{
+	padding:40px; 
+}
+
+.deposit-back{
+	background: url(../../images/slide-01-1.jpg) center center no-repeat;
+	padding-bottom: 80px;
+	background-size: cover;
+}
+
+.banner-background{
+	background-color:#009cd7;
+	padding-bottom:16px;
+	color:#fff;
+}
+
+.banner-image{
+	padding:100px 0 20px;
+	background: url(../../images/terry-home-home-cleaning.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.banner-background p:first-of-type{
+	font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    margin-bottom:0;
+}
+
+.banner-background h1{
+	font-size: 34px;
+    font-weight: 300;
+    margin: 0 0 30px;
+}
+
+.banner-background h1 strong{
+	font-weight:400;
+}
+
+.banner-background p:nth-of-type(2){
+	font-weight:300;
+	font-size:17px;
+	margin-bottom:70px;
+}
+
+.index-scroll{
+	display:block;
+}
+
+.index-scroll img{
+	height: 39px;
+    width: 46px;
+}
+
+.index-service{
+	position: relative;
+	max-width:270px;
+    padding: 10px 80px 10px 70px;
+    border-radius: 40px;
+    border: 1px solid rgba(250,255,255,0);
+    background-image:url('../../images/group-28.png');
+    background-position: 90% 20px;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+}
+.index-service:hover{
+	border-color:#009cd7;
+	background-color: #f0f4f6;
+	background-image:url('../../images/group-29.png');
+}
+.index-service object{
+	position:absolute;
+	left:0;
+}
+
+.index-service p{
+	font-size:16px;
+	color: #454545;
+	font-weight: 300;
+}
+.index-service p .bold{
+	display:block;
+	font-weight:400;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.grey-line{
+	border-bottom: solid 1px #575757;
+	width: 50px;
+	margin: 15px auto 25px auto;
+}
+
+.deposit-back h3{ 
+	font-size: 24px;
+	color: #454545;
+	padding-top:50px;
+	padding-bottom: 10px; 
+}
+
+.deposit-back p{
+	font-size: 16px;
+  	font-weight: 300;
+  	color: #454545;
+  	padding-bottom: 25px;
+  	max-width: 380px;
+	margin: 0px 0px 0px auto ;
+
+	
+}
+
+.deposit-back a{
+	border-radius: 10px;
+  	background-color: #009cd7;
+  	color: #FFF;
+  	padding: 7px 14px;
+}
+
+.deposit-back a:hover{
+	color: #FFF;
+	font-weight: bold;
+	padding: 7px 13px;
+}
+
+.grey-box-service{
+	padding-top: 60px;
+	padding-bottom: 80px;
+}
+
+.hidden-sm img{
+	width: 100%;
+}
+
+
+.left-col li{
+	margin-left: auto;
+}
+
+
+.text-content-services p{
+	max-width: 670px;
+	margin: 0px auto 80px auto;
+}
+
+.text-content-banner p{
+	max-width: 510px;
+	margin-left: auto;
+}
+
+.text-content-banner{
+	padding-bottom: 110px;
+}
+
+/*------------------------------------FOOTER SEVICES----------*/
+
+.footer-main{
+	background: url("../../images/Footer-background-2.png")  center center no-repeat;
+	background-size: cover; 
+}
+
+.rounded{
+	font-size: 14px;
+  	font-weight: 600;
+  	color: #ffffff;
+}
+
+.widget-text{
+	font-size: 15px;
+  	font-weight: 300;
+  	color: #ffffff;
+}
+
+.footer-headings{
+	font-size: 15px;
+  	font-weight: 600;
+  	color: #ffffff;
+  	margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+footer .menu{
+	list-style: none;
+	padding: 0px;
+}
+
+footer .menu a{
+	color: #FFF;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+footer .menu a:hover{
+	color: #FFF;
+}
+.footer-menus .menu-item>a:before{
+   content: '\e258';
+   font-family: 'Glyphicons Halflings';
+   font-size: 10px;
+   margin-right: 5px;
+}
+
+/*----------------------------------FOOTER----------------*/
+
+.all-rights{
+	background-color: #3c3c3c;
+}
+
+.all-rights p{
+	font-size: 14px;
+  	color: #ffffff;
+  	float: left;
+  	padding: 8px 15px;
+  	margin-bottom: 0px;
+}
+
+
+/*-----------------------------------------MEDIA-----------------*/
+@media only screen and (max-width: 991px){
+    .header-menu-content img{
+        width:100px;
+    }
+    .hamburger{
+        display:block;
+        font-size:20px;
+        margin:24px 0;
+        float:right;
+    }
+    .menu-main-menu-container{
+        display: none;
+       position: absolute;
+       right: 0;
+       background: #fff;
+       top: 130px;
+       width: 100%;
+       text-align: center;
+    }
+    #menu-main-menu{
+        width:100%;
+        margin-top: 20px;
+        padding-left: 0px;
+
+    }
+    #menu-main-menu li{
+        margin-bottom: 15px;
+       width: 100%;
+       display: block;
+       border-right: none;
+    }
+    #menu-item-23{
+        position:static;
+    }
+    #menu-item-23 .sub-menu{
+        width:100%;
+        padding:10px 0;
+        background: #009cd7 ;
+        top: 115px;
+    }
+    .grey-box-service {
+    	padding-top: 0px;
+	}
+
+	#menu-item-19, #menu-item-19 a{
+	padding-right: 8px!important;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+	.black-line{
+		display:none;
+	}
+	.menu-main-menu-container {
+        top:76px;
+    }
+
+}
+
+@media only screen and (max-width: 650px) {
+		.footer-left-ul{
+			width: 80%!important;
+		}
+		.footer-right-ul{
+			width: 50%!important;
+		}
+}
+
+
+@media only screen and (max-width: 586px) {
+	.index-form img{
+		display: block;
+		margin: 15px auto;
+	}
+	.left-col li, .right-col li{
+		margin: 15px auto;
+	}
+
+	.services-container{
+		width: 100%!important;
+	}
+
+}
+
+@media only screen  and (max-width: 500px) {
+	.text, .deposit-back .text , .deposit-back a.text{
+		margin: auto;
+		text-align: center;
+	}
+	.deposit-back .container.text-right{ 
+		text-align: center; 
+	}
+}
+
+@media only screen and (max-width: 435px) {
+		.footer-left-ul, .footer-right-ul{
+			width: 90%!important;
+		}
+}

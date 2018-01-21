@@ -1,0 +1,51 @@
+{% set user_id = request_service('security.context').getToken().getUser().getId() %}
+
+{% set orders = request_service('zing.component.simplestore.product_order').getAllProductOrders(
+    {'user':user_id }
+) %}
+
+<div class="box-title green mb10">Поръчки</div>
+
+{% if orders|length > 0 %}
+    <table class="table table-cart">
+        <tr>
+            <th>#</th>
+            <th>Продукти</th>
+            <th class="text-center">Доставка</th>
+            <th class="text-center">Статус</th>
+            <th class="text-right" width="110">Крайна цена</th>
+        </tr>
+
+        {% set cart_manager = request_service('zing.component.simplestore.product_cart') %}
+        {% for order in orders %}
+            {% set user_cart = order.getCheckoutCart() %}
+            {% set product = '' %}
+            {% set calcs  = order.getUserCalculation() %}
+            <tr>
+                <td>{{ order.getId() }}</td>
+                <td class="order-products-td">
+                    <ul class="list-unstyled order-products-list mb0">
+                        {% for product_id, specificaion in user_cart %}
+                            {% set product = request_service('zing.component.simplestore.product').getProduct(product_id) %}
+                            <li class="row">
+                                <div class="col-md-8">{{ product.getContentByType('bg')['title'] }}</div>
+                                <div class="col-md-4 text-right">{{ calcs['items'][product.getId()]['item_quantity'] }} x {{ calcs['items'][product.getId()]['item_price']|number_format(2, '.') }} {{ cart_manager.getCurrency() }}</div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td class="text-center">{{ cart_manager.getShipping()|number_format(2, '.') }} {{ cart_manager.getCurrency() }}</td>
+                <td class="text-center">
+                    <span class="filter-status
+                        {% if order.getStatus() == 'waiting' %}text-warning{% endif %}
+                        {% if order.getStatus() == 'done' %}text-success{% endif %}
+                        {% if order.getStatus() == 'rejected' %}text-danger{% endif %}
+                    ">{% if order.getStatus() == 'waiting' %}Изчакване{% endif %}{% if order.getStatus() == 'done' %}Одобрена{% endif %}{% if order.getStatus() == 'rejected' %}Отказана{% endif %}</span>
+                </td>
+                <td class="text-right"><strong>{{ calcs['total_price']|number_format(2, '.') }}</strong> {{ cart_manager.getCurrency() }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    Все още нямате поръчки
+{% endif %}

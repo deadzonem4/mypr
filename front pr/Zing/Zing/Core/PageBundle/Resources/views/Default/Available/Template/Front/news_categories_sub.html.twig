@@ -1,0 +1,14 @@
+{% for category in categories %}
+    <ul class="categories-list list-unstyled">
+        <li {% if category.getUrl()[0].getUrl() == path %}class="current-categories"{% endif %}>
+
+                <a href="/news{{ category_manager.fullCategoryPath(category.getUrlByType('bg')) }}">{{ category.getName() }}</a>
+
+            {% if category.getChild()[0] is defined %}
+                {% set categories = category.getChild() %}
+                    {{ include('ZingCorePageBundle:Default:Available/Template/Front/news_categories_sub.html.twig') }}
+            {% endif %}
+        </li>
+    </ul>
+{% endfor %}
+

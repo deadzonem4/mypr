@@ -1,0 +1,48 @@
+{% extends "ZingCoreFrontBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="inner-content ml20">
+        <div class="row mb10">
+            <div class="col-lg-12">
+                <div class="position" data-position-id="1">
+                    {% for k, block in blocks[1] %}
+                        <h3>{{ block.getBlock().getContentByType('gb')['title']|raw }}</h3> <br /><br /><br />
+                        {{ block.getBlock().getContentByType('gb')['description']|raw }} <br /><br /><br />
+                    {% endfor %}
+                </div>
+            </div><!-- /col-lg-12 -->
+        </div><!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-3 mb10">
+                <div class="position" data-position-id="2">
+                    {% for block in blocks[2] %}
+                        <h3>{{ block.getBlock().getContentByType('gb')['title']|raw }}</h3> <br /><br /><br />
+                       {{ block.getBlock().getContentByType('gb')['description']|raw }} <br /><br /><br />
+                    {% endfor %}
+                </div>
+            </div><!-- /.col-lg-3 -->
+
+            <div class="col-lg-9 mb10">
+                <div class="position" data-position-id="3">
+                    {% for block in blocks[3] %}
+                        <h3>{{ block.getBlock().getContentByType('gb')['title']|raw }}</h3> <br /><br /><br />
+                        {{ block.getBlock().getContentByType('gb')['description']|raw }} <br /><br /><br />
+                    {% endfor %}
+                </div>
+            </div><!-- /.col-lg-6 -->
+
+        </div><!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="position" data-position-id="5">
+                    {% for block in blocks[5] %}
+                        <h3>{{ block.getBlock().getContentByType('gb')['title']|raw }}</h3> <br /><br /><br />
+                        {{ block.getBlock().getContentByType('gb')['description']|raw }} <br /><br /><br />
+                    {% endfor %}
+                </div>
+            </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.inner -->
+{% endblock %}

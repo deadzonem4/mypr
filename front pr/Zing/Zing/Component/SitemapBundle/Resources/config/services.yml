@@ -1,0 +1,15 @@
+parameters:
+    zing.component.sitemap.sitemap.class: Zing\Component\SitemapBundle\Controller\Manager\Sitemap
+    zing.component.sitemap.build_sitemap.class: Zing\Component\SitemapBundle\Controller\Manager\BuildSitemap
+
+services:
+   zing.component.sitemap.build_sitemap:
+       class: %zing.component.sitemap.build_sitemap.class%
+       arguments:
+           service_container: "@service_container"
+
+   zing.component.sitemap.sitemap:
+       class: %zing.component.sitemap.sitemap.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"

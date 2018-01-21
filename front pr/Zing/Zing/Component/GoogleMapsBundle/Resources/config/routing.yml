@@ -1,0 +1,12 @@
+zing_component_google_maps_homepage:
+    path:     /admincp/googlemaps
+    defaults: { _controller: ZingComponentGoogleMapsBundle:GoogleMapsAdmin:index }
+zing_component_google_maps_add:
+    path:     /admincp/googlemaps/add
+    defaults: { _controller: ZingComponentGoogleMapsBundle:GoogleMapsAdmin:add }
+zing_component_google_maps_edit:
+    path:     /admincp/googlemaps/edit/{map_id}
+    defaults: { _controller: ZingComponentGoogleMapsBundle:GoogleMapsAdmin:edit }
+zing_component_google_maps_remove:
+    path:     /admincp/googlemaps/remove/{map_id}
+    defaults: { _controller: ZingComponentGoogleMapsBundle:GoogleMapsAdmin:remove }

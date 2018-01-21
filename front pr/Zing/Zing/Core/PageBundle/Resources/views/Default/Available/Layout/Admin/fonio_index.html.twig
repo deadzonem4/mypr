@@ -1,0 +1,129 @@
+<div class="row mb10">
+    <div class="col-lg-12">
+        <span class="position-label">TOP</span>
+        <div class="position{% if thumb_blocks_by_positions[1]|length > 0 %} active-position{% endif %}" data-position-id="1">
+            {% for blocks in thumb_blocks_by_positions[1] %}
+                  {% set page_block = blocks.getBlock().getBlockRel() %}
+                    {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /col-lg-12 -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-4 mb10">
+        <span class="position-label">Left</span>
+        <div class="position{% if thumb_blocks_by_positions[2]|length > 0 %} active-position{% endif %}" data-position-id="2">
+            {% for blocks in thumb_blocks_by_positions[2] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-4 -->
+
+    <div class="col-lg-4 mb10">
+        <span class="position-label">Center</span>
+        <div class="position{% if thumb_blocks_by_positions[3]|length > 0 %} active-position{% endif %}" data-position-id="3">
+            {% for blocks in thumb_blocks_by_positions[3] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-4 -->
+
+    <div class="col-lg-4 mb10">
+        <span class="position-label">Right</span>
+        <div class="position{% if thumb_blocks_by_positions[4]|length > 0 %} active-position{% endif %}" data-position-id="4">
+            {% for blocks in thumb_blocks_by_positions[4] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-4 -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-12 mb10">
+        <span class="position-label">Middle</span>
+        <div class="position{% if thumb_blocks_by_positions[5]|length > 0 %} active-position{% endif %}" data-position-id="5">
+            {% for blocks in thumb_blocks_by_positions[5] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-12 -->
+</div><!-- /.row -->
+
+<div class="row mb10">
+    <div class="col-lg-3">
+        <span class="position-label">Middle 1</span>
+        <div class="position{% if thumb_blocks_by_positions[9]|length > 0 %} active-position{% endif %}" data-position-id="9">
+            {% for blocks in thumb_blocks_by_positions[9] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-3 -->
+
+    <div class="col-lg-3">
+        <span class="position-label">Middle 2</span>
+        <div class="position{% if thumb_blocks_by_positions[10]|length > 0 %} active-position{% endif %}" data-position-id="10">
+            {% for blocks in thumb_blocks_by_positions[10] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-3 -->
+
+    <div class="col-lg-3">
+        <span class="position-label">Middle 3</span>
+        <div class="position{% if thumb_blocks_by_positions[11]|length > 0 %} active-position{% endif %}" data-position-id="11">
+            {% for blocks in thumb_blocks_by_positions[11] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-3 -->
+
+    <div class="col-lg-3">
+        <span class="position-label">Middle 4</span>
+        <div class="position{% if thumb_blocks_by_positions[12]|length > 0 %} active-position{% endif %}" data-position-id="12">
+            {% for blocks in thumb_blocks_by_positions[12] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-3 -->
+</div><!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-4">
+        <span class="position-label">Bottom Left</span>
+        <div class="position{% if thumb_blocks_by_positions[6]|length > 0 %} active-position{% endif %}" data-position-id="6">
+            {% for blocks in thumb_blocks_by_positions[6] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-4 -->
+
+    <div class="col-lg-4">
+        <span class="position-label">Bottom Center</span>
+        <div class="position{% if thumb_blocks_by_positions[7]|length > 0 %} active-position{% endif %}" data-position-id="7">
+            {% for blocks in thumb_blocks_by_positions[7] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-4 -->
+
+    <div class="col-lg-4">
+        <span class="position-label">Bottom Right</span>
+        <div class="position{% if thumb_blocks_by_positions[8]|length > 0 %} active-position{% endif %}" data-position-id="8">
+            {% for blocks in thumb_blocks_by_positions[8] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-4 -->
+</div><!-- /.row -->

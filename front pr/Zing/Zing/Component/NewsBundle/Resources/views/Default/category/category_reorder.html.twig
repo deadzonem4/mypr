@@ -1,0 +1,43 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="col-lg-12 col-md-12">
+        <div class="box">
+            <div class="box">
+                <div class="box-title">Reordering</div>
+                <div class="box-content menu-sorable">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="dd sortable">
+                                <ul class="dd-list list-unstyled">
+                                    {% for category in categories %}
+                                        {% if category.getParent() == null %}
+                                            {{ include ('ZingComponentNewsBundle:Default:category/reorder/thumb_category.html.twig') }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul><!-- /.menu-sortable -->
+                            </div><!-- /.dd -->
+                        </div><!-- /col-lg-12 -->
+                    </div><!-- /.row -->
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="ajax_var" data-user-key="{{ user_key }}" data-url="/admincp/news/category/api/reorder"></div>
+                        <div class="col-xlg-1 col-lg-2 col-md-3 col-sm-3"><a href="#" class="btn btn-block btn-form" id="order-trigger">Update</a></div>
+                        <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1"><a href="/admincp/news/category" class="btn btn-cancel">Cancel</a></div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-content -->
+            </div><!-- /.box -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{asset('bundles/zing/admin/js/jquery.nestable.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/jwebreorder.js')}}"></script>
+    <script type="text/javascript">
+        $('.dd').jwebreorder({'trigger' : '#order-trigger'});
+    </script>
+{% endblock %}

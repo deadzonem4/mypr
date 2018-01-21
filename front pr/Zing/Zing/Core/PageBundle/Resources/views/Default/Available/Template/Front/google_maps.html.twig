@@ -1,0 +1,10 @@
+{% if blocks.getBlock().getContentByType('static')['map'] %}
+    {% set map = request_service('zing.component.googlemaps.googlemaps').getGoogleMap(blocks.getBlock().getContentByType('static')['map']) %}
+    <div    data-min-zoom       =   "{{ map.getMinZoom() }}"
+            data-max-zoom       =   "{{ map.getMaxZoom() }}"
+            data-map-type       =   "{{ map.getMapType() }}"
+            data-default-zoom   =   "{{ map.getDefaultZoom() }}"
+            data-cords          =   "{{ map.getAddresses() }}"
+            class="google-maps"
+            style="width: {{ map.getWidth() }}%; height: {{ map.getHeight() }}px;"></div>
+{% endif %}

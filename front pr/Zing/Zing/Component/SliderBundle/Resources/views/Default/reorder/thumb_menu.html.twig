@@ -1,0 +1,11 @@
+<li class="dd-item" data-id="{{ menu.getId() }}">
+
+    <div class="dd-handle block block-title">{{ menu.getName() }}</div>
+    {% if menu.getChild()[0] is defined %}
+        <ul class="dd-list list-unstyled">
+            {% for menu in menu.getChild() %}
+                {{ include ('ZingCoreMenuBundle:Default/reorder:thumb_menu.html.twig', {'menu': menu} )  }}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

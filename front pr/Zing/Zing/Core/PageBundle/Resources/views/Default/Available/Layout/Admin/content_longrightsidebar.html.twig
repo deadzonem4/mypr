@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-lg-7 mb10">
+        <span class="position-label">Center</span>
+        <div class="position{% if thumb_blocks_by_positions[1]|length > 0 %} active-position{% endif %}" data-position-id="1">
+            {% for blocks in thumb_blocks_by_positions[1] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-7 -->
+
+    <div class="col-lg-5 mb10">
+        <span class="position-label">Right</span>
+        <div class="position{% if thumb_blocks_by_positions[2]|length > 0 %} active-position{% endif %}" data-position-id="2">
+            {% for blocks in thumb_blocks_by_positions[2] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /.col-lg-5 -->
+</div><!-- /.row -->

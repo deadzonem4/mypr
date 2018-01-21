@@ -1,0 +1,10 @@
+<li class="dd-item" data-id="{{ category.getId() }}">
+    <div class="dd-handle block block-title">{{ category.getName() }}</div>
+    {% if category.getChild()[0] is defined %}
+        <ul class="dd-list list-unstyled">
+            {% for category in category.getChild() %}
+                {{ include ('ZingComponentNewsBundle:Default:category/reorder/thumb_category.html.twig', {'category': category} )  }}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

@@ -1,0 +1,9 @@
+parameters:
+   zing.component.media.image.class: Zing\Component\MediaBundle\Controller\Manager\MediaImage
+
+services:
+   zing.component.media.image:
+       class: %zing.component.media.image.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"

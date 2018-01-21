@@ -1,0 +1,18 @@
+{{ cart_manager.resetCheckout() }}
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="checkout-success">
+			<i class="fa fa-check"></i>
+			<p>Вашата поръчка е приета успешно</p>
+            <p>Плащане: <strong>Наложен платеж</strong></p>
+			<em>Автоматично ще бъдете пренасочени към <a href="/" rel="home">Начало</a></em>
+		</div>
+	</div>
+</div>
+
+<script>
+	setTimeout(function() {
+		window.location = '/';
+	}, 3000);
+</script>

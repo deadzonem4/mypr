@@ -1,0 +1,205 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    <div class="submenu">
+        <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-2"><a class="box" href="/admincp/settings"><i class="fa fa-list animated"></i> <span>{% trans %}Builts{% endtrans %}</span></a></div>
+        <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-2"><a class="box" href="/admincp/settings/general"><i class="fa fa-cogs animated"></i> <span>{% trans %}General{% endtrans %}</span></a></div>
+    </div><!-- /.submenu -->
+
+    <div class="col-lg-12">
+        <div class="box">
+            <div class="box-title">
+                <div class="row">
+                    <div class="col-xs-8">{% trans %}Settings{% endtrans %}</div>
+                    <div class="col-xs-4 text-right"><a href="/admincp/settings/rollback/bundle/Core/SettingBundle" class="btn btn-cancel">{% trans %}Rollback this bundle built to default{% endtrans %}</a></div>
+                </div>
+            </div>
+            <div class="box-content">
+                <form method="post">
+                    <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                    <div class="row tabs">
+                        <div class="col-lg-8 col-md-6 col-sm-6">
+                            <div class="title">{% trans %}General{% endtrans %}</div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Protocol{% endtrans %}</label>
+                                <input name="zing_setting_domain_protocol" type="text" class="form-control" placeholder="{% trans %}http{% endtrans %}" value="{{ zing_setting_domain_protocol }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Domain{% endtrans %}</label>
+                                <input name="zing_setting_domain" type="text" class="form-control" placeholder="{% trans %}domain.com{% endtrans %}" value="{{ zing_setting_domain }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}System Email{% endtrans %}</label>
+                                <input name="zing_setting_email" type="text" class="form-control" placeholder="{% trans %}System Email{% endtrans %}" value="{{ zing_setting_email }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Smtp host{% endtrans %}</label>
+                                <input name="zing_setting_smtp_host" type="text" class="form-control" placeholder="{% trans %}Smtp Host{% endtrans %}" value="{{ zing_setting_smtp_host }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Smtp User{% endtrans %}</label>
+                                <input name="zing_setting_smtp_user" type="text" class="form-control" placeholder="{% trans %}Smtp User{% endtrans %}" value="{{ zing_setting_smtp_user }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Smtp Password{% endtrans %}</label>
+                                <input name="zing_setting_smtp_password" type="text" class="form-control" placeholder="{% trans %}Smtp Password{% endtrans %}" value="{{ zing_setting_smtp_password }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Smtp Port{% endtrans %}</label>
+                                <input name="zing_setting_smtp_port" type="text" class="form-control" placeholder="{% trans %}Smtp Port{% endtrans %}" value="{{ zing_setting_smtp_port }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Smtp Encryption{% endtrans %}</label>
+                                <select class="form-control" name="zing_setting_smtp_encryption">
+                                    <option value="tls" {% if zing_setting_smtp_encryption == 'tls' %}selected{% endif %}>tls</option>
+                                    <option value="ssl" {% if zing_setting_smtp_encryption == 'ssl' %}selected{% endif %}>ssl</option>
+                                    <option value='' {% if zing_setting_smtp_encryption == '' %}selected{% endif %}>null</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Smtp Auth Mode{% endtrans %}</label>
+                                <select class="form-control" name="zing_setting_smtp_auth_mode">
+                                    <option value="plain" {% if zing_setting_smtp_auth_mode == 'plain' %}selected{% endif %}>plain</option>
+                                    <option value="login" {% if zing_setting_smtp_auth_mode == 'login' %}selected{% endif %}>login</option>
+                                    <option value="cram-md5" {% if zing_setting_smtp_auth_mode == 'cram-md5' %}selected{% endif %}>cram-md5</option>
+                                    <option value='' {% if zing_setting_smtp_auth_mode == '' %}selected{% endif %}>null</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Default language{% endtrans %}</label>
+                                <select name="zing_setting_default_language" class="jWeb-select">
+                                    <option value="gb" {% if zing_setting_default_language == 'en' %}selected{% endif %}>English</option>
+                                    <option value="bg" {% if zing_setting_default_language == 'bg' %}selected{% endif %}>Bulgarian</option>
+                                </select>
+                            </div>
+
+                            <div class="title mt30">{% trans %}Social{% endtrans %}</div>
+                            <div class="form-group">
+                                <label>{% trans %}Google Analytics{% endtrans %}</label>
+                                <textarea name="zing_setting_google_analytics" class="form-control" rows="10" placeholder="{% trans %}Google Analytics Code{% endtrans %}">{{ zing_setting_google_analytics }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Facebook</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-facebook"></i></div>
+                                    <input name="zing_setting_facebook" type="text" class="form-control" placeholder="Facebook" value="{{ zing_setting_facebook }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Twitter</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-twitter"></i></div>
+                                    <input name="zing_setting_twitter" type="text" class="form-control" placeholder="Twitter" value="{{ zing_setting_twitter }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>LinkedIn</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-linkedin"></i></div>
+                                    <input name="zing_setting_linkedin" type="text" class="form-control" placeholder="LinkedIn" value="{{ zing_setting_linkedin }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>YouTube</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-youtube"></i></div>
+                                    <input name="zing_setting_youtube" type="text" class="form-control" placeholder="YouTube" value="{{ zing_setting_youtube }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Blogger</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-rss"></i></div>
+                                    <input name="zing_setting_blogger" type="text" class="form-control" placeholder="Blogger" value="{{ zing_setting_blogger }}">
+                                </div>
+                            </div>
+                        </div><!-- /.col-lg-8 -->
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="title mb30">{% trans %}SEO{% endtrans %}</div>
+                            <ul class="tabs-title nav nav-tabs">
+                                {% for key, active_language in active_languages %}
+                                    <li {% if key == 0 %} class="active"{% endif %}>
+                                        <a href="javascript:;">
+                                            <img src="{{asset('bundles/zing/admin/images/')}}flags/{{ active_language['language'] }}.png" alt="{{ active_language['language'] }}">
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <div class="tabs-content">
+                                <ul class="list-unstyled mb0">
+                                    {% for key, active_language in active_languages %}
+                                        <li>
+                                            <div class="form-group">
+                                                <label>{% trans %}Title{% endtrans %} <span class="help">/ {% trans %}Between{% endtrans %} 50-70 {% trans %}characters{% endtrans %}</span></label>
+                                                <input name="zing_setting_seo[{{ active_language['language'] }}][title]" type="text" class="form-control" placeholder="{% trans %}Title{% endtrans %} {{ active_language['language']|upper }}" value="{{ zing_setting_seo[active_language['language']]['title'] }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>{% trans %}Keywords{% endtrans %} <span class="help">/ {% trans %}Max{% endtrans %} 160 {% trans %}chars{% endtrans %}</span></label>
+                                                <input name="zing_setting_seo[{{ active_language['language'] }}][keywords]" type="text" class="form-control" placeholder="Keywords {{ active_language['language']|upper }}" value="{{ zing_setting_seo[active_language['language']]['keywords'] }}">
+                                            </div>
+
+                                            <div class="form-group mb0">
+                                                <label>{% trans %}Description{% endtrans %} <span class="help">/ {% trans %}Max{% endtrans %} 160 {% trans %}chars{% endtrans %}</span></label>
+                                                <textarea name="zing_setting_seo[{{ active_language['language'] }}][description]" class="form-control" rows="10" placeholder="Description {{ active_language['language']|upper }}">{{ zing_setting_seo[active_language['language']]['description'] }}</textarea>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div><!-- /.tabs-content -->
+
+                            <div class="title mt30">{% trans %}Site status{% endtrans %}</div>
+                            <div class="form-group">
+                                <label>{% trans %}Offline Message{% endtrans %}</label>
+                                <textarea name="zing_setting_offline_message" class="form-control" rows="10" placeholder="{% trans %}Offline Message{% endtrans %}">{{ zing_setting_offline_message }}</textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>{% trans %}Status{% endtrans %}</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-toggle-active {% if zing_setting_status == '1' %} active{% endif %}">
+                                        <input name="zing_setting_status" type="radio" name="status" value="1" {% if zing_setting_status == '1' %} checked{% endif %}>{% trans %}Online{% endtrans %}
+                                    </label>
+                                    <label class="btn btn-sm btn-toggle-unactive {% if zing_setting_status == '0' %} active{% endif %}">
+                                        <input name="zing_setting_status" type="radio" name="status" value="0" {% if zing_setting_status == '0' %} checked{% endif %}>{% trans %}Offline{% endtrans %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div><!-- /.col-lg-4 -->
+                    </div><!-- /.row -->
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-lg-1 col-md-2 col-sm-3"><input class="btn btn-block btn-form" type="submit" name="zing_setting_update" value="{% trans %}Update{% endtrans %}" /></div>
+                        <div class="col-lg-1 col-md-1 col-sm-2"><a href="/admincp" class="btn btn-cancel">{% trans %}Cancel{% endtrans %}</a></div>
+                    </div><!-- /.row -->
+                </form>
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}
+
+{% block javascript %}
+	<script type="text/javascript">
+		$('.tabs').tabs();
+	</script>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% if post_success %}
+    <div class="alert alert-success" role="alert">Успешно обновихте вашите данни</div>
+{% endif %}
+
+{% if post_error %}
+    {% set errors = post_error %}
+{% endif %}
+
+<form method="post">
+    <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+    <input type="hidden" name="t" value="core" />
+    <input type="hidden" name="b" value="user" />
+    <input type="hidden" name="c" value="user" />
+    <input type="hidden" name="m" value="userEdit" />
+
+
+    {% set user = request_service('security.context').getToken().getUser() %}
+    {% set user_inputed_data = [] %}
+    {% set user_inputed_data = user_inputed_data | merge({ ('user_full_name') : user.getUserFullName()}) %}
+    {% set user_inputed_data = user_inputed_data | merge({ ('user_country') : user.getUserCountry()}) %}
+    {% set user_inputed_data = user_inputed_data | merge({ ('user_region') : user.getUserState()}) %}
+    {% set user_inputed_data = user_inputed_data | merge({ ('user_city') : user.getUserCity()}) %}
+    {% set user_inputed_data = user_inputed_data | merge({ ('user_sub_city') : user.getUserSubCity()}) %}
+    {% set user_inputed_data = user_inputed_data | merge({ ('user_street') : user.getUserStreet()}) %}
+    {% set user_inputed_data = user_inputed_data | merge({ ('user_street_num') : user.getUserStreetNum()}) %}
+    {% set user_inputed_data = user_inputed_data | merge({ ('user_email') : user.getEmail()}) %}
+    {% set user_inputed_data = user_inputed_data | merge({ ('user_phone') : user.getUserPhone()}) %}
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box-title green mb10">Данни за доставката</div>
+            <div class="form-group">
+                <label>Име и фамилия:</label>
+                <input value="{{ user_inputed_data['user_full_name'] }}" class="form-control {% if errors['user_full_name'] %}danger-field{%endif%}" type="text" name="user_full_name" />
+                {% if errors['user_full_name'] %}<p class="text-danger">{{ errors['user_full_name'] }}</p>{%endif%}
+            </div><!-- /.form-group -->
+
+            <div class="form-group" style="display: none;">
+                <label>Държава:</label>
+                <input value="България" {# value=" user_inputed_data['user_country'] " #} class="form-control {% if errors['user_country'] %}danger-field{%endif%}" type="text" name="user_country" />
+                {% if errors['user_country'] %}<p class="text-danger">{{ errors['user_country'] }}</p>{%endif%}
+            </div><!-- /.form-group -->
+
+            <div class="form-group">
+                <label>Област:</label>
+                <input value="{{ user_inputed_data['user_region'] }}" class="form-control {% if errors['user_region'] %}danger-field{%endif%}" type="text" name="user_region" />
+                {% if errors['user_region'] %}<p class="text-danger">{{ errors['user_region'] }}</p>{%endif%}
+            </div><!-- /.form-group -->
+
+            <div class="form-group">
+                <label>Град/Село:</label>
+                <input value="{{ user_inputed_data['user_city'] }}" class="form-control {% if errors['user_city'] %}danger-field{%endif%}" type="text" name="user_city" />
+                {% if errors['user_city'] %}<p class="text-danger">{{ errors['user_city'] }}</p>{%endif%}
+            </div><!-- /.form-group -->
+
+            <div class="form-group" style="display: none;">
+                <label>Квартал:</label>
+                <input value=" - "{# value=" user_inputed_data['user_sub_city'] " #} class="form-control {% if errors['user_sub_city'] %}danger-field{%endif%}" type="text" name="user_sub_city" />
+                {% if errors['user_sub_city'] %}<p class="text-danger">{{ errors['user_sub_city'] }}</p>{%endif%}
+            </div><!-- /.form-group -->
+
+            <div class="form-group">
+                <label>Улица:</label>
+                <input value="{{ user_inputed_data['user_street'] }}" class="form-control {% if errors['user_street'] %}danger-field{%endif%}" type="text" name="user_street" />
+                {% if errors['user_street'] %}<p class="text-danger">{{ errors['user_street'] }}</p>{%endif%}
+            </div><!-- /.form-group -->
+
+            <div class="form-group">
+                <label>Номер:</label>
+                <input value="{{ user_inputed_data['user_street_num'] }}" class="form-control {% if errors['user_street_num'] %}danger-field{%endif%}" type="text" name="user_street_num" />
+                {% if errors['user_street_num'] %}<p class="text-danger">{{ errors['user_street_num'] }}</p>{%endif%}
+            </div><!-- /.form-group -->
+        </div><!-- /.col-md-6 -->
+
+        <div class="col-md-6">
+            <div class="box-title green mb10">Данни за контакт</div>
+
+            <div class="form-group">
+                <label>И-мейл:</label>
+                <input value="{{ user_inputed_data['user_email'] }}" class="form-control" type="text" disabled />
+            </div><!-- /.form-group -->
+
+            <div class="form-group">
+                <label>Телефон:</label>
+                <input value="{{ user_inputed_data['user_phone'] }}" class="form-control {% if errors['user_phone'] %}danger-field{%endif%}" type="text" name="user_phone" />
+                {% if errors['user_phone'] %}<p class="text-danger">{{ errors['user_phone'] }}</p>{%endif%}
+            </div><!-- /.form-group -->
+        </div><!-- /.col-md-6 -->
+    </div><!-- /.row -->
+
+    <hr />
+
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Обнови данните">
+    </div>
+</form>

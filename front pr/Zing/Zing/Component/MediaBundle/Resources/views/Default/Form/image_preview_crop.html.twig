@@ -1,0 +1,35 @@
+<div class="jcrop-item crop_image">
+    <div class="original_image" style="display: none;">{{ original_image|raw }}</div>
+
+    {% set scale_size = croped['scale_size'][0] %}
+    {% if croped['scale_size'][0] > croped['scale_size'][1] %}
+        {% set scale_size = croped['scale_size'][1] %}
+    {% endif %}
+
+    {% set ratio = image_info['crop_scale'][1]/image_info['crop_scale'][0] %}
+
+    <img class="jcrop-box" src="/{{ croped['scaled'] ~ croped['image']['name'] }}"
+                 data-height="{{ croped['scale_size'][1] }}"
+                 data-width="{{ croped['scale_size'][0] }}"
+                 data-x='0'
+                 data-y='0'
+
+                 data-maxsize1="{{ image_info['crop_scale'][0] }}"
+                 data-maxsize2="{{ image_info['crop_scale'][1] }}"
+
+                 data-minsize1="{{ image_info['crop_scale'][0] }}"
+                 data-minsize2="{{ image_info['crop_scale'][1] }}"
+
+                 data-x2='{{ scale_size }}'
+                 data-y2='{{ scale_size }}'
+
+    />
+    <button class="btn btn-sm btn-block btn-primary image_cropping" style="margin-top: 2px;" type="button">Crop</button>
+    <!-- <button type="button" class="image_remove"><i class="fa fa-times"></i></button> -->
+
+    <input type="hidden" class="jcrop-src" name="jcrop-src[]" />
+    <input type="hidden" class="jcrop-x" name="jcrop-x[]" />
+    <input type="hidden" class="jcrop-y" name="jcrop-y[]" />
+    <input type="hidden" class="jcrop-x2" name="jcrop-x2[]" />
+    <input type="hidden" class="jcrop-y2" name="jcrop-y2[]" />
+</div>

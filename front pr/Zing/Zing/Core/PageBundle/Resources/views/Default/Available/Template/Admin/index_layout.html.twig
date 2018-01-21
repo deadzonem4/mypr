@@ -1,0 +1,26 @@
+<form class="block-form" id="form-block-{{ rel_id }}" method="post" enctype="multipart/form-data">
+    {% set slider_manager = request_service('zing.component.slider.slider') %}
+    {% set sliders = slider_manager.getAllSliders() %}
+
+    {# Get block contents by current active language #}
+    {% set content = block.getContentByType( 'static' ) %}
+
+    {# Assign the field values #}
+    {% set selected_slider = to_string(content['slider']) %}
+
+    <div class="form-group">
+        <label>Slider</label>
+        <select name="static[slider]" class="form-control">
+            {% for slider in sliders %}
+                <option value="{{ slider.getId() }}" {% if slider.getId() == selected_slider %} selected{% endif %}>{{ slider.getName() }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <input class="btn btn-lg btn-form save-trigger" type="submit" name="save" value="SAVE" style="padding-left: 50px; padding-right: 50px;" />
+        </div>
+    </div>
+</form>

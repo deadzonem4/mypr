@@ -1,0 +1,9 @@
+parameters:
+    zing.component.googlemaps.googlemaps.class: Zing\Component\GoogleMapsBundle\Controller\Manager\GoogleMaps
+
+services:
+   zing.component.googlemaps.googlemaps:
+       class: %zing.component.googlemaps.googlemaps.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"

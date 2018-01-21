@@ -1,0 +1,50 @@
+{% if post_success %}
+    <div class="alert alert-success" role="alert">Съобщението е изпратено успешно</div>
+{% endif %}
+
+{% if post_error %}
+    {% set zing_form_errors = post_error %}
+{% endif %}
+
+<form method="post">
+    <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+    <input type="hidden" name="t" value="component" />
+    <input type="hidden" name="b" value="contact" />
+    <input type="hidden" name="c" value="contact" />
+    <input type="hidden" name="m" value="save" />
+
+    <div class="form-group">
+       
+        <input value="{{ request['zing_contact_name'] }}" type="text" name="zing_contact_name" placeholder="Име*" class="form-control {% if zing_form_errors['zing_contact_name'] %}danger-field{% endif %}" />
+        {% if zing_form_errors['zing_contact_name'] %}<p class="text-danger">{{ zing_form_errors['zing_contact_name'] }}</p>{% endif %}
+    </div>
+
+    <div class="form-group">
+        
+        <input value="{{ request['zing_contact_email'] }}" type="text" name="zing_contact_email" placeholder="E-mail*" class="form-control {% if zing_form_errors['zing_contact_email'] %}danger-field{% endif %}" />
+        {% if zing_form_errors['zing_contact_email'] %}<p class="text-danger">{{ zing_form_errors['zing_contact_email'] }}</p>{% endif %}
+    </div>
+
+    <div class="form-group">
+        
+        <input value="{{ request['zing_contact_phone'] }}" type="text" name="zing_contact_phone" placeholder="Телефон*" class="form-control {% if zing_form_errors['zing_contact_phone'] %}danger-field{% endif %}" />
+        {% if zing_form_errors['zing_contact_phone'] %}<p class="text-danger">{{ zing_form_errors['zing_contact_phone'] }}</p>{% endif %}
+    </div>
+
+    <div class="form-group">
+        
+        <input value="{{ request['zing_contact_subject'] }}" type="text" name="zing_contact_subject" placeholder="Относно*" class="form-control {% if zing_form_errors['zing_contact_subject'] %}danger-field{% endif %}" />
+        {% if zing_form_errors['zing_contact_subject'] %}<p class="text-danger">{{ zing_form_errors['zing_contact_subject'] }}</p>{% endif %}
+    </div>
+
+    <div class="form-group">
+        
+        <textarea name="zing_contact_message" placeholder="Съобщение*" class="form-control {% if zing_form_errors['zing_contact_message'] %}danger-field{% endif %}" style="min-height: 150px; resize: none;">{{ request['zing_contact_message'] }}</textarea>
+        {% if zing_form_errors['zing_contact_message'] %}<p class="text-danger">{{ zing_form_errors['zing_contact_message'] }}</p>{% endif %}
+    </div>
+
+    <div class="form-group">
+        <input class="btn btn-send-message" type="submit" value="Изпрати">
+        <img class="fa-arrow-circle-o-right"src="{{asset('bundles/zing/front/images/arrow-right.png')}}">
+    </div>
+</form>

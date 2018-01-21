@@ -1,0 +1,24 @@
+            <ul class="products-page-number list-inline {{ custom_class }}">
+
+                {% if pagination['pagination_links']['prev'] %}
+                    <li><a href="{{ pagination['pagination_links']['prev']['extended_link'] }}"><i class="fa fa-angle-left"></i></a></li>
+                {% endif %}
+
+                {% if pagination['pagination_links']['first_page'] %}
+                    </li><li><a href="{{ pagination['pagination_links']['first_page']['extended_link'] }}">{{ pagination['pagination_links']['first_page']['link'] }}</a></li>
+                    <li>...</li>
+                {% endif %}
+
+                {% for page in pagination['pagination_links']['x'] %}
+                        <li {% if page['current'] %}class="current-page"{% endif %}><a href="{{ page['extended_link'] }}">{{ page['link'] }}</a></li>
+                {% endfor %}
+
+                {% if pagination['pagination_links']['last_page'] %}
+                    <li>...</li>
+                    </li><li><a href="{{ pagination['pagination_links']['last_page']['extended_link'] }}">{{ pagination['pagination_links']['last_page']['link'] }}</a></li>
+                {% endif %}
+
+                {% if pagination['pagination_links']['frw'] %}
+                    <li><a href="{{ pagination['pagination_links']['frw']['extended_link'] }}"><i class="fa fa-angle-right"></i></a></li>
+                {% endif %}
+            </ul>

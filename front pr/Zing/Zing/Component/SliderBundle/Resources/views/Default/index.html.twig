@@ -1,0 +1,50 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    <div class="col-lg-12">
+        <div class="box">
+            <form>
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">
+                    {% trans %}Sliders{% endtrans %}
+                    <div class="box-title-options">
+                        <a class="btn btn-default" href="/admincp/slider/add"><i class="fa fa-plus"></i> {% trans %}Add Slider{% endtrans %}</a>
+                    </div><!-- /.box-title-options -->
+                </div>
+                <div class="box-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <th width="20">{% trans %}ID{% endtrans %}</th>
+                                <th>{% trans %}Name{% endtrans %}</th>
+                                <th>{% trans %}Width{% endtrans %}</th>
+                                <th>{% trans %}Height{% endtrans %}</th>
+                                <th width="130">{% trans %}Status{% endtrans %}</th>
+                                <th width="120">{% trans %}Options{% endtrans %}</th>
+                            </tr>
+                            {% for slider in sliders %}
+                                <tr>
+                                    <td>1</td>
+                                    <td><span class="filter-name"><a href="/admincp/slider/view/{{ slider.getId() }}">{{ slider.getName() }}</a></span></td>
+                                    <td><span class="filter-width">{{ slider.getSizeW() }}px</span></td>
+                                    <td><span class="filter-height">{{ slider.getSizeH() }}px</span></td>
+                                    <td>
+                                        <span class="filter-status {% if slider.getStatus() == 1 %}text-success{% else %}text-danger{% endif %}">
+                                            {% if slider.getStatus() == 1 %}{% trans %}Active{% endtrans %}{% else %}{% trans %}Unactive{% endtrans %}{% endif %}
+                                        </span>
+                                    </td>
+                                    <td class="form-inline options">
+                                        <a class="btn btn-sm btn-default" title="{% trans %}Edit{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/slider/view/{{ slider.getId() }}"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-sm btn-default" title="{% trans %}Slider Options{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/slider/edit/{{ slider.getId() }}"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a class="btn btn-sm btn-default btn-remove" data-element="{{ slider.getName() }}" title="{% trans %}Delete{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/slider/remove/{{ slider.getId() }}"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div><!-- /table-responsive -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}

@@ -1,0 +1,9 @@
+{
+    "name":"NewsBundle",
+    "version":"0.1",
+    "status":false,
+    "friendly_name": "NEWS",
+    "icon": "fa fa-list-alt animated",
+    "admin_route": "/admincp/news",
+    "type": "Component"
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="428px" height="423px" viewBox="0 0 428 423" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>B8257AB1-8E95-4B4E-A84F-6C4E2759873F</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <filter x="-13.5%" y="-11.0%" width="127.0%" height="127.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="0%" y1="51.2010318%" x2="100%" y2="51.2010336%" id="linearGradient-2">
+            <stop stop-color="#2A7EC6" offset="0%"></stop>
+            <stop stop-color="#51CCEB" offset="100%"></stop>
+        </linearGradient>
+        <path d="M7.04593583,7.44592244e-15 L364.057648,7.44592244e-15 L364.057648,0.000578468595 C366.818846,0.000578468595 369.057329,2.23880219 369.057648,5.00000003 L369.099064,357.999437 L369.099643,357.999437 C369.099962,360.760861 366.861645,362.999696 364.100221,363.000016 C364.100028,363.000016 364.099836,363.000016 364.099643,363.000016 L7.08517489,362.999437 L7.08517489,362.999437 C4.33975437,362.999437 2.10786275,360.785778 2.0853431,358.04045 L0.801160352,201.488174 L0.801160352,201.488174 C0.801048212,201.474503 0.800992141,201.460832 0.800992141,201.447161 L0.800992141,167.79208 L0.800992141,167.79208 C0.800992141,167.779334 0.801040876,167.766589 0.801138343,167.753843 L2.04608203,4.96176389 L2.04608203,4.96176389 C2.06708515,2.21534093 4.29943256,9.38630866e-15 7.04593583,8.8817842e-15 Z" id="path-3"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Contact-us" transform="translate(-816.000000, -213.000000)">
+            <g id="Group-5" filter="url(#filter-1)" transform="translate(844.000000, 233.000000)">
+                <g id="Group-39">
+                    <g id="Group-37">
+                        <g transform="translate(0.801143, 0.129881)" id="Shape-Copy">
+                            <g transform="translate(-0.000000, 0.000000)">
+                                <g id="Group-10" transform="translate(-0.000000, 0.000000)">
+                                    <g id="Group-51" transform="translate(-0.000000, 0.000000)">
+                                        <mask id="mask-4" fill="white">
+                                            <use xlink:href="#path-3"></use>
+                                        </mask>
+                                        <use id="Mask" fill="url(#linearGradient-2)" xlink:href="#path-3"></use>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

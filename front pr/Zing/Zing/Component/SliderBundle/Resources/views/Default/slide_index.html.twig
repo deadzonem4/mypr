@@ -1,0 +1,54 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+
+    <div class="col-lg-12">
+        <div class="box">
+            <form>
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">
+                    {% trans %}Slides{% endtrans %}
+                    <div class="box-title-options">
+                        <a class="btn btn-default" href="/admincp/slider/view/{{ slider_id }}/reorder"><i class="fa fa-reorder"></i> {% trans %}Reorder{% endtrans %}</a>
+                        <a class="btn btn-default" href="/admincp/slider/view/{{ slider_id }}/create"><i class="fa fa-plus"></i> {% trans %}Add slide{% endtrans %}</a>
+                    </div><!-- /.box-title-options -->
+                </div>
+                <div class="box-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <th width="20">{% trans %}ID{% endtrans %}</th>
+                                <th>{% trans %}Name{% endtrans %}</th>
+                                <th>{% trans %}Slider{% endtrans %}</th>
+                                <th>{% trans %}Date added{% endtrans %}</th>
+                                <th>{% trans %}Date modified{% endtrans %}</th>
+                                <th width="130">{% trans %}Status{% endtrans %}</th>
+                                <th width="80">{% trans %}Options{% endtrans %}</th>
+                            </tr>
+                            {% for slide in slides %}
+                                <tr>
+                                    <td>{{ slide.getId() }}</td>
+                                    <td><span class="filter-title"><a href="/admincp/slider/view/{{ slide.getSlider().getId() }}/edit/{{ slide.getId() }}">{{ slide.getName() }}</a></span></td>
+                                    <td><span class="filter-name">{{ slide.getSlider().getName() }}</span></td>
+                                    <td><span class="filter-date-added">{{ slide.getDateAdded()|date("d/m/Y") }}</span></td>
+                                    <td><span class="filter-date-modified">{{ slide.getDateModified()|date("d/m/Y") }}</span></td>
+                                    <td>
+                                        <span class="filter-status {% if slide.getStatus() == 1 %}text-success{% else %}text-danger{% endif %}">
+                                            {% if slide.getStatus() == 1 %}{% trans %}Active{% endtrans %}{% else %}{% trans %}Unactive{% endtrans %}{% endif %}
+                                        </span>
+                                    </td>
+                                    <td class="form-inline options">
+                                        <a class="btn btn-sm btn-default" title="{% trans %}Edit{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/slider/view/{{ slide.getSlider().getId() }}/edit/{{ slide.getId() }}"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-sm btn-default btn-remove" data-element="Slider: {{ slide.getSlider().getName() }}" title="{% trans %}Delete{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/slider/view/{{ slide.getSlider().getId() }}/remove/{{ slide.getId() }}"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div><!-- /table-responsive -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+
+{% endblock %}

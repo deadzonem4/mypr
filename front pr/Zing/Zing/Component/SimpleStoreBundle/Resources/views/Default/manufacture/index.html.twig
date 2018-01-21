@@ -1,0 +1,89 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+
+{% block body %}
+    {{ include('ZingComponentSimpleStoreBundle:Default:tabs.html.twig') }}
+    <div id="content-column" class="col-lg-12 col-md-12">
+        <div class="box">
+            <form method="post">
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">
+                    Manufacture
+                    <div class="box-title-options">
+                        <a class="btn btn-default custome-visible-sm" href="#filters-column"><i class="fa fa-filter"></i> Filters</a>
+                        <a class="btn btn-sm btn-default" href="/admincp/store/manufacture/create"><i class="fa fa-plus"></i> Create manufacture</a>
+                        <a id="filters-column-trigger" class="btn btn-sm btn-primary hidden-sm hidden-xs" href="#"><i class="fa fa-filter"></i> Filters</a>
+                    </div><!-- /.box-title-options -->
+                </div>
+                <div class="box-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="filters-content">
+                            <tr>
+                                <th width="20"><input type="checkbox" class="check-all"></th>
+                                <th width="20">ID</th>
+                                <th>Name</th>
+                                <th width="130">Status</th>
+                                <th width="80">Options</th>
+                            </tr>
+                            {% for manufacture in manufactures %}
+                                <tr>
+                                    <td class="text-center"><input name="zing_table_multiply[]" value="{{ manufacture.getId() }}" type="checkbox" class="zing_table_checkbox"></td>
+                                    <td>{{ manufacture.getId() }}</td>
+                                    <td><span class="filter-name"><a href="/admincp/store/manufacture/edit/{{ manufacture.getId() }}">{{ manufacture.getName() }}</a></span></td>
+                                    <td><span class="filter-status {% if manufacture.getStatus() == 1 %}text-success{% else %}text-danger{% endif %}">{% if manufacture.getStatus() == 1 %}Active{% else %}Unactive{% endif %}</span></td>
+                                    <td class="form-inline options">
+                                        <a class="btn btn-sm btn-default" title="Edit Manufacture" data-placement="top" data-toggle="tooltip" href="/admincp/store/manufacture/edit/{{ manufacture.getId() }}"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-sm btn-default btn-remove" data-element="{{ manufacture.getName() }}" title="Delete" data-placement="top" data-toggle="tooltip" href="/admincp/store/manufacture/remove/{{ manufacture.getId() }}"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                        </table>
+                    </div><!-- /table-responsive -->
+                </div><!-- /.box-content -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-lg-offset-7 col-md-offset-5 col-sm-offset-5">
+                            <select class="jWeb-select" name="zing_table_action">
+                                <option value="active">Active</option>
+                                <option value="unactive">Unactive</option>
+                                <option value="delete">Delete</option>
+                            </select>
+                        </div><!-- /.col-lg-2 -->
+
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <input type="submit" name="zing_table_submit" value="Go" class="btn btn-block btn-default" />
+                        </div><!-- /.col-lg-1 -->
+                    </div><!-- /.row -->
+                </div><!-- /.box-footer -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-9 -->
+
+    <div class="col-lg-3 col-md-4" id="filters-column">
+        <div class="box">
+            <div class="box-title">Filters</div>
+            <div class="box-content">
+                <div class="form-group filter">
+                    <label>Name:</label>
+                    <input type="text" name="filter-name" class="form-control" placeholder="Type Title...">
+                </div>
+
+                <div class="row">
+                    <div class="col-xlg-4 col-lg-6 col-md-6 col-sm-4">
+                        <div class="form-group filter mb0">
+                            <label>Status:</label>
+                            <ul class="list-unstyled">
+                                <li><div class="checkbox"><input type="checkbox" name="filter-status" value="active" id="f-active" checked> <label for="f-active">Active</label></div></li>
+                                <li><div class="checkbox"><input type="checkbox" name="filter-status" value="unactive" id="f-unactive" checked> <label for="f-unactive">Unactive</label></div></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-3 -->
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{asset('bundles/zing/admin/js/jwebsidebar.js')}}"></script>
+{% endblock %}

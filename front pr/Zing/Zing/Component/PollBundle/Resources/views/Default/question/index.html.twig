@@ -1,0 +1,104 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    {{ include('ZingComponentPollBundle:Default:tabs.html.twig') }}
+
+    <div id="content-column" class="col-lg-12 col-md-12">
+        <div class="box">
+            <div class="box-title">
+                {% trans %}Question{% endtrans %}
+                <div class="box-title-options">
+                    <a class="btn btn-default custome-visible-sm" href="#filters-column"><i class="fa fa-filter"></i> {% trans %}Filters{% endtrans %}</a>
+                    <a class="btn btn-sm btn-default" href="/admincp/poll/question/create"><i class="fa fa-plus"></i> Create poll question</a>
+                    <a id="filters-column-trigger" class="btn btn-sm btn-primary hidden-sm hidden-xs" href="#"><i class="fa fa-filter"></i> {% trans %}Filters{% endtrans %}</a>
+                </div><!-- /.box-title-options -->
+            </div>
+            <div class="box-content">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="filters-content">
+                        <tr>
+                            <th width="20">{% trans %}ID{% endtrans %}</th>
+                            <th>{% trans %}Question{% endtrans %}</th>
+                            <th>{% trans %}Date added{% endtrans %}</th>
+                            <th>{% trans %}Status{% endtrans %}</th>
+                            <th width="90">{% trans %}Options{% endtrans %}</th>
+                        </tr>
+                        {% if poll_questions != null %}
+                            {% set counter = 0 %}
+                            {% for question in poll_questions %}
+                                <tr>
+                                    <td>{{ question.getId() }}</td>
+                                    <td><span class="filter-email">{{ question.getQuestion() }}</span></td>
+                                    <td><span class="filter-date-added">{{ question.getDateAdded()|date("d/m/Y") }}</span></td>
+                                    <td><span class="filter-status {% if question.getStatus() == 1 %}text-success{% else %}text-danger{% endif %}">
+                                            {% if question.getStatus() == 1 %}Активен{% else %}Неактивен{% endif %}
+                                           </span></td>
+                                    <td class="form-inline options">
+                                        <a class="btn btn-sm btn-default" title="Edit Question" data-placement="top" data-toggle="tooltip" href="/admincp/poll/question/edit/{{ question.getId() }}"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-sm btn-default btn-remove" data-element="{{ question.getName() }}" title="{% trans %}Delete{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/question/remove/{{ question.getId() }}"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                                {% set counter = counter+1 %}
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div><!-- /table-responsive -->
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+
+    <div class="col-lg-3 col-md-4" id="filters-column">
+        <div class="box">
+            <div class="box-title">{% trans %}Filters{% endtrans %}</div>
+            <div class="box-content">
+                <div class="form-group filter">
+                    <label>{% trans %}Email{% endtrans %}</label>
+                    <input type="text" name="filter-email" class="form-control" placeholder="{% trans %}Enter Email{% endtrans %}...">
+                </div>
+
+                <div class="form-group filter">
+                    <label>{% trans %}Name{% endtrans %}</label>
+                    <input type="text" name="filter-name" class="form-control" placeholder="{% trans %}Enter Name{% endtrans %}...">
+                </div>
+
+                <div class="form-group filter">
+                    <label>{% trans %}Subject{% endtrans %}</label>
+                    <input type="text" name="filter-subject" class="form-control" placeholder="{% trans %}Enter Subject{% endtrans %}...">
+                </div>
+
+                <div class="row">
+                    <div class="col-xlg-4 col-lg-6 col-md-6 col-sm-4">
+                        <div class="form-group filter mb0">
+                            <label>{% trans %}Status{% endtrans %}</label>
+                            <ul class="list-unstyled">
+                                <li><div class="checkbox"><input type="checkbox" name="filter-status" value="active" id="f-active" checked> <label for="f-active">{% trans %}Active{% endtrans %}</label></div></li>
+                                <li><div class="checkbox"><input type="checkbox" name="filter-status" value="unactive" id="f-unactive" checked> <label for="f-unactive">{% trans %}Unactive{% endtrans %}</label></div></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-3 -->
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{asset('bundles/zing/admin/js/jwebsidebar.js')}}"></script>
+
+    <script type="text/javascript">
+        $('.tabs').tabs();
+
+        $(document).on('click', '.googlemaps-add-address', function() {
+            var output = '<li> \
+                            <input class="form-control google-address mb10" type="text" name="zing_setting_google_address[]" placeholder="{% trans %}Address{% endtrans %}" value="{{ address }}" /> \
+                            <button type="button" class="btn btn-default btn-sm googlemaps-remove-address"><i class="fa fa-trash-o"></i></button> \
+                        </li>';
+            $('.googlemaps-address-list').append(output);
+        });
+
+        $(document).on('click', '.googlemaps-remove-address', function() {
+            $(this).closest('li').remove();
+        });
+    </script>
+{% endblock %}

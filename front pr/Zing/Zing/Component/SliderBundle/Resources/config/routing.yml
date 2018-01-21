@@ -1,0 +1,24 @@
+zing_page_admin_slider_index:
+      path:     /admincp/slider
+      defaults: { _controller: ZingComponentSliderBundle:SliderAdmin:index }
+zing_page_admin_slider_add:
+        path:     /admincp/slider/add
+        defaults: { _controller: ZingComponentSliderBundle:SliderAdmin:add }
+zing_page_admin_slider_edit:
+        path:     /admincp/slider/edit/{slider_id}
+        defaults: { _controller: ZingComponentSliderBundle:SliderAdmin:edit }
+zing_page_admin_slider_remove:
+        path:     /admincp/slider/remove/{slider_id}
+        defaults: { _controller: ZingComponentSliderBundle:SliderAdmin:remove }
+zing_page_admin_slider_view:
+        path:     /admincp/slider/view/{slider_id}
+        defaults: { _controller: ZingComponentSliderBundle:SlideAdmin:slide }
+zing_page_admin_slider_slide_add:
+        path:     /admincp/slider/view/{slider_id}/create
+        defaults: { _controller: ZingComponentSliderBundle:SlideAdmin:add }
+zing_page_admin_slider_slide_edit:
+        path:     /admincp/slider/view/{slider_id}/edit/{slide_id}
+        defaults: { _controller: ZingComponentSliderBundle:SlideAdmin:edit }
+zing_page_admin_slider_slide_remove:
+        path:     /admincp/slider/view/{slider_id}/remove/{slide_id}
+        defaults: { _controller: ZingComponentSliderBundle:SlideAdmin:remove }

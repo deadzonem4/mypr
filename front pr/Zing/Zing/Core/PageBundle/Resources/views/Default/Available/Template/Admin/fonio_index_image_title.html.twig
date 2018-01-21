@@ -1,0 +1,72 @@
+<form class="block-form" id="form-block-{{ rel_id }}" method="post" enctype="multipart/form-data">
+    <ul class="tabs-title nav nav-tabs">
+        {% for key, active_language in active_languages %}
+            <li {% if key == 0 %} class="active"{% endif %}>
+                <a href="javascript:;">
+                    <img src="{{asset('bundles/zing/admin/images/')}}flags/{{ active_language['language'] }}.png" alt="{{ active_language['language'] }}">
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="tabs-content">
+        <ul class="list-unstyled mb0">
+            {% for key, active_language in active_languages %}
+
+                {# Assign current active language in loop #}
+                {% set type = active_language['language'] %}
+
+                {# Get block contents by current active language #}
+                {% set content = block.getContentByType( type ) %}
+
+                {# Assign the field values #}
+                {% set title = to_string(content['title']) %}
+
+                <li>
+                    <div class="form-group">
+                        <label>Title <span class="help">/ Between 1-3000 characters</span></label>
+                        <input type="text" name="{{ type }}[title]" class="form-control" placeholder="Title {{ type|upper }}" value="{{ title }}" />
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <hr />
+
+        {% set static = block.getContentByType( 'static' ) %}
+        {% set url = to_string(static['url']) %}
+
+        <div class="form-group">
+            <label>URL</label>
+            <input type="text" name="static[url]" class="form-control" placeholder="URL" value="{{ url }}" />
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <label>Images</label>
+            <div class="media-bundle-block">
+                {# Create the image form and prepare image info for API #}
+                {{ media_image.imageForm({
+                    'folder'        : 'zing_block/',
+                    'type'          : 'static',
+                    'multiply'      : 1,
+                    'preview'       : block.getContentByType( 'static' )['image'],
+                    'progress'      : false,
+                    'response'      : true,
+                    'scale_size'    : [
+                        [300, 150],
+                        [200, 100, 'preview'],
+                        [100, 50]
+                    ],
+                    'crop_scale'    : [250, 250]
+                })|raw}}
+            </div>
+        </div>
+    </div><!-- /.tabs-content -->
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <input class="btn btn-lg btn-form save-trigger" type="submit" name="save" value="SAVE" style="padding-left: 50px; padding-right: 50px;" />
+        </div>
+    </div>
+</form>

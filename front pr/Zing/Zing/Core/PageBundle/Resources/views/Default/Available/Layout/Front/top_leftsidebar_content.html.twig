@@ -1,0 +1,66 @@
+{% extends "ZingCoreFrontBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="grey-block">
+    <div class="container fonio-pages">
+    <div class="container">
+    <div class="row">
+            <div class="line-green">
+                {% for blocks in blocks[1] %}
+                    {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                    {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+                {% endfor %}
+                <img src="{{front_images}}bg-inner-h2.png" alt="green-line-img" />
+            </div><!-- /.box-green -->     
+    </div><!-- /.row -->
+    </div>
+
+    <div class="row ml25 mr25 mb25 mt10">
+        <article class="col-lg-9 col-md-9 col-sm-8 col-xs-12 col-md-push-3 col-sm-push-4 rightColumn" style="padding-left: 20px;">
+            {% for blocks in blocks[3] %}
+                {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs12">
+                    {% for blocks in blocks[4] %}
+                        {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                        {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+                    {% endfor %}
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs12">
+                    {% for blocks in blocks[5] %}
+                        {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                        {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+                    {% endfor %}
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs12">
+                    {% for blocks in blocks[6] %}
+                        {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                        {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+                    {% endfor %}
+                </div><!-- /.col-md-4 -->
+            </div><!-- /.row -->
+        </article><!-- /.col-md-9 -->
+
+        <aside class="col-lg-3 col-md-3 col-sm-4 col-xs-12 col-md-pull-9 col-sm-pull-8">
+            {% for blocks in blocks[2] %}
+                {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+            {% endfor %} 
+        </aside><!-- /.col-md-3 -->
+    </div><!-- /.row -->
+</div><!-- container -->
+</div><!-- grey-block -->
+{% endblock %}
+
+{% block javascript %}
+    {{ include('ZingCorePageBundle:Default:Available/Layout/load_javascript.html.twig') }}
+{% endblock %}
+
+{% block header %}
+    {{ include('ZingCorePageBundle:Default:Available/Layout/load_css.html.twig') }}
+{% endblock %}

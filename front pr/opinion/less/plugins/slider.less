@@ -1,0 +1,33 @@
+.slider-container {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 1;
+}
+.slider-wrapper {
+  position: relative;
+  .size(100%);
+  z-index: 1;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -ms-transition-property: -ms-transform;
+  transition-property: transform;
+}
+.slider-container-android .slider-slide,
+.slider-wrapper {
+  .translate(0, 0);
+}
+.slider-slide {
+  -webkit-flex-shrink: 0;
+  -ms-flex: 0 0 auto;
+  flex-shrink: 0;
+  .size(100%);
+  position: relative;
+  -webkit-font-smoothing: subpixel-antialiased;
+}

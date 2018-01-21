@@ -1,0 +1,22 @@
+{% set link = 'https://www.facebook.com/FacebookDevelopers' %}
+{% set width = '100%' %}
+{% set height = '300px' %}
+
+{% if blocks.getBlock().getContentByType('static')['link']  %}
+	{% set link = blocks.getBlock().getContentByType('static')['link'] %}
+{% endif %}
+
+{% if blocks.getBlock().getContentByType('static')['width']  %}
+	{% set width = blocks.getBlock().getContentByType('static')['width'] %}
+{% endif %}
+
+{% if blocks.getBlock().getContentByType('static')['height']  %}
+	{% set height = blocks.getBlock().getContentByType('static')['height'] %}
+{% endif %}
+
+<iframe src="//www.facebook.com/plugins/likebox.php?href={{ link }}&amp;width=500px&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" 
+		scrolling="no" 
+		frameborder="0" 
+		style="border:none; overflow:hidden; width:{{ width }}; height:{{ height }};" 
+		allowTransparency="true">
+</iframe>

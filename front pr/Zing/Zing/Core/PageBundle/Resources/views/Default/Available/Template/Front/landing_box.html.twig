@@ -1,0 +1,23 @@
+{# Call media image manager #}
+{% set image_manager   = request_service('zing.component.media.image') %}
+
+{# Set default article image #}
+{% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+{# Get the article 300px width image #}
+{% set images300px = image_manager.getImagesByWidth(300, blocks.getBlock().getContentByType('static')['image']) %}
+
+{% if images300px|length > 0 %}
+    {% set image = '/' ~ images300px[0]['name'] %}
+{% endif %}
+
+<div class="landing-box">
+	<a class="landing-box-img" rel="bookmark" href="{{ blocks.getBlock().getContentByType('static')['link']|raw }}">
+		<img src="{{ image }}" alt="{{ blocks.getBlock().getContentByType('bg')['title']|raw }}" alt="{{ blocks.getBlock().getContentByType('bg')['title']|raw }}">
+	</a>
+	<a class="landing-box-title" rel="bookmark" href="{{ blocks.getBlock().getContentByType('static')['link']|raw }}">
+		{{ blocks.getBlock().getContentByType('bg')['title']|raw }}
+	</a>
+	<div class="landing-box-description">{{ blocks.getBlock().getContentByType('bg')['description']|raw }}</div>
+	<a class="btn btn-primary" rel="bookmark" href="{{ blocks.getBlock().getContentByType('static')['link']|raw }}">{{ blocks.getBlock().getContentByType('bg')['link_text']|raw }}<span class="fa fa-angle-right"></span></a>
+</div>

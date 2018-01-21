@@ -1,0 +1,11 @@
+zing_client_request_admin_index:
+      path:     /admincp/client/request
+      defaults: { _controller: ZingComponentClientRequestBundle:ClientRequestAdmin:index }
+
+zing_client_request_admin_view:
+      path:     /admincp/client/request/view/{client_request_id}
+      defaults: { _controller: ZingComponentClientRequestBundle:ClientRequestAdmin:view }
+
+zing_client_request_admin_remove:
+      path:     /admincp/client/request/remove/{client_request_id}
+      defaults: { _controller: ZingComponentClientRequestBundle:ClientRequestAdmin:remove }

@@ -1,0 +1,18 @@
+{% set cart_manager = request_service('zing.component.simplestore.product_cart') %}
+
+
+{% if not cart_manager.getCurrentCheckoutStep() %}
+    {{ include('ZingComponentSimpleStoreBundle:Default:checkout/cart.html.twig') }}
+{% endif %}
+
+{% if cart_manager.getCurrentCheckoutStep() == 1 %}
+    {{ include('ZingComponentSimpleStoreBundle:Default:checkout/step_one.html.twig') }}
+{% endif %}
+
+{% if cart_manager.getCurrentCheckoutStep() == 2 %}
+    {{ include('ZingComponentSimpleStoreBundle:Default:checkout/step_two.html.twig') }}
+{% endif %}
+
+{% if cart_manager.getCurrentCheckoutStep() == 3 %}
+    {{ include('ZingComponentSimpleStoreBundle:Default:checkout/step_three.html.twig') }}
+{% endif %}

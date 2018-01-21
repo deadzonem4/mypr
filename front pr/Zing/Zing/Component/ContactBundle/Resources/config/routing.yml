@@ -1,0 +1,15 @@
+zing_component_contact_contact_index:
+      path:     /admincp/contact
+      defaults: { _controller: ZingComponentContactBundle:ContactAdmin:index }
+
+zing_component_contact_contact_view:
+      path:     /admincp/contact/view/{contact_id}
+      defaults: { _controller: ZingComponentContactBundle:ContactAdmin:view }
+
+zing_component_contact_contact_remove:
+      path:     /admincp/contact/remove/{contact_id}
+      defaults: { _controller: ZingComponentContactBundle:ContactAdmin:remove }
+
+zing_component_contact_contact_settings:
+      path:     /admincp/contact/settings
+      defaults: { _controller: ZingComponentContactBundle:ContactAdmin:settings }

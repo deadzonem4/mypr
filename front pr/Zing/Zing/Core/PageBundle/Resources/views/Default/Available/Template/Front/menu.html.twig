@@ -1,0 +1,14 @@
+{% if blocks.getBlock().getContentByType('bg')['title'] %}
+    <div class="box-title green">{{ blocks.getBlock().getContentByType('bg')['title'] }}</div>
+{% endif %}
+
+{% set menu_manager = request_service('zing.core.menu.menu') %}
+{% set menus = menu_manager.getAllMenusByCategoryId(blocks.getBlock().getContentByType('static')['menu']) %}
+
+<ul class="navigation {% if blocks.getBlock().getContentByType('static')['type'] == 'v' %}list-unstyled{% else %}list-inline{% endif %}">
+    {% for menu in menus %}
+        {% if menu.getParent() == null %}
+            {{ include('ZingCorePageBundle:Default:Available/Template/Front/menu_sub.html.twig') }}
+        {% endif %}
+    {% endfor %}
+</ul><!-- /.navigation --> 

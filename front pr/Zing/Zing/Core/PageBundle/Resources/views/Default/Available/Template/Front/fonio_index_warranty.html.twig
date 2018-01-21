@@ -1,0 +1,22 @@
+{# Call media image manager #}
+{% set image_manager   = request_service('zing.component.media.image') %}
+
+{# Set default article image #}
+{% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+{# Get the article 300px width image #}
+{% set images300px = image_manager.getImagesByWidth(300, blocks.getBlock().getContentByType('static')['image']) %}
+
+{% if images300px|length > 0 %}
+    {% set image = '/' ~ images300px[0]['name'] %}
+{% endif %}
+
+<span class="box-title blue">{{ blocks.getBlock().getContentByType('bg')['title']|raw }}</span>
+<div class="box height170">
+    <a href="{{ blocks.getBlock().getContentByType('static')['url'] }}">
+        <span class="box-1-img"><img src="{{ image }}" alt="Гаранция"></span>
+        <span class="box-text hidden-xs">
+            {{ blocks.getBlock().getContentByType('bg')['description']|raw }}
+        </span>
+    </a>
+</div><!-- /.box -->

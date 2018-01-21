@@ -1,0 +1,152 @@
+{% set user_data = cart_manager.getCheckoutUserData() %}
+<div class="container">
+<h2 class="title mb0 mt10">Потвърждаване на поръчката</h2>
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        <div class="box-title green mb10">Данни за доставката</div>
+        <div class="row checkout-info">
+            <div class="col-md-4 col-sm-6">Вашето име:</div>
+            <div class="col-md-8 col-sm-6 mb10"><strong>{{ user_data['user_name'] }}</strong></div>
+
+            <div class="col-md-4 col-sm-6">Държава:</div>
+            <div class="col-md-8 col-sm-6 mb10"><strong>{{ user_data['user_country'] }}</strong></div>
+
+            <div class="col-md-4 col-sm-6">Регион:</div>
+            <div class="col-md-8 col-sm-6 mb10"><strong>{{ user_data['user_region'] }}</strong></div>
+
+            <div class="col-md-4 col-sm-6">Град:</div>
+            <div class="col-md-8 col-sm-6 mb10"><strong>{{ user_data['user_city'] }}</strong></div>
+
+            <div class="col-md-4 col-sm-6">Квартал:</div>
+            <div class="col-md-8 col-sm-6 mb10"><strong>{{ user_data['user_sub_city'] }}</strong></div>
+
+            <div class="col-md-4 col-sm-6">Улица:</div>
+            <div class="col-md-8 col-sm-6 mb10"><strong>{{ user_data['user_street'] }}</strong></div>
+
+            <div class="col-md-4 col-sm-6">Номер на улица:</div>
+            <div class="col-md-8 col-sm-6"><strong>{{ user_data['user_street_num'] }}</strong></div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6">
+        <div class="box-title green mb10">Данни за контакт</div>
+        <div class="row checkout-info">
+            <div class="col-md-4 col-sm-6">И-мейл:</div>
+            <div class="col-md-8 col-sm-6 mb10"><strong>{{ user_data['user_email'] }}</strong></div>
+
+            <div class="col-md-4 col-sm-6">Телефон:</div>
+            <div class="col-md-8 col-sm-6"><strong>{{ user_data['user_phone'] }}</strong></div>
+        </div>
+    </div>
+</div>
+
+<div class="box-title green mb10">Поръчка</div>
+<div class="table-responsive">
+    <table class="table table-buy-products">
+        <tr class="tr-title">
+            <th class="align-center" width="100px">Номер</th>
+            <th class="align-center" width="100px">Снимка</th>
+            <th class="align-center" width="500px">Продукт</th>
+            <th class="align-center" width="100px">Количество</th>
+            <th class="align-right" class="align-center" width="100px">Ед. цена</th>
+            <th class="align-right" width="110px">Крайна цена</th>
+        </tr>
+
+        {% set image_manager   = request_service('zing.component.media.image') %}
+        {% set product_manager = request_service('zing.component.simplestore.product') %}
+        {% set calcs = cart_manager.getCalculations() %}
+
+        {# Default shipping #}
+        {% set shipping     = 0.00 %}
+
+        {# Default currency #}
+        {% set currency     = '' %}
+
+        {# If we got products #}
+        {% if cart_manager.getCart()|length > 0 %}
+
+            {# Set the default currency from the first found product #}
+            {% set currency = product_manager.getAllProducts()[0].getCurrency() %}
+            {% set shipping = cart_manager.getShipping() %}
+
+        {% endif %}
+
+        {% set total_price  = 0 + shipping %}
+
+        {% for product_id, specification in cart_manager.getCart() %}
+            {% set product = product_manager.getProduct(product_id)  %}
+
+            {# Set default article image #}
+            {% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+            {# Get the article 300px width image #}
+            {% set images100px = image_manager.getImagesByWidth(100, product.getContentByType('static')['image']) %}
+
+            {# If article has main image, set the image #}
+            {% if product.getContentByType('static')['main_image'] is not null %}
+                {# Loop in all 300px width images #}
+                {% for image100px in images100px %}
+
+                    {# Check if the looped image is equal with the main image name #}
+                    {% if product.getContentByType('static')['main_image'] in image100px['name'] %}
+
+                        {# Assign the choosen main image #}
+                        {% set image = '/' ~ image100px['name'] %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            <tr class="tr-data item">
+                <td class="align-center"> {{ product.getCode() }} </td>
+                <td class="align-center"><img src="{{ image }}" alt="{{ product.getContentByType('bg')['title'] }}" /></td>
+                <td class="align-left td-product-name">{{ product.getContentByType('bg')['title'] }}</td>
+                <td class="align-center">{{ calcs['items'][product.getId()]['item_quantity'] }}</td>
+                <td class="align-right">
+                  <span>{{ calcs['items'][product.getId()]['item_price']|number_format(2, '.') }}</span>{{ product.getCurrency() }}
+                </td>
+                <td class="align-right">
+                  <span>{{ calcs['items'][product.getId()]['item_total_price']|number_format(2, '.') }}</span>{{ product.getCurrency() }}</td>
+            </tr>
+        {% endfor %}
+
+        {#<tr>#}
+        {#<td  colspan="7">#}
+        {#<form method="GET" action="/store/cart/update">#}
+        {#<span class="left" style="margin-top: 6px;">Използвай промо код: </span>#}
+        {#<input class="ml10 input left input-bye-product" type="text" value="" name="promocode">#}
+        {#<input class="btn ml5 left btn-bye-product" type="submit" value="Добави">#}
+        {#</form>#}
+        {#</td>#}
+        {#</tr>#}
+
+        <tr>
+            <td colspan="5">Доставка</td>
+            <td style="text-align: right; padding-left: 0; border-left: 1px solid #dcdcdc;" colspan="1">
+                <span class="item-shipping">{{ shipping|number_format(2, '.') }}</span> {{ currency }}
+            </td>
+        </tr>
+
+        <tr class="total-cost">
+            <td class="align-right" colspan="5">Крайна цена с ДДС:</td>
+            <td class="align-right bg-cart-total" colspan="2">
+                <span id="cart-total" class="total-price">{{ calcs['total_price']|number_format(2, '.')  }}</span>{{ currency }}
+            </td>
+        </tr>
+    </table>
+
+</div><!-- /.table-responsive -->
+
+<hr />
+
+<form method="post">
+    <div class="row mb40">
+        <div class="col-md-6 col-xs-6">
+            <button class="btn btn-default btn-sm" type="submit" name="bkwstep"><i class="fa fa-arrow-left"></i> Назад</button>
+        </div>
+
+        <div class="col-md-6 col-xs-6 text-right">
+            <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+            <button class="btn btn-primary btn-lg" type="submit" name="checkout[step_three]">Продължи <i class="fa fa-arrow-right"></i></button>
+        </div>
+    </div>
+</form>
+</div>

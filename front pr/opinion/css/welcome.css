@@ -1,0 +1,102 @@
+.welcome-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 0;
+  background-color: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.welcome-wrap:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.welcome-wrap .va-middle {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  font-size: 16px;
+}
+.welcome-wrap .box {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  text-align: center;
+  -webkit-box-shadow: inset 0px 2px 0px 0px rgba(255, 255, 255, 0.004);
+  box-shadow: inset 0px 2px 0px 0px rgba(255, 255, 255, 0.004);
+}
+.welcome-wrap .box h1 {
+  color: #646464;
+  font-family: 'AvenirLTStdBook';
+  font-weight: normal;
+  line-height: 1.3;
+}
+.welcome-wrap .box p {
+  color: #646464;
+  font-family: 'AvenirLTStdLight';
+  line-height: 1.3;
+}
+@media screen and (min-width: 992px) {
+  .welcome-wrap {
+    padding: 40px 15px;
+  }
+  .welcome-wrap .box {
+    padding: 50px;
+    width: 820px;
+  }
+  .welcome-wrap .box h1 {
+    margin-bottom: 40px;
+    font-size: 60px;
+  }
+  .welcome-wrap .box p {
+    font-size: 48px;
+  }
+  .welcome-wrap .box .btn-default {
+    margin-top: 110px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .welcome-wrap {
+    padding: 30px 15px;
+  }
+  .welcome-wrap .box {
+    padding: 30px;
+    width: 620px;
+  }
+  .welcome-wrap .box h1 {
+    margin-bottom: 30px;
+    font-size: 40px;
+  }
+  .welcome-wrap .box p {
+    font-size: 28px;
+  }
+  .welcome-wrap .box .btn-default {
+    margin-top: 70px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .welcome-wrap {
+    padding: 30px 15px;
+  }
+  .welcome-wrap .box {
+    padding: 30px;
+    width: 420px;
+    max-width: 100%;
+  }
+  .welcome-wrap .box h1 {
+    margin-bottom: 20px;
+    font-size: 25px;
+  }
+  .welcome-wrap .box p {
+    font-size: 18px;
+  }
+  .welcome-wrap .box .btn-default {
+    margin-top: 30px;
+  }
+}

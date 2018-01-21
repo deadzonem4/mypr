@@ -1,0 +1,65 @@
+<form class="block_content" method="post">
+    <ul class="tabs-title nav nav-tabs">
+        {% for key, active_language in active_languages %}
+            <li {% if key == 0 %} class="active"{% endif %}>
+                <a href="javascript:;">
+                    <img src="{{asset('bundles/zing/admin/images/')}}flags/{{ active_language['language'] }}.png" alt="{{ active_language['language'] }}">
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="tabs-content">
+        <ul class="list-unstyled mb0">
+            {% set static = block.getContentByType( 'static' ) %}
+            {% set header_tag = to_string(static['header_tag']) %}
+            {% set skin = to_string(static['skin']) %}
+
+            {% for key, active_language in active_languages %}
+                {# Assign current active language in loop #}
+                {% set type = active_language['language'] %}
+
+                {# Get block contents by current active language #}
+                {% set content = block.getContentByType( type ) %}
+
+                {# Assign the field values #}
+                {% set title = to_string(content['title']) %}
+
+                <li>
+                    <div class="form-group">
+                        <label>Title <span class="help">/ Between 1-70 characters</span></label>
+                        <input name="{{ type }}[title]" type="text" class="form-control" placeholder="Title {{ type|upper }}" value="{{ title }}">
+                    </div>
+                </li>
+            {% endfor %}
+                
+            <div class="form-group">
+                <label>Header tag</label>
+                <select class="form-control" name="static[header_tag]">
+                    <option value="h1" {% if header_tag == 'h1' %}selected{% endif %}>h1</option>
+                    <option value="h2" {% if header_tag == 'h2' %}selected{% endif %}>h2</option>
+                    <option value="h3" {% if header_tag == 'h3' %}selected{% endif %}>h3</option>
+                    <option value="h4" {% if header_tag == 'h4' %}selected{% endif %}>h4</option>
+                    <option value="h5" {% if header_tag == 'h5' %}selected{% endif %}>h5</option>
+                </select>
+            </div>
+                
+            <div class="form-group">
+                <label>Skin</label>
+                <select class="form-control" name="static[skin]">
+                    <option value="" {% if skin == '' %}selected{% endif %}>No skin</option>
+                    <option value="title" {% if skin == 'title' %}selected{% endif %}>Default</option>
+                    <option value="contact-title" {% if skin == 'contact-title' %}selected{% endif %}>Blue</option>
+                    <option value="box-title blue" {% if skin == 'box-title blue' %}selected{% endif %}>Box-Title Blue</option>
+                    <option value="box-title green" {% if skin == 'box-title green' %}selected{% endif %}>Box-Title Green</option>
+                </select>
+            </div>
+        </ul>
+    </div><!-- /.tabs-content -->
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <input class="btn btn-lg btn-form save-trigger" type="submit" name="save" value="SAVE" style="padding-left: 50px; padding-right: 50px;" />
+        </div>
+    </div>
+</form>

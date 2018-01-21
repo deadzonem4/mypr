@@ -1,0 +1,182 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    {{ include('ZingComponentNewsBundle:Default:tabs.html.twig') }}
+    {% set action = zing_form_action %}
+
+    <div class="col-lg-12">
+        <div class="box">
+            {{ include('ZingCoreCoreBundle:Default/Common:error_messages.html.twig') }}
+
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+
+                <div class="box-title">{{ action }} category</div>
+                <div class="box-content">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="title mb20">Private</div>
+                                <div class="form-group">
+                                    <label>Display name <span class="help">\{% trans %}Used only in administration{% endtrans %}</span></label>
+                                    <input type="text" name="zing_category_display_name" class="form-control" placeholder="Display name" value="{{ zing_category_display_name }}" />
+                                </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="col-xlg-6 col-lg-12 col-md-12">
+                            <div class="tabs">
+                                <ul class="tabs-title nav nav-tabs">
+                                    {% for key, active_language in active_languages %}
+                                        <li {% if key == 0 %} class="active"{% endif %}>
+                                            <a href="javascript:;">
+                                                <img src="{{asset('bundles/zing/admin/images/')}}flags/{{ active_language['language'] }}.png" alt="{{ active_language['language'] }}">
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <div class="tabs-content">
+                                    <ul class="list-unstyled mb0">
+                                        {% for key, active_language in active_languages %}
+
+                                            {# Assign current active language in loop #}
+                                            {% set type = active_language['language'] %}
+
+                                            {% if category %}
+                                                {% set category_content = category.getContentByType(type) %}
+
+                                                {% set category_content_name = category.getContentByType(type)['name'] %}
+                                                {% set category_content_description = category.getContentByType(type)['description'] %}
+                                                {% set category_content_meta_title = category.getContentByType(type)['meta_title'] %}
+                                                {% set category_content_meta_keywords = category.getContentByType(type)['meta_keywords'] %}
+                                                {% set category_content_meta_description = category.getContentByType(type)['meta_description'] %}
+
+                                                {% set category_url = category.getUrlByType(type) %}
+                                            {% else %}
+
+                                                    {% if post_request[type] is defined %}
+
+                                                        {% set category_content_name = post_request[type]['name'] %}
+                                                        {% set category_content_description = post_request[type]['description'] %}
+                                                        {% set category_content_meta_title = post_request[type]['meta_title'] %}
+                                                        {% set category_content_meta_keywords = post_request[type]['meta_keywords'] %}
+                                                        {% set category_content_meta_description = post_request[type]['meta_description'] %}
+
+                                                        {% set category_url = post_request[type]['url'] %}
+                                                    {% endif %}
+
+                                            {% endif %}
+
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="title mb20">General / {{ type|upper }}</div>
+
+                                                            <div class="form-group">
+                                                                <label>Name</label>
+                                                                <input value="{{ category_content_name }}" type="text" name="{{ type }}[name]" class="form-control force-url-generate" placeholder="Name {{ type|upper }}" autocomplete="off" />
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>URL <span class="help">/ Auto generated</span></label>
+                                                                <input value="{{ category_url }}" type="text" class="form-control url-generate" placeholder="/" disabled />
+                                                                <input value="{{ category_url }}" type="hidden" class="url-generate" name="{{ type }}[url]" />
+                                                            </div>
+
+                                                            <div class="form-group mb0">
+                                                                <label>Description <span class="help">/ Between 1-21000 characters</span></label>
+                                                                <textarea id="ckedited" name="{{ type }}[description]" class="form-control" placeholder="Description {{ type|upper }}">{{ category_content_description }}</textarea>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="title mb20">SEO / {{ type|upper }}</div>
+
+                                                            <div class="form-group">
+                                                                <label>Meta Title <span class="help">/ Between 50-70 characters</span></label>
+                                                                <input value="{{ category_content_meta_title }}" type="text" name="{{ type }}[meta_title]" class="form-control" placeholder="Meta Title {{ type|upper }}" />
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Meta Keywords <span class="help">/ Max 160 characters</span></label>
+                                                                <input value="{{ category_content_meta_keywords }}" type="text" name="{{ type }}[meta_keywords]" class="form-control" placeholder="Meta Keywords {{ type|upper }}" value="" />
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Meta Description <span class="help">/ Max 160 characters</span></label>
+                                                                <textarea style="min-height: 150px;" name="{{ type }}[meta_description]" class="form-control" placeholder="Meta Description {{ type|upper }}">{{ category_content_meta_description }}</textarea>
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!-- /.row -->
+                                                </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div><!-- /.row -->
+                        </div><!-- /.col-md-6 -->
+
+                        <div class="col-xlg-3 col-lg-6 col-md-6">
+                            <div class="title mb20 xlg-mt56">Details</div>
+
+                            <div class="form-group">
+                                <label>Status</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-toggle-active {% if zing_category_status == 1 %} active{% endif %}">
+                                        <input name="zing_category_status" type="radio" value="1" {% if zing_category_status == 1 %} checked{% endif %}>Active
+                                    </label>
+                                    <label class="btn btn-sm btn-toggle-unactive {% if zing_category_status == 0 %} active{% endif %}">
+                                        <input name="zing_category_status" type="radio" value="0" {% if zing_category_status == 0 %} checked{% endif %}>Unactive
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                    <hr />
+                    <div class="row">
+                        <div class="col-xlg-1 col-lg-2 col-md-2 col-sm-3">
+                            <input class="btn btn-block btn-form force_submission" type="submit" name="zing_dev_block_template_submit" value="{{ action }}" />
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2"><a href="#" class="btn btn-cancel">Cancel</a></div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        var a = {"Ё":"YO","Й":"I","Ц":"TS","У":"U","К":"K","Е":"E","Н":"N","Г":"G","Ш":"SH","Щ":"SCH","З":"Z","Х":"H","Ъ":"'","ё":"yo","й":"i","ц":"ts","у":"u","к":"k","е":"e","н":"n","г":"g","ш":"sh","щ":"sch","з":"z","х":"h","ъ":"'","Ф":"F","Ы":"I","В":"V","А":"a","П":"P","Р":"R","О":"O","Л":"L","Д":"D","Ж":"ZH","Э":"E","ф":"f","ы":"i","в":"v","а":"a","п":"p","р":"r","о":"o","л":"l","д":"d","ж":"zh","э":"e","Я":"Ya","Ч":"CH","С":"S","М":"M","И":"I","Т":"T","Ь":"'","Б":"B","Ю":"YU","я":"ya","ч":"ch","с":"s","м":"m","и":"i","т":"t","ь":"'","б":"b","ю":"yu"};
+
+        function transliterate(word){
+            return word.split('').map(function (char) {
+                return a[char] || char;
+            }).join("");
+        }
+
+        $('.force_submission').click(function() {
+            document.getElementById('force-submission-form').submit();
+        });
+
+        $(document).on('keyup', '.force-url-generate', function() {
+          $(this).closest('li').find('.url-generate').val('/'+transliterate($(this).val().toLowerCase()).replace(/[^a-zA-Z0-9-\s]/g, '').replace(/\s+/g, '-'));
+        });
+    </script>
+
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="{{asset('bundles/zing/admin/js/jquery.Jcrop.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/jquery.Jcrop.multiple.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/hb.image.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/ckeditor/ckeditor.js')}}"></script>
+    {#<script src="{{asset('bundles/zing/admin/ckeditor/adapters/jquery.js')}}"></script>#}
+
+    <script type="text/javascript">
+        CKEDITOR.replace('ckedited');
+        //$('.ckedited').ckeditor();
+        $('.tabs').tabs();
+    </script>
+{% endblock %}

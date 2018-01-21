@@ -1,0 +1,64 @@
+{% extends "ZingCoreFrontBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="row mb10">
+        <div class="col-lg-12">
+            <span class="position-label">TOP</span>
+            <div class="position" data-position-id="1">
+                {% for k, block in blocks[1] %}
+                    {{ block.getBlock().getContentByType('gb')['title'] }} <br />
+                    {{ block.getBlock().getContentByType('gb')['description'] }}
+                    <br /><br />
+                {% endfor %}
+            </div>
+        </div><!-- /col-lg-12 -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-3 mb10">
+            <span class="position-label">Left</span>
+            <div class="position" data-position-id="2">
+                {% for block in blocks[2] %}
+                    {{ block.getBlock().getContentByType('gb')['title'] }} <br />
+                    {{ block.getBlock().getContentByType('gb')['description'] }}
+                    <br /><br />
+                {% endfor %}
+            </div>
+        </div><!-- /.col-lg-3 -->
+
+        <div class="col-lg-6 mb10">
+            <span class="position-label">Center</span>
+            <div class="position" data-position-id="3">
+                {% for block in blocks[3] %}
+                    {{ block.getBlock().getContentByType('gb')['title'] }} <br />
+                    {{ block.getBlock().getContentByType('gb')['description'] }}
+                    <br /><br />
+                {% endfor %}
+            </div>
+        </div><!-- /.col-lg-6 -->
+
+        <div class="col-lg-3 mb10">
+            <span class="position-label">Right</span>
+            <div class="position" data-position-id="4">
+                {% for block in blocks[4] %}
+                    {{ block.getBlock().getContentByType('gb')['title'] }} <br />
+                    {{ block.getBlock().getContentByType('gb')['description'] }}
+                    <br /><br />
+                {% endfor %}
+            </div>
+        </div><!-- /.col-lg-3 -->
+    </div><!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <span class="position-label">Bottom</span>
+            <div class="position" data-position-id="5">
+                {% for block in blocks[5] %}
+                    {{ block.getBlock().getContentByType('gb')['title'] }} <br />
+                    {{ block.getBlock().getContentByType('gb')['description'] }}
+                    <br /><br />
+                {% endfor %}
+            </div>
+        </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+{% endblock %}

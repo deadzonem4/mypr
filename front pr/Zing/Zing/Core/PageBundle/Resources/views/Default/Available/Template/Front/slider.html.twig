@@ -1,0 +1,8 @@
+{% set slider_id    = blocks.getBlock().getContentByType('static')['slider'] %}
+{% set slider       = request_service('zing.component.slider.slider').getSlider(slider_id) %}
+
+<div class="banner col-xs-12 center">
+        {% for slider in slider.getSlide() %}
+                	<img src="{{ slider.getContentByType('static')['image'][0]['name'][0] }}" alt="{{ slider.getContentByType('bg')['title']|raw }}" />
+        {% endfor %}
+</div><!-- /.slider -->

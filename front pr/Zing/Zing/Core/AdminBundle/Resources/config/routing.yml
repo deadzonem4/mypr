@@ -1,0 +1,24 @@
+fos_user_security_admin:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_security_check_admin:
+    path:     /admincp/login_check
+    defaults: { _controller: FOSUserBundle:Security:check}
+    requirements:
+       _method: POST
+
+fos_user_security_logout_admin:
+    path:     /admincp/logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
+
+fos_user_security_login_admin:
+    path:     /admincp/login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+zing_admin_admin_index:
+    path:     /admincp
+    defaults: { _controller: ZingCoreAdminBundle:Admin:index }
+
+zing_admin_devadmin_index:
+    path: /admincp/dev
+    defaults: { _controller: ZingCoreAdminBundle:DevAdmin:index }

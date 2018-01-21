@@ -1,0 +1,6 @@
+<div class="col-md-12">
+	{% for blocks in blocks[1] %}
+                {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                {{ include('ZingCorePageBundle:Default:Available/Template/Front/slider.html.twig') }}
+        {% endfor %}
+</div>

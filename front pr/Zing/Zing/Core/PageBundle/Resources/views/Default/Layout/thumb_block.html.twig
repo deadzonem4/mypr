@@ -1,0 +1,17 @@
+{% for rel in page_block %}
+    {% if file_exists(template_file_path~'Admin/'~ rel.getBlock().getBlockType().getTemplateName()) %}
+        {% set layout_id = layout.getId() %}
+        <div class="block" data-block-id="{{ rel.getBlock().getId() }}" data-block-type-id="{{ rel.getBlock().getBlockType().getId() }}">
+            <div class="block-title">
+                {{ rel.getBlock().getBlockType().getName() }}
+                <button class="btn btn-xs btn-default remove_block"><i class="fa fa-times"></i></button>
+            </div>
+            
+            <div class="block-content">
+                {% set block = rel.getBlock() %}
+                {% set rel_id = rel.getId() %}
+                {{ include('ZingCorePageBundle:Default/Available/Template/Admin:' ~ rel.getBlock().getBlockType().getTemplateName()) }}
+            </div>
+        </div><!-- /.block -->
+    {% endif %}
+{% endfor %}

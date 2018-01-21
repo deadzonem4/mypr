@@ -1,0 +1,41 @@
+<h2>Благодарим за направената поръчка!</h2>
+Вашата поръчка с номер <strong>{{ order.getId() }}</strong> беше успешно приета.
+<table style="margin-bottom: 20px;">
+    <tr>
+        <th style="border: 1px solid #dddddd; background-color: #f5f5f5;" >#</th>
+        <th style="border: 1px solid #dddddd; background-color: #f5f5f5;" >Продукти</th>
+        <th style="border: 1px solid #dddddd; background-color: #f5f5f5;" align="center">Доставка</th>
+        <th style="border: 1px solid #dddddd; background-color: #f5f5f5;" align="center">Статус</th>
+        <th style="border: 1px solid #dddddd; background-color: #f5f5f5;" align="right" width="150">Крайна цена с ДДС</th>
+    </tr>
+    {% set cart_manager = request_service('zing.component.simplestore.product_cart') %}
+    {% set user_cart = order.getCheckoutCart() %}
+    {% set product = '' %}
+    {% set calcs  = order.getUserCalculation() %}
+        <tr>
+            <td style="border: 1px solid #dddddd;">{{ order.getId() }}</td>
+            <td style="border: 1px solid #dddddd; " class="order-products-td">
+                <table>
+                    {% for product_id, specificaion in user_cart %}
+                        {% set product = request_service('zing.component.simplestore.product').getProduct(product_id) %}
+                        <tr>
+                            <td>{{ product.getCode() }}</td>
+                            <td>{{ product.getContentByType('bg')['title'] }}</td>
+                            <td align="right">{{ calcs['items'][product.getId()]['item_quantity'] }} x {{ calcs['items'][product.getId()]['item_price']|number_format(2, '.') }} {{ cart_manager.getCurrency() }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+            <td style="border: 1px solid #dddddd;" align="center">{{ cart_manager.getShipping()|number_format(2, '.') }} {{ cart_manager.getCurrency() }}</td>
+            <td style="border: 1px solid #dddddd;" align="center">
+                <span style="
+                    {% if order.getStatus() == 'waiting' %}color: #8a6d3b;{% endif %}
+                    {% if order.getStatus() == 'done' %}color: green;{% endif %}
+                    {% if order.getStatus() == 'rejected' %}color: red;{% endif %}
+                ">{% if order.getStatus() == 'waiting' %}Waiting{% endif %}{% if order.getStatus() == 'done' %}Approved{% endif %}{% if order.getStatus() == 'rejected' %}Rejected{% endif %}</span>
+            </td>
+            <td style="border: 1px solid #dddddd;" align="right"><strong>{{ calcs['total_price']|number_format(2, '.') }}</strong> {{ cart_manager.getCurrency() }}</td>
+        </tr>
+</table>
+
+За повече информация за поръчката, проверете Вашия <a href="{{ domein }}/profile-orders">акаунт</a> в {{ domein }}.

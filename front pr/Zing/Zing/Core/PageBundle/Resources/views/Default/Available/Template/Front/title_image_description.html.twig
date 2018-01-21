@@ -1,0 +1,21 @@
+{% if blocks.getBlock().getContentByType('bg')['title'] %}
+	<h1 class="title">
+		{{ blocks.getBlock().getContentByType('bg')['title'] }}
+	</h1>
+{% endif %}
+
+{# Call media image manager #}
+{% set image_manager   = request_service('zing.component.media.image') %}
+
+{# Get the article 300px width image #}
+{% set images300px = image_manager.getImagesByWidth(300, blocks.getBlock().getContentByType('static')['image']) %}
+
+{% if images300px|length > 0 %}
+    {% set image = '/' ~ images300px[0]['name'] %}
+{% endif %}
+
+{% if image %}
+	<img src="{{ image }}" alt="{{ blocks.getBlock().getContentByType('bg')['title']|raw }}">
+{% endif %}
+
+<div class="inner-content">{{ blocks.getBlock().getContentByType('bg')['description']|raw }}</div>

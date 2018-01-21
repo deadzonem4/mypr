@@ -1,0 +1,8 @@
+<div class="box-{{ blocks.getBlock().getContentByType('static')['background'] }}">	
+	<a href="{{ blocks.getBlock().getContentByType('static')['url'] }}">
+    	{% if blocks.getBlock().getContentByType('static')['image'][0]['name'][0] %}
+	    	<img src="{{ blocks.getBlock().getContentByType('static')['image'][0]['name'][0] }}" alt="{{ blocks.getBlock().getContentByType('bg')['description']|striptags }}" />
+    	{% endif %}
+	    <span class="slider-box-title">{{ blocks.getBlock().getContentByType('bg')['description']|raw }}</span>
+	</a>
+</div>

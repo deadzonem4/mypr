@@ -1,0 +1,178 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+
+{% block body %}
+	<div class="col-lg-12 col-md-12">
+        <div class="box">
+            <form method="post">
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">
+                    {% trans %}Latest Orders{% endtrans %}
+                </div>
+                <div class="box-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="filters-content">
+                            <tr>
+                                <th width="20">{% trans %}ID{% endtrans %}</th>
+                                <th>{% trans %}Order{% endtrans %}</th>
+                                <th>{% trans %}User{% endtrans %}</th>
+                                <th>{% trans %}Date added{% endtrans %}</th>
+                                <th>{% trans %}Price{% endtrans %}</th>
+                                <th>{% trans %}Affiliate{% endtrans %}</th>
+                                <th width="110">{% trans %}Status{% endtrans %}</th>
+                                <th width="80">{% trans %}Options{% endtrans %}</th>
+                            </tr>
+                            {% set cart_manager = request_service('zing.component.simplestore.product_cart') %}
+    						{% set order_manager = request_service("zing.component.simplestore.product_order") %}
+    						{% set orders = order_manager.getAllProductOrders([], {'id' : 'desc'}, 10) %}
+
+                            {% for order in orders %}
+                                {% set user_cart = order.getCheckoutCart() %}
+
+                                {% set product = '' %}
+                                {% for product_id, specificaion in user_cart %}
+                                    {% set product = product ~ request_service('zing.component.simplestore.product').getProduct(product_id).getName() %}
+                                {% endfor %}
+
+                                {% set calcs  = order.getUserCalculation() %}
+                                <tr>
+                                    <td>{{ order.getId() }}</td>
+                                    <td><span class="filter-name"><a href="/admincp/store/order/{{ order.getId() }}">{{ product|truncate(80) }}</a></span></td>
+                                    <td>
+                                        <span class="filter-user">
+                                            {% if order.getUser() != null %}
+                                                <a href="/profile/{{ order.getUser().getId() }}">{{ order.getUserData()['user_name'] }}</a>
+                                            {% else %}
+                                                Гост
+                                            {% endif %}
+                                        </span>
+                                    </td>
+                                    <td><span class="filter-date-added">{{ order.getDateAdded()|date("d/m/Y") }}</span></td>
+                                    <td><span class="filter-price">{{ calcs['total_price']|number_format(2, '.') }} {{ cart_manager.getCurrency() }}</span></td>
+                                    <td><span>
+                                            {% if order.getUserData()['af']|length > 0 %}
+                                                <a href="#" class="affilate_tooltip" title="{% for af in order.getUserData()['af'] %}{{ af }}, {% endfor %}">{{ order.getUserData()['af']|length }}</a>
+                                            {% else %}
+                                                -
+                                            {% endif %}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="filter-status
+                                            {% if order.getStatus() == 'waiting' %}text-warning{% endif %}
+                                            {% if order.getStatus() == 'done' %}text-success{% endif %}
+                                            {% if order.getStatus() == 'rejected' %}text-danger{% endif %}
+                                        ">{% if order.getStatus() == 'waiting' %}Waiting{% endif %}{% if order.getStatus() == 'done' %}Approved{% endif %}{% if order.getStatus() == 'rejected' %}Rejected{% endif %}</span>
+                                    </td>
+                                    <td class="form-inline options">
+                                        <a class="btn btn-sm btn-default" title="Edit Order" data-placement="top" data-toggle="tooltip" href="/admincp/store/order/{{ order.getId() }}"><i class="fa fa-pencil"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div><!-- /table-responsive -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-9 -->
+
+
+
+    <div id="content-column" class="col-lg-12 col-md-12">
+        <div class="box">
+            <div class="box-title">{% trans %}Latest User Requests{% endtrans %}</div>
+            <div class="box-content">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="filters-content">
+                        <tr>
+                            <th width="20">{% trans %}ID{% endtrans %}</th>
+                            <th>{% trans %}Title name{% endtrans %}</th>
+                            <th>{% trans %}First name{% endtrans %}</th>
+                            <th>{% trans %}Last name{% endtrans %}</th>
+                            <th>{% trans %}Email{% endtrans %}</th>
+                            <th>{% trans %}Subscribe{% endtrans %}</th>
+                            <th>{% trans %}Date added{% endtrans %}</th>
+                            <th>{% trans %}Status{% endtrans %}</th>
+                            <th width="90">{% trans %}Options{% endtrans %}</th>
+                        </tr>
+
+                        {% set client_request_manager = request_service("zing.component.client_request.client_request") %}
+                        {% set client_requests = client_request_manager.getClientRequestBy([], {'id' : 'desc'}, 10) %}
+
+                        {% if client_requests != null %}
+                            {% set counter = 0 %}
+                            {% for client_request in client_requests %}
+                                <tr>
+                                    <td>{{ client_request.getId() }}</td>
+                                    <td><span class="filter-title-name">{{ client_request.getTitleName() }}</span></td>
+                                    <td><span class="filter-first-name">{{ client_request.getFirstName() }}</span></td>
+                                    <td><span class="filter-last-name">{{ client_request.getLastName() }}</span></td>
+                                    <td><span class="filter-email">{{ client_request.getEmail() }}</span></td>
+                                    <td><span class="filter-subscribe {% if client_request.getSubscribe() == 1 %}text-success{% else %}text-danger{% endif %}">
+                                            {% if client_request.getSubscribe() == 1 %}ДА{% else %}НЕ{% endif %}
+                                        </span>
+                                    </td>
+                                    <td><span class="filter-date-added">{{ client_request.getDateAdded()|date("d/m/Y") }}</span></td>
+                                    <td><span class="filter-status {% if client_request.getStatus() == 1 %}text-success{% else %}text-danger{% endif %}">
+                                            {% if client_request.getStatus() == 1 %}Прочетено{% else %}Непрочетено{% endif %}
+                                           </span></td>
+                                    <td class="form-inline options">
+                                        <a class="btn btn-sm btn-default" title="Read" data-placement="top" data-toggle="tooltip" href="/admincp/client/request/view/{{ client_request.getId() }}"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-default btn-remove" data-element="{{ client_request.getFirstName() }} {{ client_request.getLastName() }}" title="{% trans %}Delete{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/client/request/remove/{{ client_request.getId() }}"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                                {% set counter = counter+1 %}
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div><!-- /table-responsive -->
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+
+    <div id="content-column" class="col-lg-12 col-md-12">
+        <div class="box">
+            <div class="box-title">{% trans %}Messages{% endtrans %}</div>
+            <div class="box-content">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="filters-content">
+                        <tr>
+                            <th width="20">{% trans %}ID{% endtrans %}</th>
+                            <th>{% trans %}Email{% endtrans %}</th>
+                            <th>{% trans %}Name{% endtrans %}</th>
+                            <th>{% trans %}Subject{% endtrans %}</th>
+                            <th>{% trans %}Date added{% endtrans %}</th>
+                            <th>{% trans %}Status{% endtrans %}</th>
+                            <th width="90">{% trans %}Options{% endtrans %}</th>
+                        </tr>
+
+                        {% set contact_manager = request_service("zing.component.contact.contact") %}
+                        {% set contact_messages = contact_manager.getContactBy([], {'id' : 'desc'}, 10) %}
+
+                        {% if contact_messages != null %}
+                            {% set counter = 0 %}
+                            {% for contact in contact_messages %}
+                                <tr>
+                                    <td>{{ contact.getId() }}</td>
+                                    <td><span class="filter-email">{{ contact.getEmail() }}</span></td>
+                                    <td><span class="filter-name">{{ contact.getName() }}</span></td>
+                                    <td><span class="filter-subject">{{ contact.getSubject() }}</span></td>
+                                    <td><span class="filter-date-added">{{ contact.getDateAdded()|date("d/m/Y") }}</span></td>
+                                    <td><span class="filter-status {% if contact.getStatus() == 1 %}text-success{% else %}text-danger{% endif %}">
+                                            {% if contact.getStatus() == 1 %}Прочетено{% else %}Непрочетено{% endif %}
+                                           </span></td>
+                                    <td class="form-inline options">
+                                        <a class="btn btn-sm btn-default" title="Read" data-placement="top" data-toggle="tooltip" href="/admincp/contact/view/{{ contact.getId() }}"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-default btn-remove" data-element="{{ contact.getSubject() }}" title="{% trans %}Delete{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/contact/remove/{{ contact.getId() }}"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                                {% set counter = counter+1 %}
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div><!-- /table-responsive -->
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+
+    {# zing_debug(request_service('zing.component.simple_store.product_order').getAllOrderedByYear()) #}
+{% endblock %}

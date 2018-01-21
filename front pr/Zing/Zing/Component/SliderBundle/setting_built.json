@@ -1,0 +1,9 @@
+{
+    "name":"SliderBundle",
+    "version":"0.1",
+    "status":false,
+    "friendly_name": "SLIDER",
+    "icon": "fa fa-film animated",
+    "admin_route": "/admincp/slider",
+    "type": "Component"
+}

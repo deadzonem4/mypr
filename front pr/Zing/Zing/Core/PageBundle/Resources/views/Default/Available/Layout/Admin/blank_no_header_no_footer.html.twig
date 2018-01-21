@@ -1,0 +1,11 @@
+<div class="row mb10">
+    <div class="col-lg-12">
+        <span class="position-label">TOP</span>
+        <div class="position{% if thumb_blocks_by_positions[1]|length > 0 %} active-position{% endif %}" data-position-id="1">
+            {% for blocks in thumb_blocks_by_positions[1] %}
+                {% set page_block = blocks.getBlock().getBlockRel() %}
+                {{ include('ZingCorePageBundle:Default:Layout/thumb_block.html.twig') }}
+            {% endfor %}
+        </div>
+    </div><!-- /col-lg-12 -->
+</div><!-- /.row -->

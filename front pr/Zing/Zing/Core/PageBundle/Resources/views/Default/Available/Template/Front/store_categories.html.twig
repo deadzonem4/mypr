@@ -1,0 +1,21 @@
+{% set store_category_manager = request_service('zing.component.simplestore.category') %}
+{% set store_category_url_manager = request_service('zing.component.simplestore.category_url') %}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="box-title green">Категории</div>
+        {% for category in store_category_manager.getAllCategoriesByCategoryOrderAndStatus(1) %}
+            {% if category.getParent() == null %}
+                <div class="categories-title mt20">
+                    <a href="/store{{ store_category_url_manager.fullCategoryPath(category.getUrl()[0].getUrl()) }}" class="categories-title">{{ category.getName() }} <span>
+                            ({{ category.countChildProducts() }})
+                        </span>
+                    </a>
+                </div>
+                {% if category.getChild()[0] is defined %}
+                    {% set categories = category.getChild() %}
+                    {{ include('ZingCorePageBundle:Default:Available/Template/Front/store_categories_sub.html.twig') }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+</div>
+

@@ -1,0 +1,140 @@
+{% set image_manager   = request_service('zing.component.media.image') %}
+{% set product_manager = request_service('zing.component.simplestore.product') %}
+{% set product         = product_manager.getProductByUrl(product_manager.getProductUrl())  %}
+
+{% set product_content = product.getContentByType('bg') %}
+{% set product_main_image = product.getContentByType('static')['main_image'] %}
+{% set product_images = product.getContentByType('static')['image'] %}
+
+{# Call media image manager #}
+{% set image_manager   = request_service('zing.component.media.image') %}
+
+<div itemscope itemtype="http://schema.org/Product">
+    <div class="row mt10 ml10">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+            {# Set default article image #}
+            {% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+            {# Get the article 300px width image #}
+            {% set images300px = image_manager.getImagesByWidth(400, product_images) %}
+
+            {# If article has main image, set the image #}
+            {% if product_main_image is not null %}
+
+                {# Loop in all 300px width images #}
+                {% for image300px in images300px %}
+
+                    {# Check if the looped image is equal with the main image name #}
+                    {% if product_main_image in image300px['name'] %}
+
+                        {# Assign the choosen main image #}
+                        {% set image = '/' ~ image300px['name'] %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <a class="main-view" href="{{ image }}" rel="gallery[product]">
+                <img src="{{ image }}" alt="{{  product_content['title'] }}" itemprop="image">
+            </a>
+
+            <div class="row mt20 ml0 mr0">
+                <ul class="main-gallery list-unstyled">
+                    {% set images100px = image_manager.getImagesByWidth(100, product_images) %}
+                    {% for k, image100px in images100px %}
+                        <li class="col-lg-3 col-md-3 col-sm-3 col-xs-6 trigger-small-preview-images">
+                            <a href="{{ image }}" rel="gallery[product]"><img src="/{{ image100px['name'] }}" alt="{{  product_content['title'] }}"></a>
+
+                            {# Set default article image #}
+                            {% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+                            {% if image_manager.getImagesByWidth(400, product_images)[k]['name'] is not null %}
+                                {% set image = '/' ~ image_manager.getImagesByWidth(400, product_images)[k]['name'] %}
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div><!-- /.row -->
+        </div><!-- /.col-md-6 -->
+
+        <div class="col-md-7 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="view-product-description ml10">
+                        <h1 class="view-product-title mt0" itemprop="name">{{  product_content['title'] }}</h1>
+
+                        <script type="text/javascript">
+                            {% if productHasRate(product.getId()) %}has_rate = true;{% else %}has_rate = false;{% endif %}
+                        </script>
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="view-product-rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                                    <div class="product-rating-stars basic" data-average="{{ product.getAverageRating() }}" data-id="{{ product.getId() }}"></div>
+                                    (<span class="rate-votes" itemprop="reviewCount">{{ product.getVotes() }}</span> гласа, оценка <span class="rate-average-rating" itemprop="ratingValue">{{ product.getAverageRating()|number_format(2, '.') }}</span> до 5)
+                                </div><!-- /.view-product-rating -->
+                            </div>
+
+                            <div class="col-md-3 text-right">
+                                <span class="product-code">{{ product.getCode() }}</span>
+                            </div>
+                        </div>
+
+                        <div class="view-product-text mb10" itemprop="description">{{ product_content['short_description']|raw }}</div>
+
+                        <div class="addthis_native_toolbox"></div>
+
+                        <hr class="bb-grey" />
+                    </div><!-- /.view-product-description -->
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+
+            <div class="row bg-grey ml10 mr0">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-4 mt25">
+                    <div class="view-product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span itemprop="price">{{ product.calculatePrice()|number_format(2, '.') }}</span> {{ product.getCurrency() }}
+                        <link itemprop="availability" href="http://schema.org/InStock">
+                        <meta itemprop="priceCurrency" content="BGN">
+
+                        {% if product.calculatePrice() != product.getPrice() %}
+                            <span class="product-old-price">{{ product.getPrice()|number_format(2, '.') }} {{ product.getCurrency() }}</span>
+                        {% endif %}
+                    </div>
+                </div><!-- /.col-md-5 -->
+
+                <form method="post">
+
+                    <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                    <input type="hidden" name="product" value="{{ product.getId() }}" />
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 mt25">
+                        <div class="btn-dropdown-view">
+                            <select name="quantity" class="">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div><!-- /.col-md-4 -->
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 mt15">
+                        <input type="submit" name="buy" value="КУПИ" class="btn btn-buy btn-block" />
+                    </div><!-- /.col-md-3 -->
+                </form>
+            </div><!-- /.row -->
+        </div><!-- /.col-md-6 -->
+    </div><!-- /.row -->
+
+    <div class="row ml10">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="view-product-info mt40 ml30">
+                Подробно описание
+            </div><!-- /.view-product-info -->
+            <div class="clearfix"></div>
+            <hr class="bb-grey ml5 mb30 mt0" />
+
+            <div class="view-product-info-text ml30">{{ product_content['description']|raw }}</div><!-- /.view-product-info-text -->
+        </div><!-- /.col-md-12 -->
+    </div><!-- /.row -->
+</div>

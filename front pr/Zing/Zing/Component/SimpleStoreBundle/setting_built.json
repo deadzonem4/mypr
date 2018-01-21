@@ -1,0 +1,9 @@
+{
+    "name":"SimpleStoreBundle",
+    "version":"0.1",
+    "status":false,
+    "friendly_name": "SIMPLE STORE",
+    "icon": "fa fa-shopping-cart animated",
+    "admin_route": "/admincp/store",
+    "type": "Component"
+}

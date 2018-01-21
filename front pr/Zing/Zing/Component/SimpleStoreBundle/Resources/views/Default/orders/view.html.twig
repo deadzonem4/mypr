@@ -1,0 +1,189 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% block body %}
+{{ include('ZingComponentSimpleStoreBundle:Default:tabs.html.twig') }}
+{% set category_manager = request_service('zing.component.simplestore.category_url') %}
+
+{% set user_data = order.getUserData() %}
+{% set user_cart = order.getCheckoutCart() %}
+{% set calcs  = order.getUserCalculation() %}
+
+<div id="content-column" class="col-lg-12 col-md-12">
+    <div class="box">
+        <div class="box-title">Order ID:{{ order.getId() }} <span class="help">/ {{ order.getDateAdded()|date }}</span></div>
+        <div class="box-content">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="title">Данни за доставката</div>
+                    <ul class="list-unstyled bordered-list">
+                        <li>
+                            <div class="col-md-4"><strong>Име:</strong></div>
+                            <div class="col-md-8">{{ user_data['user_name'] }}</div>
+                        </li>
+                        <li>
+                            <div class="col-md-4"><strong>Държава:</strong></div>
+                            <div class="col-md-8">{{ user_data['user_country'] }}</div>
+                        </li>
+                        <li>
+                            <div class="col-md-4"><strong>Регион:</strong></div>
+                            <div class="col-md-8">{{ user_data['user_region'] }}</div>
+                        </li>
+                        <li>
+                            <div class="col-md-4"><strong>Град:</strong></div>
+                            <div class="col-md-8">{{ user_data['user_city'] }}</div>
+                        </li>
+                        <li>
+                            <div class="col-md-4"><strong>Квартал:</strong></div>
+                            <div class="col-md-8">{{ user_data['user_sub_city'] }}</div>
+                        </li>
+                        <li>
+                            <div class="col-md-4"><strong>Улица:</strong></div>
+                            <div class="col-md-8">{{ user_data['user_street'] }}</div>
+                        </li>
+                        <li>
+                            <div class="col-md-4"><strong>Номер:</strong></div>
+                            <div class="col-md-8">{{ user_data['user_street_num'] }}</div>
+                        </li>
+                    </ul>
+
+                    <div class="title">Данни за контакт</div>
+                    <ul class="list-unstyled bordered-list">
+                        <li>
+                            <div class="col-md-4"><strong>Телефон:</strong></div>
+                            <div class="col-md-8">{{ user_data['user_phone'] }}</div>
+                        </li>
+                        <li>
+                            <div class="col-md-4"><strong>Имейл:</strong></div>
+                            <div class="col-md-8">{{ user_data['user_email'] }}</div>
+                        </li>
+                    </ul>
+
+                    {% if user_data['af']|length > 0 %}
+                        <div class="title">Affiliate</div>
+                        <div class="col-md-12">
+                            <ul class="list-unstyled bordered-list">
+                                {% for af in user_data['af'] %}
+                                    <li>
+                                        <div class="col-md-4"><strong>#{{ loop.index }}</strong></div>
+                                        <div class="col-md-8">{{ af }}</div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div><!-- /.col-md-4 -->
+
+                <div class="col-md-8">
+                    <div class="title">Поръчка</div>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th>Номер</th>
+                                <th>Снимка</th>
+                                <th>Продукт</th>
+                                <th class="text-center">Количество</th>
+                                <th class="text-right">Ед. цена</th>
+                                <th class="text-right">Крайна цена</th>
+                            </tr>
+
+                            {% set image_manager   = request_service('zing.component.media.image') %}
+                            {% set product_manager = request_service('zing.component.simplestore.product') %}
+                            {% set cart_manager = request_service('zing.component.simplestore.product_cart') %}
+
+                            {# Default shipping #}
+                            {% set shipping     = 0.00 %}
+
+                            {# Default currency #}
+                            {% set currency     = '' %}
+
+                            {# If we got products #}
+                            {% if user_cart|length > 0 %}
+
+                                {# Set the default currency from the first found product #}
+                                {% set currency = product_manager.getAllProducts()[0].getCurrency() %}
+                                {% set shipping = cart_manager.getShipping() %}
+
+                            {% endif %}
+
+                            {% set total_price  = 0 + shipping %}
+
+                            {% for product_id, specification in user_cart %}
+                                {% set product = product_manager.getProduct(product_id)  %}
+
+                                {# Set default article image #}
+                                {% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+                                {# Get the article 300px width image #}
+                                {% set images100px = image_manager.getImagesByWidth(100, product.getContentByType('static')['image']) %}
+
+                                {# If article has main image, set the image #}
+                                {% if product.getContentByType('static')['main_image'] is not null %}
+                                    {# Loop in all 300px width images #}
+                                    {% for image100px in images100px %}
+
+                                        {# Check if the looped image is equal with the main image name #}
+                                        {% if product.getContentByType('static')['main_image'] in image100px['name'] %}
+
+                                            {# Assign the choosen main image #}
+                                            {% set image = '/' ~ image100px['name'] %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+
+                                <tr>
+                                    <td> - </td>
+                                    <td><a rel="bookmark" href="/store{{ category_manager.fullCategoryPath(product.getCategory().getUrlByType('bg')) ~ product.getUrl()[0].getUrl() }}" target="_blank"><img src="{{ image }}" alt="{{ product.getContentByType('bg')['title'] }}" style="width: 60px;" /></a></td>
+                                    <td><a rel="bookmark" href="/store{{ category_manager.fullCategoryPath(product.getCategory().getUrlByType('bg')) ~ product.getUrl()[0].getUrl() }}" target="_blank">{{ product.getContentByType('bg')['title'] }}</a></td>
+                                    <td class="text-center">{{ calcs['items'][product.getId()]['item_quantity'] }}</td>
+                                    <td class="text-right">
+                                        {{ calcs['items'][product.getId()]['item_price']|number_format(2, '.') }}
+                                        {{ product.getCurrency() }}
+                                   </td>
+                                    <td class="text-right">
+                                        {{ calcs['items'][product.getId()]['item_total_price']|number_format(2, '.') }}
+                                        {{ product.getCurrency() }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            <tr>
+                                <td class="text-right" colspan="5">Доставка:</td>
+                                <td class="text-right">
+                                    <span class="item-shipping">{{ shipping|number_format(2, '.') }}</span> {{ currency }}
+                                </td>
+                            </tr>
+
+                            <tr class="total-cost">
+                                <td class="text-right" colspan="5">Крайна цена с ДДС:</td>
+                                <td class="text-right" colspan="2">
+                                    <strong style="font-size: 20px;">{{ calcs['total_price']|number_format(2, '.') }}</strong>
+                                    {{ currency }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.col-md-8 -->
+            </div><!-- /.row -->
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-3 col-lg-2 col-xlg-1">
+                    <form method="post">
+                        <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                        <input class="btn btn-success btn-block" type="submit" name="order_success" value="Потвърди поръчката" />
+                    </form>
+                </div>
+
+                <div class="col-md-3 col-lg-2 col-xlg-1">
+                    <form method="post">
+                        <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                        <input class="btn btn-danger btn-block" type="submit" name="order_unsuccess" value="Отхвърли поръчката" />
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

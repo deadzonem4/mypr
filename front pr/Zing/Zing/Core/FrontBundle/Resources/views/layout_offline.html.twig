@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Dashboard | AdminCP</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href="{{asset('bundles/zing/admin/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('bundles/zing/admin/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('bundles/zing/admin/css/sidebar.min.css')}}" rel="stylesheet">
+    <link href="{{asset('bundles/zing/admin/css/animate.min.css')}}" rel="stylesheet">
+    <link href="{{asset('bundles/zing/admin/css/jweb.css')}}" rel="stylesheet">
+
+    <link href="{{asset('bundles/zing/front/css/style.css')}}" rel="stylesheet">
+    {% block head %}{% endblock %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        #map_canvas {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        function initialize() {
+            var mapCanvas = document.getElementById('map_canvas');
+            var mapOptions = {
+                center: new google.maps.LatLng(42.689845, 23.318449),
+                zoom: 15,
+                minZoom: 2,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+
+            var map = new google.maps.Map(mapCanvas, mapOptions)
+            // Creating a marker and positioning it on the map
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(42.689845, 23.318449),
+                map: map
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row" style="text-align: center;">
+        <br /><br /><br />
+        <img src='/bundles/fonio/logo/fonio.png' width="200px"/><br />
+        <b>Център за слуха - Фонио</b>
+        <br /><br />
+        <b>Адрес:</b> ул. Хан Аспарух 31, София<br />
+        <b>Тел:</b> 0882465566<br />
+        <b>Имейл:</b> office@fonio.bg<br />
+        <br /><br />
+        Официален представител на<br /><br />
+        <img src='/bundles/fonio/logo/phonak.jpeg' width="200px"/>
+        <br /><br /><br />
+        <div id="map_canvas" style="margin: 0px auto;"></div>
+    </div>
+</div>
+</body>
+</html>

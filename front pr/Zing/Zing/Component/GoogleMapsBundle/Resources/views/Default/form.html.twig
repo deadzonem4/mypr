@@ -1,0 +1,143 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    {% set action = zing_form_action %}
+
+    <div class="col-lg-12">
+        <div class="box">
+            {{ include('ZingCoreCoreBundle:Default/Common:error_messages.html.twig') }}
+            <form method="post">
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">{{ action }} {% trans %}google map{% endtrans %}</div>
+                <div class="box-content">
+                    <div class="row tabs">
+                        <div class="col-sm-4">
+                            <div class="title">{% trans %}General{% endtrans %}</div>
+                            <div class="form-group">
+                                <label>{% trans %}Name{% endtrans %}</label>
+                                <input type="text" class="form-control" placeholder="{% trans %}Name{% endtrans %}" value="{{ zing_map_name }}" name="zing_map_name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Width{% endtrans %}</label>
+                                <input type="text" class="form-control" placeholder="{% trans %}Width{% endtrans %}" value="{{ zing_map_width }}" name="zing_map_width">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Height{% endtrans %}</label>
+                                <input type="text" class="form-control" placeholder="{% trans %}Height{% endtrans %}" value="{{ zing_map_height }}" name="zing_map_height">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Map type{% endtrans %}</label>
+                                <select name="zing_map_type" class="form-control">
+                                    <option value="ROADMAP" {% if zing_map_type == 'ROADMAP' %}selected{% endif %}>Roadmap</option>
+                                    <option value="TERRAIN" {% if zing_map_type == 'TERRAIN' %}selected{% endif %}>Terrain</option>
+                                    <option value="SATELLITE" {% if zing_map_type == 'SATELLITE' %}selected{% endif %}>Satellite</option>
+                                    <option value="HYBRID" {% if zing_map_type == 'HYBRID' %}selected{% endif %}>Hybrid</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Status{% endtrans %}</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-toggle-active {% if zing_map_status == 1 %} active{% endif %}">
+                                        <input name="zing_map_status" type="radio" value="1" {% if zing_map_status == 1 %} checked{% endif %}>{% trans %}Active{% endtrans %}
+                                    </label>
+                                    <label class="btn btn-sm btn-toggle-unactive {% if zing_map_status == 0 %} active{% endif %}">
+                                        <input name="zing_map_status" type="radio" value="0" {% if zing_map_status == 0 %} checked{% endif %}>{% trans %}Unactive{% endtrans %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div><!-- /.col-lg-4 -->
+
+                        <div class="col-sm-4">
+                            <div class="title">{% trans %}Zoom{% endtrans %}</div>
+                            <div class="form-group">
+                                <label>{% trans %}Default zoom{% endtrans %}</label>
+                                <select name="zing_map_default_zoom" class="form-control">
+                                        <option value="0"> - </option>
+                                    {% for zoom in 1..21 %}
+                                        <option value="{{ zoom }}" {% if zing_map_default_zoom == zoom %}selected{% endif %}>x{{ zoom }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Max zoom in{% endtrans %}</label>
+                                <select name="zing_map_max_zoom" class="form-control">
+                                        <option value="0"> - </option>
+                                    {% for zoom in 1..21 %}
+                                        <option value="{{ zoom }}" {% if zing_map_max_zoom == zoom %}selected{% endif %}>x{{ zoom }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Min zoom out{% endtrans %}</label>
+                                <select name="zing_map_min_zoom" class="form-control">
+                                        <option value="0"> - </option>
+                                    {% for zoom in 1..21 %}
+                                        <option value="{{ zoom }}" {% if zing_map_min_zoom == zoom %}selected{% endif %}>x{{ zoom }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div><!-- /.col-lg-4 -->
+
+                        <div class="col-sm-4">
+                            <div class="title">{% trans %}Addresses{% endtrans %}</div>
+                            <div class="form-group">
+                                <label>{% trans %}Locations{% endtrans %}</label>
+                                <ul class="list-unstyled googlemaps-address-list mb0">
+                                    {% if zing_map_addresses %}
+                                        {% for address in zing_map_addresses %}
+                                            <li>
+                                                {% set address = address['address'] %}
+                                                <input class="form-control google-address mb10" type="text" name="zing_map_addresses[]" placeholder="{% trans %}Address{% endtrans %}" value="{{ address }}" />
+                                                <button type="button" class="btn btn-default btn-sm googlemaps-remove-address"><i class="fa fa-trash-o"></i></button>
+                                            </li>
+                                        {% endfor %}
+                                    {% else %}
+                                        <li>
+                                            <input class="form-control google-address mb10" type="text" name="zing_map_addresses[]" placeholder="{% trans %}Address{% endtrans %}" value="{{ address }}" />
+                                            <button type="button" class="btn btn-default btn-sm googlemaps-remove-address"><i class="fa fa-trash-o"></i></button>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                                <button type="button" class="googlemaps-add-address btn btn-default"><i class="fa fa-plus"></i> {% trans %}New address{% endtrans %}</button>
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-xlg-1 col-lg-2 col-md-2 col-sm-3">
+                            <input class="btn btn-block btn-form" type="submit" name="zing_dev_block_template_submit" value="{{ action }}" />
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2"><a href="#" class="btn btn-cancel">{% trans %}Cancel{% endtrans %}</a></div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}
+{% block javascript %}
+    <script type="text/javascript">
+        $('.tabs').tabs();
+
+        $(document).on('click', '.googlemaps-add-address', function() {
+            var output = '<li> \
+                            <input class="form-control google-address mb10" type="text" name="zing_map_addresses[]" placeholder="{% trans %}Address{% endtrans %}" value="{{ address }}" /> \
+                            <button type="button" class="btn btn-default btn-sm googlemaps-remove-address"><i class="fa fa-trash-o"></i></button> \
+                        </li>';
+            $('.googlemaps-address-list').append(output);
+        });
+
+        $(document).on('click', '.googlemaps-remove-address', function() {
+            $(this).closest('li').remove();
+        });
+    </script>
+{% endblock %}

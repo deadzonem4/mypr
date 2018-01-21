@@ -1,0 +1,44 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    <div class="col-lg-12 col-md-12">
+        <div class="box">
+            <div class="box">
+                <div class="box-title">{% trans %}Reordering{% endtrans %}</div>
+                <div class="box-content menu-sorable">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="dd sortable">
+                                <ul class="dd-list list-unstyled">
+                                    {% for menu in menus %}
+                                        {% if menu.getParent() == null %}
+                                            {{ include ('ZingCoreMenuBundle:Default/reorder:thumb_menu.html.twig') }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul><!-- /.menu-sortable -->
+                            </div><!-- /.dd -->
+                        </div><!-- /col-lg-12 -->
+                    </div><!-- /.row -->
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="ajax_var" data-user-key="{{ user_key }}" data-category-id="{{ category_id }}" data-url="/admincp/menus/menu/reorder/api"></div>
+                        <div class="col-xlg-1 col-lg-2 col-md-3 col-sm-3"><a href="#" class="btn btn-block btn-form" id="order-trigger">{% trans %}Update{% endtrans %}</a></div>
+                        <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1"><a href="/admincp/menus/menu/{{ category_id }}" class="btn btn-cancel">{% trans %}Cancel{% endtrans %}</a></div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-content -->
+            </div><!-- /.box -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{asset('bundles/zing/admin/js/jquery.nestable.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/jwebreorder.js')}}"></script>
+    <script type="text/javascript">
+        $('.dd').jwebreorder({'trigger' : '#order-trigger'});
+    </script>
+{% endblock %}

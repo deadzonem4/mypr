@@ -1,0 +1,10 @@
+<div class="left-link-{{ blocks.getBlock().getContentByType('static')['background'] }} mt20">
+	{% if blocks.getBlock().getContentByType('static')['image'][0]['name'][0] %}
+        <a href="{{ blocks.getBlock().getContentByType('static')['url'] }}">
+    	   <img class="hidden-xs" src="{{ blocks.getBlock().getContentByType('static')['image'][0]['name'][0] }}" alt="{{ blocks.getBlock().getContentByType('bg')['description']|striptags }}" />
+        </a>
+	{% endif %}
+    <a href="{{ blocks.getBlock().getContentByType('static')['url'] }}">
+        {{ blocks.getBlock().getContentByType('bg')['description']|raw }}
+    </a>
+</div><!-- /.inner-left-link-green -->

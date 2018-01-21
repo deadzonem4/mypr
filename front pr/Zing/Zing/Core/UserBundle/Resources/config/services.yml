@@ -1,0 +1,17 @@
+parameters:
+    zing.core.user.user.class: Zing\Core\UserBundle\Controller\Manager\Users
+    zing.core.user.user_login_success_handler.class: Zing\Core\UserBundle\Controller\Manager\LoginSuccessHandler
+
+services:
+   zing.core.user.user:
+       class: %zing.core.user.user.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.user.user_login_success_handler:
+       class: %zing.core.user.user_login_success_handler.class%
+       arguments:
+           router: "@router"
+           security_context: "@security.context"
+

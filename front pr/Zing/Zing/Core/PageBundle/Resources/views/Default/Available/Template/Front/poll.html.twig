@@ -1,0 +1,127 @@
+{# Call poll question manager (news manager) #}
+{% set question_manager = request_service('zing.component.poll.question') %}
+{% set questions = question_manager.getAllQuestions() %}
+
+<section class="test-form">
+    <div id="poll-test">
+        <div class="test-form-title">
+            <h4>Добре дошли в нашия онлайн тест на слуха</h4>
+            <p>Този кратък въпросник ще Ви помогне да определите дали имате специфични слухови проблеми.</p>
+            <img src="{{asset('bundles/zing/front/images/1st_screen.jpg')}}">
+        </div>
+        <div class="test-form-body">
+            <div>
+                <label>
+                    <input type="text" name="name" placeholder="Двете имена">
+                    <img src="{{asset('bundles/zing/front/images/005-user.svg')}}">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="text" name="email" placeholder="Е-мейл">
+                    <img src="{{asset('bundles/zing/front/images/test-email.svg')}}">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="text" name="phone" placeholder="Телефон">
+                    <img src="{{asset('bundles/zing/front/images/test-phone.svg')}}">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <select name="birth_year">
+                        <option value="Година на раждане:">Година на раждане</option>
+                        {% set minimumYear = 1900 %}
+                        {% set maxYear = "now"|date("Y") %}
+
+                        {% for year in (maxYear-1)..minimumYear %}
+                            <option value="{{ year }}">{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                    <img src="{{asset('bundles/zing/front/images/birth-date.svg')}}">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="text" name="city" placeholder="Град">
+                    <img src="{{asset('bundles/zing/front/images/test-city.svg')}}">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="submit" class="js-begin-test" value="Започни теста">
+                    <span class="fa fa-angle-right"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    {# Call media image manager #}
+    {% set image_manager   = request_service('zing.component.media.image') %}
+    {% for question in questions %}
+        <div id="poll-step-{{ loop.index }}" style="display: none;">
+            <div class="test-form-title">
+                <img src="{{asset('bundles/zing/front/images/group-222.svg')}}">
+                <h4>Въпрос {{ loop.index }} от {{ questions | length }}</h4>
+                <p class="bold">{{ question.question }}</p>
+                {# Get the question 660px width image #}
+                {% set images660px = image_manager.getImagesByWidth(800, question.getContentByType('static')['image']) %}
+
+                {# Assign the choosen main image #}
+                {% set image = '/' ~ images660px[0]['name'] %}
+                <div class="poll-img-overlay">
+                <div class="poll-img" style="background: url({{image}}) 0 0 no-repeat;"></div></div>
+            </div>
+            <div class="test-form-body">
+                <div class="opinion-yes">
+                    <a href="#" class="js-answer" data-answer="yes" data-id="{{ question.getId() }}">Да
+                        <img class="thumb-up-dis" src="{{asset('bundles/zing/front/images/thumbs-up-grey.svg')}}">
+                        <img class="thumb-up-show" src="{{asset('bundles/zing/front/images/thumbs-up.svg')}}">
+                    </a>
+                </div>
+                <div class="opinion-no">
+                    <a href="#" class="js-answer" data-answer="no" data-id="{{ question.getId() }}">Не
+                        <img class="thumb-down-dis" src="{{asset('bundles/zing/front/images/thumbs-down-grey.svg')}}">
+                        <img class="thumb-down-show" src="{{asset('bundles/zing/front/images/thumbs-down.svg')}}">
+                    </a>
+                </div>
+                <div>
+                    <label>
+                        <input type="submit" class="{% if not loop.last %}js-next-question{% else %}js-last-question{% endif %}" data-id="{{ loop.index }}" value="{% if not loop.last %}Следващ{% else %}Изпрати{% endif %}">
+                        <span class="fa fa-angle-right"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div id="poll-final-step-yes" style="display: none;">
+        <div class="test-form-title">
+            <h4>Вашият тест е записан успешно.</h4>
+            <p class="bold">Ще се свържем с вас възможно най-скоро, за да коментираме резултата.</p>
+        </div>
+        <div class="test-form-body">
+            <div>
+                <label>
+                    <a href="/">Начална страница</a>
+                    <span class="fa fa-angle-right"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div id="poll-final-step-no" style="display: none;">
+        <div class="test-form-title">
+            <h4>Вашият тест е записан успешно.</h4>
+            <p class="bold">На база отговорите, който дадохте, изглежда нямате проблеми със слуха си. Ако все пак изпитвате съмнения, може да се свържете с нас.</p>
+        </div>
+        <div class="test-form-body">
+            <div>
+                <label>
+                    <a href="/">Начална страница</a>
+                    <span class="fa fa-angle-right"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</section>

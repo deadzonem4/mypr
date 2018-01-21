@@ -1,0 +1,8 @@
+parameters:
+   zing.core.setting.setting.class: Zing\Core\SettingBundle\Controller\Manager\Setting
+
+services:
+   zing.core.setting.setting:
+       class: %zing.core.setting.setting.class%
+       arguments:
+           doctrine: "@doctrine"

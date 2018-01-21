@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="940px" height="220px" viewBox="0 0 940 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>9385BA7D-F285-4B34-959C-3A5A31AC5CF7</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="123.550528%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#EE0074" offset="0%"></stop>
+            <stop stop-color="#0086B2" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="940" height="220"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Fonio---index" transform="translate(-490.000000, -462.000000)">
+            <g id="Group-59" transform="translate(490.000000, 462.000000)">
+                <g id="Group-8">
+                    <g id="Group-7">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <use id="Mask" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

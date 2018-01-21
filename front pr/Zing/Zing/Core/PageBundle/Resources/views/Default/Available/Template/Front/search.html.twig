@@ -1,0 +1,42 @@
+{% set products = request_service('zing.component.simplestore.product_content').search() %}
+{% set news = request_service('zing.component.news.news_content').search() %}
+{% set blocks = request_service('zing.core.page.block_content').search() %}
+{% set menu = request_service('zing.core.menu.menu').search() %}
+{% set total = (products|length) + (news|length) + (blocks|length) + (menu|length) %}
+<div class="container search-page">
+	<h1>Резултати от търсене</h1>
+<div class="search-results">
+	<div class="search-total">Намерени резултати: <strong>{{ total }} {% if total == 0 %}няма намерени резултати{% endif %}</strong></div>
+
+	{% if products|length > 0 %}
+		<div class="box-title green mb10">Продукти</div>
+		<ul class="search-results-list list-unstyled">
+			{% for p in products %}
+				<li><a href="{{ p['url'] }}"><i class="fa fa-angle-right"></i>{{ p['title'] }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	{% if news|length > 0 %}
+		<div class="box-title green mb10">Новини</div>
+		<ul class="search-results-list list-unstyled">
+			{% for n in news %}
+				<li><a href="{{ n['url'] }}"><i class="fa fa-angle-right"></i>{{ n['title'] }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	{% if ((blocks|length) + (menu|length)) > 0 %}
+		<div class="box-title green mb10">Страници</div>
+		<ul class="search-results-list list-unstyled">
+			{% for b in blocks %}
+				<li><a href="{{ b.url }}"><i class="fa fa-angle-right"></i>{{ b.title }}</a></li>
+			{% endfor %}
+
+			{% for m in menu %}
+				<li><a href="{{ m.url }}"><i class="fa fa-angle-right"></i>{{ m.title }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+</div><!-- /.search-results -->
+</div>

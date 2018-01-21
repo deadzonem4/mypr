@@ -1,0 +1,3 @@
+zing_core_access_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ZingCoreAccessBundle:Default:index }

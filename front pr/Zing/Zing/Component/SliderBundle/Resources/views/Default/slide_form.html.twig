@@ -1,0 +1,160 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    {% set action = zing_form_action %}
+
+    <div class="col-lg-12">
+        <div class="box">
+            {{ include('ZingCoreCoreBundle:Default/Common:error_messages.html.twig') }}
+
+            <form class="block-form" id="force-submission-form" method="post" enctype="multipart/form-data">
+                <div class="ajax_var" data-user-key="{{ user_key }}"></div>
+                <input type="hidden" class="ajax_var" data-user-key="{{ user_key }}" />
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">{{ action }} {% trans %}slide{% endtrans %}</div>
+                <div class="box-content">
+                    <div class="row tabs">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>{% trans %}Name{% endtrans %} <span class="help">/ {% trans %}Display Name in AdminCP{% endtrans %}</span></label>
+                                <input name="zing_slide_name" type="text" class="form-control" placeholder="{% trans %}Name{% endtrans %}" value="{{ response.getName() }}">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <ul class="tabs-title nav nav-tabs">
+                                {% for key, active_language in active_languages %}
+                                    <li {% if key == 0 %} class="active"{% endif %}>
+                                        <a href="javascript:;">
+                                            <img src="{{asset('bundles/zing/admin/images/')}}flags/{{ active_language['language'] }}.png" alt="{{ active_language['language'] }}">
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <div class="tabs-content">
+                                <ul class="list-unstyled mb0">
+                                    {% for key, active_language in active_languages %}
+
+                                        {# Assign current active language in loop #}
+                                        {% set type = active_language['language'] %}
+
+                                        {% set title = response.getContentByType(type)['title'] %}
+                                        {% set description = response.getContentByType(type)['description'] %}
+                                        {% set link_name = response.getContentByType(type)['link_name'] %}
+                                        {% set link_path = response.getContentByType(type)['link_path'] %}
+                                        {% set link_target_blank = response.getContentByType(type)['link_target_blank'] %}
+                                        <li>
+                                            <div class="form-group">
+                                                <label>{% trans %}Title{% endtrans %} <span class="help">/ {% trans %}Between{% endtrans %} 1-70 {% trans %}characters{% endtrans %}</span></label>
+                                                <textarea id="ckedited-title" style="min-height: 150px;" name="{{ type }}[title]" class="form-control" placeholder="{% trans %}Title{% endtrans %} {{ type|upper }}">{{ title }}</textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>{% trans %}Description{% endtrans %} <span class="help">/ {% trans %}Between{% endtrans %} 1-3000 {% trans %}characters{% endtrans %}</span></label>
+                                                <textarea id="ckedited-description" style="min-height: 150px;" name="{{ type }}[description]" class="form-control" placeholder="{% trans %}Description{% endtrans %} {{ type|upper }}">{{ description }}</textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>{% trans %}Link name{% endtrans %} <span class="help">/ {% trans %}Between{% endtrans %} 1-250 {% trans %}characters{% endtrans %}</span></label>
+                                                <input name="{{ type }}[link_name]" type="text" class="form-control" placeholder="{% trans %}See More{% endtrans %}" value="{{ link_name }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>{% trans %}Link path{% endtrans %} <span class="help">/ {% trans %}Between{% endtrans %} 1-250 {% trans %}characters{% endtrans %}</span></label>
+                                                <input name="{{ type }}[link_path]" type="text" class="form-control" placeholder="http://google.com/" value="{{ link_path }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>{% trans %}Target blank{% endtrans %} <span class="help">/ {% trans %}Open in the tab{% endtrans %}</span></label><br />
+
+                                                <div class="btn-group" data-toggle="buttons">
+                                                    <label class="btn btn-sm btn-toggle-active {% if link_target_blank == 1 %} active{% endif %}">
+                                                        <input name="{{ type }}[link_target_blank]" type="radio" name="status" value="1" {% if link_target_blank == 1 %} checked{% endif %}>{% trans %}Yes{% endtrans %}
+                                                    </label>
+                                                    <label class="btn btn-sm btn-toggle-unactive {% if link_target_blank == 0 %} active{% endif %}">
+                                                        <input name="{{ type }}[link_target_blank]" type="radio" name="status" value="0" {% if link_target_blank == 0 %} checked{% endif %}>{% trans %}No{% endtrans %}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                                <hr />
+
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <br />
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-sm btn-toggle-active {% if response.getStatus() == 1 %} active{% endif %}">
+                                            <input name="zing_slide_status" type="radio" value="1" {% if response.getStatus() == 1 %} checked{% endif %}>Yes
+                                        </label>
+                                        <label class="btn btn-sm btn-toggle-unactive {% if response.getStatus() == 0 %} active{% endif %}">
+                                            <input name="zing_slide_status" type="radio" value="0" {% if response.getStatus() == 0 %} checked{% endif %}>No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.col-lg-6 -->
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="ajax_var" data-user-key="{{ user_key }}"></div>
+                                <label>Image</label>
+
+                                <div class="media-bundle-block">
+                                    {# Create the image form and prepare image info for API #}
+                                    {{ media_image.imageForm(
+                                        {
+                                        'folder'        : 'zing_block/',
+                                        'type'          : 'static',
+                                        'multiply'      : 1,
+                                        'preview'       : response.getContentByType( 'static' )['image'],
+                                        'progress'      : true,
+                                        'response'      : true,
+                                        'scale_size'    :  [
+                                            [sliderw, sliderh, 'preview'],
+                                            [sliderw/3, sliderh/3]
+                                        ],
+                                        'crop_scale'    : [sliderw, sliderh]
+                                    })|raw}}
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-xlg-1 col-lg-2 col-md-2 col-sm-3">
+                            <input class="btn btn-block btn-form force_submission" type="submit" name="zing_dev_block_template_submit" value="{{ action }}" />
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2"><a href="#" class="btn btn-cancel">Cancel</a></div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $('.force_submission').click(function() {
+            document.getElementById('force-submission-form').submit();
+        });
+    </script>
+
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="{{asset('bundles/zing/admin/js/jquery.Jcrop.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/jquery.Jcrop.multiple.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/hb.image.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/ckeditor/ckeditor.js')}}"></script>
+
+    <script type="text/javascript">
+        CKEDITOR.replace('ckedited-title');
+        CKEDITOR.replace('ckedited-description');
+        $('.tabs').tabs();
+    </script>
+{% endblock %}

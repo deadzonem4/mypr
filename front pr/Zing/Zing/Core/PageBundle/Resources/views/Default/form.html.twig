@@ -1,0 +1,111 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    {% set action = zing_form_action %}
+    <div class="col-lg-12">
+        <div class="box">
+            {{ include('ZingCoreCoreBundle:Default/Common:error_messages.html.twig') }}
+
+            <form method="post">
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">{{ action }} {% trans %}page{% endtrans %}</div>
+                <div class="box-content">
+                    <div class="row tabs">
+                        <div class="col-xlg-6 col-lg-5 col-md-5 col-sm-6">
+                            <div class="form-group">
+                                <label>{% trans %}Name{% endtrans %}</label>
+                                <input type="text" class="form-control" placeholder="{% trans %}Name{% endtrans %}" value="{{ zing_page_name }}" name="zing_page_name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Url{% endtrans %}</label>
+                                <input type="text" class="form-control" placeholder="{% trans %}Url{% endtrans %}" value="{{ zing_page_url }}" name="zing_page_url">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Status{% endtrans %}</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-toggle-active {% if zing_page_status == 1 %} active{% endif %}">
+                                        <input name="zing_page_status" type="radio" name="status" value="1" {% if zing_page_status == 1 %} checked{% endif %}>{% trans %}Active{% endtrans %}
+                                    </label>
+                                    <label class="btn btn-sm btn-toggle-unactive {% if zing_page_status == 0 %} active{% endif %}">
+                                        <input name="zing_page_status" type="radio" name="status" value="0" {% if zing_page_status == 0 %} checked{% endif %}>{% trans %}Unactive{% endtrans %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div><!-- /.col-lg-5 -->
+
+
+                            <div class="col-xlg-6 col-lg-12 col-md-12">
+                            <div class="tabs">
+                            <ul class="tabs-title nav nav-tabs">
+                                {% for key, active_language in active_languages %}
+                                    <li {% if key == 0 %} class="active"{% endif %}>
+                                        <a href="javascript:;">
+                                            <img src="{{asset('bundles/zing/admin/images/')}}flags/{{ active_language['language'] }}.png" alt="{{ active_language['language'] }}">
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        <div class="tabs-content">
+                            <ul class="list-unstyled mb0">
+                        {% for key, active_language in active_languages %}
+                        <li>
+                            {# Assign current active language in loop #}
+                            {% set type = active_language['language'] %}
+
+                            {% if page %}
+                                {% set page_content_meta_title          = page.getContentByType(type)['meta_title'] %}
+                                {% set page_content_meta_keywords       = page.getContentByType(type)['meta_keywords'] %}
+                                {% set page_content_meta_description    = page.getContentByType(type)['meta_description'] %}
+
+                            {% else %}
+
+                                {% if post_request[type] is defined %}
+                                    {% set page_content_meta_title          = post_request[type]['meta_title'] %}
+                                    {% set page_content_meta_keywords       = post_request[type]['meta_keywords'] %}
+                                    {% set page_content_meta_description    = post_request[type]['meta_description'] %}
+                                {% endif %}
+
+                            {% endif %}
+
+                            <div class="col-md-6">
+                                <div class="title mb20">SEO / BG</div>
+
+                                <div class="form-group">
+                                    <label>Meta Title <span class="help">/ Between 50-70 characters</span></label>
+                                    <input value="{{ page_content_meta_title }}" type="text" name="{{ type }}[meta_title]" class="form-control" placeholder="SEO Title BG" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Meta Keywords <span class="help">/ Max 160 characters</span></label>
+                                    <input value="{{ page_content_meta_keywords }}" type="text" name="{{ type }}[meta_keywords]" class="form-control" placeholder="URL BG" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Meta Description <span class="help">/ Max 160 characters</span></label>
+                                    <textarea style="min-height: 150px;" name="{{ type }}[meta_description]" class="form-control" placeholder="Description {{ type|upper }}">{{ page_content_meta_description }}</textarea>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                             </ul>
+                        </div>
+                    </div>
+                 </div>
+
+                    </div><!-- /.row -->
+                    <hr />
+                    <div class="row">
+                        <div class="col-xlg-1 col-lg-2 col-md-2 col-sm-3">
+                            <input class="btn btn-block btn-form" type="submit" name="zing_dev_block_template_submit" value="{{ action }}" />
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2"><a href="#" class="btn btn-cancel">{% trans %}Cancel{% endtrans %}</a></div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}

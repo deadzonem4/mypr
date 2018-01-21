@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>A748E1C9-6AFE-4DEF-9504-2CFFF2C9EE7D</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Kota" transform="translate(-773.000000, -11.000000)">
+            <g id="Group-4" transform="translate(773.000000, 11.200222)">
+                <circle id="Oval-8" fill="#FFFFFF" cx="10.2748109" cy="10.2748109" r="10.2748109"></circle>
+                <g id="002-close-envelope" transform="translate(5.138984, 6.117161)" fill-rule="nonzero" fill="#4B4C4D">
+                    <path d="M5.44889287,5.60043496 L4.10068109,4.38754076 L0.245978593,7.78380453 C0.386092981,7.91741491 0.575247405,8.00062137 0.78386216,8.00062137 L10.1139236,8.00062137 C10.3217599,8.00062137 10.5101359,7.91741491 10.6494719,7.78380453 L6.79710465,4.38754076 L5.44889287,5.60043496 Z" id="Shape"></path>
+                    <path d="M10.6518072,0.216816839 C10.5116928,0.0824064001 10.3233168,0 10.1139236,0 L0.78386216,0 C0.576025818,0 0.387649807,0.0832064622 0.247535419,0.218416963 L5.44889287,4.80037282 L10.6518072,0.216816839 Z" id="Shape"></path>
+                    <polygon id="Shape" points="0 0.702454556 0 7.34937079 3.76207132 4.06351559"></polygon>
+                    <polygon id="Shape" points="7.13571442 4.06351559 10.8977857 7.34937079 10.8977857 0.70005437"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

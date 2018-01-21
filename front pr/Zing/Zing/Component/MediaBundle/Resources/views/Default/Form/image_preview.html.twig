@@ -1,0 +1,9 @@
+{% for image in images %}
+    <div class="existing-image">
+       {% if image.preview %}
+            <button class="btn-rm image_remove" type="button"><i class="fa fa-trash-o"></i></button>
+            <img src="/{{image.name}}">
+       {% endif %}
+            {{ image.hidden_scales|raw }}
+    </div>
+{% endfor %}

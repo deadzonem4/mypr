@@ -1,0 +1,3 @@
+zing_component_admin_index:
+    path:     /admincp/components
+    defaults: { _controller: ZingCoreComponentBundle:ComponentAdmin:index }

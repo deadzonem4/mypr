@@ -1,0 +1,80 @@
+<form class="block-form" id="form-block-{{ rel_id }}" method="post" enctype="multipart/form-data">
+    <ul class="tabs-title nav nav-tabs">
+        {% for key, active_language in active_languages %}
+            <li {% if key == 0 %} class="active"{% endif %}>
+                <a href="javascript:;">
+                    <img src="{{asset('bundles/zing/admin/images/')}}flags/{{ active_language['language'] }}.png" alt="{{ active_language['language'] }}">
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="tabs-content">
+        <ul class="list-unstyled mb0">
+            {% for key, active_language in active_languages %}
+
+                {# Assign current active language in loop #}
+                {% set type = active_language['language'] %}
+
+                {# Get block contents by current active language #}
+                {% set content = block.getContentByType( type ) %}
+
+                {# Assign the field values #}
+                {% set title = to_string(content['title']) %}
+                {% set description = to_string(content['description']) %}
+
+                <li>
+                    <div class="form-group">
+                        <label>Title <span class="help">/ Between 1-70 characters</span></label>
+                        <input name="{{ type }}[title]" type="text" class="form-control" placeholder="Title {{ type|upper }}" value="{{ title }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description <span class="help">/ Between 1-3000 characters</span></label>
+                        <textarea name="{{ type }}[description]" class="form-control ckedited" placeholder="Description {{ type|upper }}">{{ description }}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Link Text</label>
+                        <input name="{{ type }}[link_text]" type="text" class="form-control" placeholder="Link {{ type|upper }}" value="{{ link }}">
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% set link = block.getContentByType( 'static' )['link'] %}
+
+        <div class="form-group">
+            <label>Link <span class="help">/ Between 1-1000 characters</span></label>
+            <input name="static[link]" type="text" class="form-control" placeholder="Link {{ type|upper }}" value="{{ link }}">
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <label>Images</label>
+            <div class="media-bundle-block">
+                {# Create the image form and prepare image info for API #}
+                {{ media_image.imageForm(
+                    {
+                    'folder'        : 'zing_block/',
+                    'type'          : 'static',
+                    'multiply'      : 1,
+                    'preview'       : block.getContentByType( 'static' )['image'],
+                    'progress'      : true,
+                    'response'      : true,
+                    'scale_size'    : [
+                        [300, 300, 'preview']
+                    ],
+                    'crop_scale'    : [300, 300]
+                })|raw}}
+            </div>
+        </div>
+    </div><!-- /.tabs-content -->
+
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <input class="btn btn-lg btn-form save-trigger" type="submit" name="save" value="SAVE" style="padding-left: 50px; padding-right: 50px;" />
+        </div>
+    </div>
+</form>

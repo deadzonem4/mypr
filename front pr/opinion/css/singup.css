@@ -1,0 +1,136 @@
+.slider-container {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 1;
+}
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  -ms-transition-property: -ms-transform;
+  transition-property: transform;
+}
+.slider-container-android .slider-slide,
+.slider-wrapper {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.slider-slide {
+  -webkit-flex-shrink: 0;
+  -ms-flex: 0 0 auto;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+@media screen and (min-width: 768px) {
+  .singup-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
+.singup-nav ul {
+  color: #646464;
+  font-size: 20px;
+  border: 1px solid #a9a9a9;
+}
+.singup-nav li {
+  float: left;
+  width: 33.33333333%;
+}
+.singup-nav .active {
+  font-family: 'AvenirLTStdMedium';
+}
+.singup-nav a {
+  display: inline-block;
+}
+.singup-nav a:hover {
+  color: #000;
+}
+@media screen and (min-width: 768px) {
+  .singup-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: #fff;
+  }
+  .singup-nav li:nth-child(2) {
+    text-align: center;
+  }
+  .singup-nav li:last-child {
+    text-align: right;
+  }
+  .singup-nav a {
+    padding: 35px 55px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .singup-nav a {
+    width: 100%;
+    text-align: center;
+    padding: 25px 10px;
+  }
+}
+.form-wrap {
+  width: 520px;
+  background-color: #f0f0f0;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+@media screen and (min-width: 768px) {
+  .singup-slider {
+    width: 100%;
+    height: 100%;
+  }
+  .singup-slider .slider-slide {
+    padding: 100px 0 0;
+    font-size: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .singup-slider .slider-slide:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  .singup-slider .va-middle {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    font-size: 16px;
+  }
+  .form-wrap {
+    margin-bottom: 40px;
+    padding: 100px 90px 70px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .singup-slider .slider-slide {
+    padding: 60px 15px 30px;
+  }
+  .form-wrap {
+    padding: 30px 15px;
+    max-width: 100%;
+  }
+}

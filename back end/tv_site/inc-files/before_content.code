@@ -1,0 +1,11 @@
+﻿<?php session_start(); $dbName='tv' ?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Онлайн магазин за телевизори</title>
+<link href="inc-files/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<?php include "inc-files/top.div"; ?>
+<?php include "inc-files/left.div"; ?>

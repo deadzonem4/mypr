@@ -1,0 +1,44 @@
+parameters:
+   zing.component.news.news.class: Zing\Component\NewsBundle\Controller\Manager\News
+   zing.component.news.news_url.class: Zing\Component\NewsBundle\Controller\Manager\NewsUrl
+   zing.component.news.news_content.class: Zing\Component\NewsBundle\Controller\Manager\NewsContent
+   zing.component.news.category.class: Zing\Component\NewsBundle\Controller\Manager\Category
+   zing.component.news.category_url.class: Zing\Component\NewsBundle\Controller\Manager\CategoryUrl
+   zing.component.news.category_content.class: Zing\Component\NewsBundle\Controller\Manager\CategoryContent
+   zing.component.news.sitemap.class: Zing\Component\NewsBundle\Controller\Manager\Sitemap
+
+services:
+   zing.component.news.sitemap:
+       class: %zing.component.news.sitemap.class%
+       arguments:
+           service_container: "@service_container"
+   zing.component.news.news:
+       class: %zing.component.news.news.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+   zing.component.news.news_url:
+       class: %zing.component.news.news_url.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+   zing.component.news.news_content:
+       class: %zing.component.news.news_content.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+   zing.component.news.category:
+       class: %zing.component.news.category.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+   zing.component.news.category_url:
+       class: %zing.component.news.category_url.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+   zing.component.news.category_content:
+       class: %zing.component.news.category_content.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"

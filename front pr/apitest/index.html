@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Praktikum</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,500,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header id="header" class="index-page">
+        <div class="container">
+            <div class="header-placeholder">
+                <nav class="navbar">
+                    <div class="nav-menu">
+                        <div class="navbar-header">
+                            <a class="logo" href="#">
+                                <p>My<strong>Logo</strong></p>
+                            </a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a class="menu-element" href="#">Login</a></li>
+                                <li><a class="menu-element" href="#">Register</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main id="content" class="login-page">
+        <section id="sticky" class="login-banner">
+            <div class="container">
+                <div class="row">
+                    <form id="myForm" class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 login-form">
+                        <div class="form-col">
+                            <h2 class="text-center">Търси информация</h2>
+                            <div>
+                                <h4>Брой регистри:</h4>
+                                <label>
+                                    <input id="requestValue" type="number" name="results" required="required" min="1" max="200">
+                                </label>
+                            </div>
+                            <div>
+                                <h4>Изберете пол:</h4>
+                                <label>
+                                    <span class="gender-list">
+                                        <select id="genderVal" class="required">
+                                            <option disabled selected>(пол)</option>
+                                            <option value="female">Жени</option>
+                                            <option value="male">Мъже</option>
+                                        </select>
+                                    </span>
+                                </label>
+                            </div>
+                            <div>
+                                <h4>Изберете националност:</h4>
+                                <label>
+                                    <span class="nat-list">
+                                        <select id="natVal" class="required">
+                                            <option disabled selected>(националност)</option>
+                                            <option value="CH">Китай</option>
+                                            <option value="AU">Австрия</option>
+                                            <option value="CA">Канада</option>
+                                            <option value="FR">Франция</option>
+                                            <option value="GB">Англия</option>
+                                        </select>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="button-submit col-xs-12">
+                            <input id="publish" type="submit" value="Search">
+                        </div>
+                        <p class="col-sm-12" id="alert">Попълнете всички форми</p>
+                    </form>
+                    <div id="myResult" class="col-xs-12 results">
+                        <div id="weather-container" class="results-header">
+                            <h2 class="text-center">Резултати от търсенето</h2>
+                            <div class="results-buttons">
+                                <input type="submit" value="List" onclick="listFunction()">
+                                <input type="submit" value="Table" onclick="tableFunction()">
+                            </div> 
+                            <div class="col-md-12 col-xs-12" id="table-result">
+                                <table id='myTable'>
+                                    <thead>
+                                        <tr>
+                                            <th>Снимка</th>
+                                            <th>Имена</th>
+                                            <th>Град</th>
+                                            <th>Телефон</th>
+                                        </tr>
+                                    </thead><tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-12 col-xs-12" id="list-result">
+                                <div id="myList">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-placeholder">
+                <div class="footer-logo-box">
+                    <a href="#">
+                        <p>My<strong>Logo</strong></p>
+                    </a>
+                </div>
+           </div>
+        </div>
+    </footer>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/sticky-footer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

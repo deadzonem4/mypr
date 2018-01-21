@@ -1,0 +1,15 @@
+zing_core_user_user_index:
+    path:     /admincp/users
+    defaults: { _controller: ZingCoreUserBundle:UserAdmin:index }
+
+zing_core_user_user_add:
+    path:     /admincp/users/add
+    defaults: { _controller: ZingCoreUserBundle:UserAdmin:add }
+
+zing_core_user_user_edit:
+    path:     /admincp/users/edit/{user_id}
+    defaults: { _controller: ZingCoreUserBundle:UserAdmin:edit }
+
+zing_core_user_user_remove:
+    path:     /admincp/users/remove/{user_id}
+    defaults: { _controller: ZingCoreUserBundle:UserAdmin:remove }

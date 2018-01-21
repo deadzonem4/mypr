@@ -1,0 +1,49 @@
+.note {
+    width: 30%;
+    margin: 10px auto;
+    background: #ead568;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+.note button{
+    color: white;
+    background: #cc2d2d;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 2px;
+    margin: 0 5px;
+}
+.note button:hover{
+    background: #941616;
+}
+.board{
+    background: #fff7bc;
+    padding: 20px 0;
+    position: relative;
+}
+.note textarea{
+    min-width: 340px;
+    min-height: 100px;
+    margin-bottom: 10px;
+}
+.plus{
+    position: absolute;
+    top: 7px;
+    left: 30px;
+    color: white;
+    background: #cc2d2d;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 2px;
+    margin: 0 5px;
+}
+.plus:hover, .plus:focus{
+    outline: none;
+
+}
+#myDiv{
+    background-color: #941616;
+    height: 200px;
+    width: 200px;
+}

@@ -1,0 +1,166 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    <div class="col-lg-12">
+        {{ include('ZingCoreCoreBundle:Default/Common:error_messages.html.twig') }}
+        <div class="box">
+            <div class="box-title">{{ zing_form_action }} {% trans %}User{% endtrans %}</div>
+            <div class="box-content">
+                <form method="post">
+                    <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                    <div class="row tabs">
+                        <div class="col-xlg-1 col-lg-2 col-md-2">
+                            <div class="title">{% trans %}Avatar{% endtrans %}</div>
+
+                            <div class="avatar gravatar"><i class="fa fa-user thumbnailUrl"></i></div>
+                            <input type="hidden" class="gravatar-thumb" name="zing_user_gravatar" value="{{ zing_user_gravatar }}" />
+                            <hr />
+                            <a class="btn btn-block btn-cancel">{% trans %}What is Gravatar?{% endtrans %}</a>
+                            <hr />
+                        </div><!-- /.col-lg-2 -->
+
+                        <div class="col-xlg-6 col-lg-5 col-md-5 col-sm-6">
+                            <div class="title">{% trans %}General{% endtrans %}</div>
+                            
+                            <div class="form-group">
+                                <label>{% trans %}Username{% endtrans %}</label>
+                                <input name="zing_user_name" type="text" class="form-control" placeholder="{% trans %}Username{% endtrans %}" value="{{ zing_user_name }}">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>{% trans %}Email{% endtrans %}</label>
+                                <input name="zing_user_email" type="text" class="form-control gravatar-trigger" placeholder="{% trans %}Email{% endtrans %}" value="{{ zing_user_email }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Role{% endtrans %}</label>
+                                <select class="jWeb-select" name="zing_user_role">
+                                    <option value="ROLE_USER" {% if 'ROLE_USER' in zing_user_role %}selected{% endif %}>{% trans %}User{% endtrans %}</option>
+                                    <option value="ROLE_ADMIN" {% if 'ROLE_ADMIN' in zing_user_role %}selected{% endif %}>{% trans %}Admin{% endtrans %}</option>
+                                    <option value="ROLE_SUPER_ADMIN" {% if 'ROLE_SUPER_ADMIN' in zing_user_role %}selected{% endif %}>{% trans %}Super Admin{% endtrans %}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Language{% endtrans %}</label>
+                                <select name="zing_user_language" class="jWeb-select">
+                                    <option>English</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Theme{% endtrans %}</label>
+                                <select name="zing_user_theme" class="jWeb-select">
+                                    <option {% if zing_user_theme == 'default' %} selected{% endif %} value="default">{% trans %}Default{% endtrans %}</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>{% trans %}Status{% endtrans %}</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-toggle-active active">
+                                        <input name="zing_user_status" type="radio" name="status" value="1" checked>{% trans %}Active{% endtrans %}
+                                    </label>
+                                    <label class="btn btn-sm btn-toggle-unactive">
+                                        <input name="zing_user_status" type="radio" name="status" value="0">{% trans %}Unactive{% endtrans %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div><!-- /.col-lg-5 -->
+
+                        <div class="col-lg-5 col-md-5 col-sm-6">
+                            <div class="title">{% trans %}New Password{% endtrans %}</div>
+                            <div class="form-group">
+                                <label>{% trans %}Password{% endtrans %} <span class="help">/ {% trans %}Between{% endtrans %} 8 - 30 {% trans %}characters{% endtrans %}</span></label>
+                                <input name="zing_user_password" type="password" class="form-control" placeholder="{% trans %}Password{% endtrans %}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% trans %}Re Password{% endtrans %}</label>
+                                <input name="zing_user_repassword" type="password" class="form-control" placeholder="{% trans %}Re Password{% endtrans %}">
+                            </div>
+
+                            {#<div class="form-group">#}
+                                {#<label>Password Validation</label>#}
+                                {#<div class="pass-validation"></div>#}
+                            {#</div>#}
+
+                            <a class="btn btn-block btn-cancel password-generate-button">{% trans %}Generate New Password{% endtrans %}</a>
+                            <div class="pass-generate-container" style="display: none;">
+                                <label>{% trans %}GENERATEd PASSWORD{% endtrans %}<span class="help">/ {% trans %}Copy the password{% endtrans %}</span></label>
+                                <div class="pass-generate">
+                                    <input type="text" class="form-control generated-password" value="" />
+                                    <button class="btn btn-xs btn-default refresh-pass-trigger"><i class="fa fa-refresh"></i></button>
+                                </div>
+                            </div>
+                        </div><!-- /.col-lg-5 -->
+                    </div><!-- /.row -->
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-xlg-1 col-lg-2 col-md-2 col-sm-3 col-md-offset-2 col-xlg-offset-1"><input type="submit" class="btn btn-block btn-form" value="{% trans %}Edit{% endtrans %}" /></div>
+                        <div class="col-lg-1 col-md-1 col-sm-2"><a href="#" class="btn btn-cancel">{% trans %}Cancel{% endtrans %}</a></div>
+                    </div><!-- /.row -->
+               </form>
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}
+{% block javascript %}
+    <script src="/bundles/zing/admin/js/gravatar/md5.js"></script>
+    <script src="/bundles/zing/admin/js/gravatar/jquery.gravatar.js"></script>
+    <script type="text/javascript">
+
+        $.extend({
+            password: function (length, special) {
+                var iteration = 0;
+                var password = "";
+                var randomNumber;
+                if(special == undefined){
+                    var special = false;
+                }
+                while(iteration < length){
+                    randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33;
+                    if(!special){
+                        if ((randomNumber >=33) && (randomNumber <=47)) { continue; }
+                        if ((randomNumber >=58) && (randomNumber <=64)) { continue; }
+                        if ((randomNumber >=91) && (randomNumber <=96)) { continue; }
+                        if ((randomNumber >=123) && (randomNumber <=126)) { continue; }
+                    }
+                    iteration++;
+                    password += String.fromCharCode(randomNumber);
+                }
+                return password;
+            }
+        });
+
+        $(document).on('click', '.password-generate-button', function() {
+            $('.pass-generate-container').toggle();
+        });
+
+        $(document).on('click', '.refresh-pass-trigger', function(e) {
+            e.preventDefault();
+            $('.generated-password').val($.password(12, true));
+        });
+
+        $(document).on('focusout', '.gravatar-trigger', function() {
+            gravatar($(this));
+        });
+
+        gravatar($('.gravatar-trigger'));
+
+        function gravatar(thiss)
+        {
+            jQuery(function($) {
+                $('.thumbnailUrl').removeClass('fa fa-user');
+                $('.thumbnailUrl').html('');
+
+                $('.thumbnailUrl').html($.gravatar(thiss.val(), {size: 135,secure: true,rating: 'pg'}));
+                $('.gravatar-thumb').val($('.thumbnailUrl img').attr('src'));
+            });
+        }
+    </script>
+{% endblock %}

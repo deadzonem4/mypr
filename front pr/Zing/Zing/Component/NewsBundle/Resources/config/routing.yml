@@ -1,0 +1,49 @@
+zing_component_news_news:
+      path:     /admincp/news
+      defaults: { _controller: ZingComponentNewsBundle:NewsAdmin:index }
+
+zing_component_news_article_index:
+      path:     /admincp/news/article
+      defaults: { _controller: ZingComponentNewsBundle:NewsArticleAdmin:index }
+
+zing_component_news_article_create:
+      path:     /admincp/news/article/create
+      defaults: { _controller: ZingComponentNewsBundle:NewsArticleAdmin:create }
+
+zing_component_news_article_edit:
+      path:     /admincp/news/article/edit/{article_id}
+      defaults: { _controller: ZingComponentNewsBundle:NewsArticleAdmin:edit }
+
+zing_component_news_article_remove:
+      path:     /admincp/news/article/remove/{article_id}
+      defaults: { _controller: ZingComponentNewsBundle:NewsArticleAdmin:remove }
+
+zing_component_news_category:
+      path:     /admincp/news/category
+      defaults: { _controller: ZingComponentNewsBundle:NewsCategoryAdmin:index }
+
+zing_component_news_category_create:
+      path:     /admincp/news/category/create
+      defaults: { _controller: ZingComponentNewsBundle:NewsCategoryAdmin:create }
+
+zing_component_news_category_edit:
+      path:     /admincp/news/category/edit/{category_id}
+      defaults: { _controller: ZingComponentNewsBundle:NewsCategoryAdmin:edit }
+
+zing_component_news_category_remove:
+      path:     /admincp/news/category/remove/{category_id}
+      defaults: { _controller: ZingComponentNewsBundle:NewsCategoryAdmin:remove }
+
+zing_component_news_category_reorder:
+      path:     /admincp/news/category/reorder
+      defaults: { _controller: ZingComponentNewsBundle:NewsCategoryAdmin:reorder }
+
+zing_component_news_category_api_reorder:
+      path:     /admincp/news/category/api/reorder
+      defaults: { _controller: ZingComponentNewsBundle:NewsCategoryApiAdmin:reorder }
+
+zing_component_news_news_seo_route:
+      path:     /news/{seo_route}
+      defaults: { _controller: ZingComponentNewsBundle:NewsPageFront:index }
+      requirements:
+        seo_route: "(.*)"

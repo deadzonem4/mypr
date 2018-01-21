@@ -1,0 +1,19 @@
+<!-- If you are uploading image from image bundle you must specify as id: image_bundle. For submit button id: HB_upload -->
+<div class="image-upload-fields row">
+	<div class="{% if multiply > 1 %}col-md-8 col-lg-9{% else %}col-md-12{% endif %}">
+	    <div class="image_container">
+	        <input type="file" name="image[{{ type }}][1]" class="jWeb-file image_bundle hb-upload-chooser">
+	        <input type="hidden" name="{{ type }}[image]" /><!-- Empty image field /-->
+	    <div class="image-inf" data-image-limit="{{ multiply }}" data-image-type="{{ type }}"></div>
+	    </div>
+	</div>
+	{% if multiply > 1 %}
+		<div class="col-md-4 col-lg-3">
+		    <input type="button" name="add_image" value="New Image" class="btn btn-block btn-default btn-sm add_image hb-upload-add-image">
+		</div>
+	{% endif %}
+
+	<div class="col-md-4">
+	    <input type="submit" class="hb_upload hb-upload-button btn btn-primary btn-block btn-sm" name="hb_upload" value="Upload Images">
+	</div>
+</div>

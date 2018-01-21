@@ -1,0 +1,23 @@
+parameters:
+   zing.component.slider.slider.class: Zing\Component\SliderBundle\Controller\Manager\Slider
+   zing.component.slider.slide.class: Zing\Component\SliderBundle\Controller\Manager\Slide
+   zing.component.slider.slideContent.class: Zing\Component\SliderBundle\Controller\Manager\SlideContent
+services:
+   zing.component.slider.slider:
+       class: %zing.component.slider.slider.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.slider.slide:
+       class: %zing.component.slider.slide.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.slider.slideContent:
+       class: %zing.component.slider.slideContent.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+

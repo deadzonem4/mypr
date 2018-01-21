@@ -1,0 +1,31 @@
+{% extends "ZingCoreFrontBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="grey-block">
+    <div class="container fonio-pages">
+    <div class="row ml25 mr25 mb25 mt10">
+        <article class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+            {% for blocks in blocks[1] %}
+                {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+            {% endfor %}  
+        </article><!-- /.col-md-3 -->
+        
+        <aside class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+            {% for blocks in blocks[2] %}
+                {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+                {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+            {% endfor %}
+        </aside><!-- /.col-md-9 -->
+    </div><!-- /.row -->
+    </div><!-- container -->
+    </div><!-- grey-block -->
+{% endblock %}
+
+{% block javascript %}
+    {{ include('ZingCorePageBundle:Default:Available/Layout/load_javascript.html.twig') }}
+{% endblock %}
+
+{% block header %}
+    {{ include('ZingCorePageBundle:Default:Available/Layout/load_css.html.twig') }}
+{% endblock %}

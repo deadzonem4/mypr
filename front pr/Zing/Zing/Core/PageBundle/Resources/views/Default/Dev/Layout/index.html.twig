@@ -1,0 +1,100 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    <div class="col-lg-9 col-md-8">
+        <div class="box">
+            <form method="post">
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">
+                    {% trans %}Layouts{% endtrans %}
+                    <div class="box-title-options">
+                        <a class="btn btn-default custome-visible-sm" href="#filters"><i class="fa fa-filter"></i> {% trans %}Filters{% endtrans %}</a>
+                        <a class="btn btn-default" href="/admincp/dev/layout/create"><i class="fa fa-plus"></i> {% trans %}Create layout{% endtrans %}</a>
+                    </div><!-- /.box-title-options -->
+                </div>
+                <div class="box-content">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="filters-content">
+                            <tr>
+                                <th width="20"><input type="checkbox" class="check-all"></th>
+                                <th width="20">{% trans %}ID{% endtrans %}</th>
+                                <th>{% trans %}Name{% endtrans %}</th>
+                                <th>{% trans %}Layout{% endtrans %}</th>
+                                <th>{% trans %}Date added{% endtrans %}</th>
+                                <th>{% trans %}Date modified{% endtrans %}</th>
+                                <th width="130">{% trans %}Status{% endtrans %}</th>
+                                <th width="80">{% trans %}Options{% endtrans %}</th>
+                            </tr>
+
+                            {% for layout in layouts %}
+                                <tr>
+                                    <td class="text-center"><input name="zing_table_multiply[]" value="{{ layout.getId() }}" type="checkbox" class="zing_table_checkbox"></td>
+                                    <td>{{ layout.getId() }}</td>
+                                    <td><span class="filter-name">{{ layout.getName() }}</span></td>
+                                    <td><span class="filter-path">{{ layout.getLayoutFile() }}</span></td>
+                                    <td><span class="filter-date-added">{{ layout.getDateAdded()|date("Y-m-d H:i:s") }}</span></td>
+                                    <td><span class="filter-date-modified">{{ layout.getDateModified()|date("Y-m-d H:i:s") }}</span></td>
+                                    <td><span class="filter-status {% if layout.getStatus() == 1 %}text-success{% else %}text-danger{% endif %}">{% if layout.getStatus() == 1 %}Active{% else %}Unactive{% endif %}</span></td>
+                                    <td class="form-inline options">
+                                        <a class="btn btn-sm btn-default" title="{% trans %}Edit Layout{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/dev/layout/edit/{{ layout.getId() }}">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-default btn-remove" data-element="{{ layout.getName() }}" title="{% trans %}Delete{% endtrans %}" data-placement="top" data-toggle="tooltip" href="/admincp/dev/layout/remove/{{ layout.getId() }}">
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div><!-- /table-responsive -->
+                </div><!-- /.box-content -->
+
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-lg-offset-7 col-md-offset-5 col-sm-offset-5">
+                            <select class="jWeb-select" name="zing_table_action">
+                                <option value="active">{% trans %}Active{% endtrans %}</option>
+                                <option value="unactive">{% trans %}Unactive{% endtrans %}</option>
+                                <option value="delete">{% trans %}Delete{% endtrans %}</option>
+                            </select>
+                        </div><!-- /.col-lg-2 -->
+
+                        <div class="col-lg-1 col-md-2 col-sm-2">
+                            <input type="submit" name="zing_table_submit" value="{% trans %}Go{% endtrans %}" class="btn btn-block btn-default" />
+                        </div><!-- /.col-lg-1 -->
+                    </div><!-- /.row -->
+                </div><!-- /.box-footer -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-9 -->
+
+    <div class="col-lg-3 col-md-4" id="filters">
+        <div class="box">
+            <div class="box-title">{% trans %}Filters{% endtrans %}</div>
+            <div class="box-content">
+                <div class="form-group filter">
+                    <label>{% trans %}Name{% endtrans %}:</label>
+                    <input type="text" name="filter-name" class="form-control" placeholder="{% trans %}Type Title{% endtrans %}...">
+                </div>
+
+                <div class="form-group filter">
+                    <label>{% trans %}Layout{% endtrans %}:</label>
+                    <input type="text" name="filter-path" class="form-control" placeholder="{% trans %}Type Layout{% endtrans %}...">
+                </div>
+
+                <div class="row">
+                    <div class="col-xlg-4 col-lg-6 col-md-6 col-sm-4">
+                        <div class="form-group filter mb0">
+                            <label>{% trans %}Status{% endtrans %}:</label>
+                            <ul class="list-unstyled">
+                                <li><div class="checkbox"><input type="checkbox" name="filter-status" value="active" id="f-active" checked> <label for="f-active">{% trans %}Active{% endtrans %}</label></div></li>
+                                <li><div class="checkbox"><input type="checkbox" name="filter-status" value="unactive" id="f-unactive" checked> <label for="f-unactive">{% trans %}Unactive{% endtrans %}</label></div></li>
+                            </ul>
+                        </div>
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.box-content -->
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-3 -->
+{% endblock %}

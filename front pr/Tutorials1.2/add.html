@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Tutorials | Add Project</title>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,500,700" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <header id="header">
+        <section class="search-placeholder">
+            <nav class="navbar navbar-default">
+                <div class="container nav-menu">
+                    <div class="navbar-header">
+                        <a class="header-img" href="#">
+                            <img src="images/group.png">
+                        </a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav nav-left search-box">
+                            <li>
+                                <form class="search">
+                                    <button type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                    <div class="line"></div>
+                                    <input type="search" placeholder="Type your keywords here...">
+                                </form>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right user">
+                            <li>
+                                <div class="dropdown">
+                                    <img src="images/shape.png">
+                                    <a href="#" class="dropdown-toggle email" data-toggle="dropdown">Any email
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="#">Log out</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+        </header>
+        <main id="main-login">
+            <section class="login">
+                <div class="container">
+                    <div class="row">
+                        <h2>Add project</h2>
+                        <div class="projector col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                            <div class="projector-left-content col-sm-6">
+                                <form class="login-form add-form">
+                                    <input class="add-input" type="text" name="name" placeholder="Name">
+                                    <br>
+                                    <input class="add-input" type="text" name="category" placeholder="Category">
+                                    <br>
+                                    <input class="add-input" type="text" name="uri" placeholder="Url">
+                                    <br>
+                                    <div class="radio-inline">
+                                        <label><input type="radio" name="optradio">Use URL image</label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <label><input type="radio" name="optradio">Upload image</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="projector-right-content col-sm-6">
+                                <form class="login-form add-form">
+                                    <div class="form-group">
+                                        <label class="pull-left" for="comment">Description</label>
+                                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                                    </div>
+                                    <br>
+                                    <button class="add-button" type="submit">Continue
+                                        <i class="fa fa-angle-right"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer id="footer">
+            <div class="container">
+                <div class="footer-logo pull-left">
+                    <a href="#">
+                        <img src="images/footer-logo.png">
+                    </a>
+                    <p class="footer-text">All rights reserved</p>
+                </div>
+                <div class="pull-right">
+                    <p class="footer-text disappear">Design and development</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

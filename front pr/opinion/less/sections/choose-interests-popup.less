@@ -1,0 +1,255 @@
+
+
+.interests-popup {
+	max-width: 940px;
+	padding-left: 30px;
+	padding-right: 30px;
+  .center-block;
+
+		.choose-interests-popup {
+			padding: 49px 0 0;
+			color: #a9a9a9;
+			text-align: center;
+			background-color: #fff;
+		  .box-shadow(0 0 40px #e4e4e4);
+		  .border-radius(10px);
+
+				.categories {
+					display: none;
+					overflow: hidden;
+
+						ul {
+
+								> li {
+
+										&.active {
+
+												> a {
+
+														.title {
+															.opacity(0);
+														}
+
+														.icon {
+
+																&:after {
+																	.opacity(1);
+																	border-color: fade(#000, 25%);
+																	.translate(0, 0);
+																}
+														}
+												}
+										}
+								}
+						}
+				}
+
+				.cat-menu {
+					position: relative;
+					.transition(margin-bottom 1000ms ease);
+
+						a {
+							position: relative;
+							display: block;
+							padding-top: 10px;
+							padding-bottom: 10px;
+							.text-center;
+						}
+
+						> li {
+							position: static;
+
+								> a {
+									overflow: hidden;
+									height: 100%;
+
+										&:before {
+											content: '';
+											position: absolute;
+											top: 0;
+											left: 0;
+											right: 0;
+											width: 120px;
+											height: 200px;
+											margin: auto;
+											z-index: 1;
+											background-color: #f0f0f0;
+											.translate(0, 100%);
+											.border-top-radius(10px);
+											.transition(transform 910ms ease);
+										}
+								}
+						}
+
+						span {
+							display: block;
+							position: relative;
+							z-index: 2;
+						}
+
+						.icon {
+							position: relative;
+							.size(100%, 60px);
+							line-height: 60px;
+							font-size: 0;
+
+								&:after {
+									content: '';
+									.element-center;
+									.size(60px);
+									.border-radius(50%);
+									.translate(0, 60px);
+									.opacity(0);
+									border: 3px solid transparent; 
+									@transition:  opacity 1000ms ease, transform 1000ms ease;
+									.transition(@transition);
+								}
+						}
+
+						img {
+							max-width: 36px;
+							max-height: 36px;
+							.opacity(.25);
+							.transition;
+						}
+
+						.title {
+							width: 180px;
+							max-width: 100%;
+							font-size: 14px;
+							line-height: 20 / 14;
+							.center-block;
+							.text-uppercase;
+							font-family: '@{avenir-book}';
+							.transition(opacity 700ms ease);
+						}
+
+						li:not(.active) a:hover {
+
+								img {
+									.opacity(.35);
+								}
+						}
+
+						> li.active {
+
+								> a {
+									
+										&:before {
+											.translate(0, 0);
+										}
+								}
+						}
+				}
+
+				.sub-cat {
+					display: none;
+					.text-left;
+
+						li {
+							padding-left: 15px;
+							padding-right: 15px;
+						}
+				}
+		}
+}
+
+
+@media screen and (min-width: @screen-sm-min) {
+
+		.interests-popup {
+			margin-top: 100px;
+
+				.choose-interests-popup {
+					height: 460px;
+					overflow: auto;
+
+						.cat-menu {
+							position: relative;
+							display: -webkit-box;
+					    display: -webkit-flex;
+					    display: -ms-flexbox;
+					    display: flex;
+							align-items: stretch;
+						}
+
+						.sub-cat {
+							position: absolute;
+							top: 100%;
+							left: 0;
+							right: 0;
+							font-size: 0;
+							background-color: #f0f0f0;
+
+
+								li {
+									display: inline-block;
+									vertical-align: top;
+									width: 100% / 4;
+								}
+						}
+				}
+		}
+}
+
+@media screen and (min-width: @screen-md-min) {
+
+		.interests-popup {
+	
+				.choose-interests-popup {
+
+						.categories {
+							margin-bottom: 49px;
+						}
+
+						.cat-menu {
+							
+								a {
+									padding-left: 30px;
+									padding-right: 30px;
+								}
+						}
+
+						ul {
+							padding-left: 80px;
+							padding-right: 80px;
+						}
+				}
+		}
+}
+
+@media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+
+	.interests-popup {
+		
+			.choose-interests-popup {
+
+					.categories {
+						margin-bottom: 39px;
+					}
+
+					ul {
+						padding-left: 40px;
+						padding-right: 40px;
+					}
+			}
+	}
+}
+
+@media screen and (max-width: @screen-xs-max) {
+
+		.interests-popup {
+			margin-top: 30px;
+			margin-bottom: 30px;
+		
+				.choose-interests-popup {
+					padding: 20px 0;
+
+						.sub-cat {
+							margin-left: -15px;
+							margin-right: -15px;
+							background-color: #f0f0f0;
+						}
+				}
+		}
+}

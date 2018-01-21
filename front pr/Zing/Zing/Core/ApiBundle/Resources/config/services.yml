@@ -1,0 +1,9 @@
+parameters:
+   zing.core.api.api.class: Zing\Core\ApiBundle\Controller\Manager\Api
+
+services:
+   zing.core.api.api:
+       class: %zing.core.api.api.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"

@@ -1,0 +1,60 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% block body %}
+
+<div id="content-column" class="col-lg-12 col-md-12">
+    <div class="box">
+        <div class="box-title">Poll ID:{{ poll.getId() }} <span class="help">/ {{ poll.getDateAdded()|date }}</span></div>
+        <div class="box-content">
+            <div class="row">
+            <div class="col-md-12">
+                <ul class="list-unstyled bordered-list">
+                    <li>
+                        <div class="col-md-2 col-xlg-1"><strong>Name:</strong></div>
+                        <div class="col-md-10 col-xlg-11">{{ poll.getName() }}</div>
+                    </li>
+                    <li>
+                        <div class="col-md-2 col-xlg-1"><strong>Email:</strong></div>
+                        <div class="col-md-10 col-xlg-11">{{ poll.getEmail() }}</div>
+                    </li>
+                    <li>
+                        <div class="col-md-2 col-xlg-1"><strong>Phone:</strong></div>
+                        <div class="col-md-10 col-xlg-11">{{ poll.getPhone() }}</div>
+                    </li>
+                    <li>
+                        <div class="col-md-2 col-xlg-1"><strong>Birth Year:</strong></div>
+                        <div class="col-md-10 col-xlg-11">{{ poll.getBirthYear() }}</div>
+                    </li>
+                    <li>
+                        <div class="col-md-2 col-xlg-1"><strong>City:</strong></div>
+                        <div class="col-md-10 col-xlg-11">{{ poll.getCity() }}</div>
+                    </li>
+                    <li>
+                        <div class="col-md-2 col-xlg-1"><strong>Website:</strong></div>
+                        <div class="col-md-10 col-xlg-11">{{ poll.getWebsite() }}</div>
+                    </li>
+                    <li>
+                        <div class="col-md-2 col-xlg-1"><strong>Positive Answers:</strong></div>
+                        <div class="col-md-10 col-xlg-11">{{ poll.getPositiveAnswers() }}</div>
+                    </li>
+                    {% if poll.getVotedQuestion()|length > 0 %}
+                        <li>
+                            <div class="col-md-12 col-xlg-1"><strong>Answered Questions:</strong></div>
+                            <div class="col-md-12">
+                                <ul class="list-unstyled bordered-list">
+                                    {% for vq in poll.getVotedQuestion() %}
+                                        <li>
+                                            <div class="col-md-1"><strong>#{{ loop.index }}</strong></div>
+                                            <div class="col-md-10">{{ vq.getQuestion().getQuestion() }}</div>
+                                            <div class="col-md-1">{% if vq.getAnswer() == true %}Да{% else %}Не{% endif %}</div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div><!-- /.col-md-12 -->
+        </div>
+    </div>
+</div>
+{% endblock %}

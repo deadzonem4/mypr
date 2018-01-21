@@ -1,0 +1,107 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    {% set action = zing_form_action %}
+
+    <div class="col-lg-12">
+        <div class="box">
+            {{ include('ZingCoreCoreBundle:Default/Common:error_messages.html.twig') }}
+            <form method="post">
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <div class="box-title">{{ action }} {% trans %}menu{% endtrans %}</div>
+                <div class="box-content">
+                    <div class="row tabs">
+                        <div class="col-xlg-6 col-lg-12">
+                            <div class="form-group">
+                                <label>{% trans %}Name{% endtrans %}</label>
+                                <input type="text" class="form-control" placeholder="{% trans %}Name{% endtrans %}" value="{{ zing_menu_name }}" name="zing_menu_name">
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label>{% trans %}Page{% endtrans %}</label>
+                                    <select class="form-control" id="page-select" name="zing_menu_page">
+                                        <option value="0">{% trans %}Select page{% endtrans %}</option>
+                                        {% set is_page = false %}
+                                        {% for page in pages %}
+                                            <option value="{{ page.getUrl() }}"
+                                                {% if zing_menu_url == page.getUrl() %}
+                                                    selected="selected"
+                                                    {% set is_page = true %}
+                                                {% endif %}
+                                            >{{ page.getName() }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-1 text-center">
+                                    <label>&nbsp;</label>
+                                    <br />
+                                    <strong class="small" style="line-height: 35px;">{% trans %}OR{% endtrans %}</strong>
+                                </div>
+
+                                <div class="form-group col-md-7">
+                                    <label>{% trans %}Url{% endtrans %}</label>
+                                    <input id="url-input" type="text" class="form-control" placeholder="{% trans %}Url{% endtrans %}" value="{% if is_page == false %}{{ zing_menu_url }}{% endif %}" name="zing_menu_url">
+                                </div>
+                            </div><!-- /.row -->
+
+                            <div class="form-group">
+                                <label>{% trans %}Status{% endtrans %}</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-toggle-active {% if zing_menu_status == 1 %} active{% endif %}">
+                                        <input name="zing_menu_status" type="radio" value="1" {% if zing_menu_status == 1 %} checked{% endif %}>{% trans %}Active{% endtrans %}
+                                    </label>
+                                    <label class="btn btn-sm btn-toggle-unactive {% if zing_menu_status == 0 %} active{% endif %}">
+                                        <input name="zing_menu_status" type="radio" value="0" {% if zing_menu_status == 0 %} checked{% endif %}>{% trans %}Unactive{% endtrans %}
+                                    </label>
+                                </div>
+                            </div>
+                        </div><!-- /.col-lg-5 -->
+                    </div><!-- /.row -->
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-xlg-1 col-lg-2 col-md-2 col-sm-3">
+                            <input class="btn btn-block btn-form" type="submit" name="zing_dev_block_template_submit" value="{{ action }}" />
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2"><a href="/admincp/menus/menu/{{ zing_menu_category_id }}" class="btn btn-cancel">{% trans %}Cancel{% endtrans %}</a></div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}
+{% block javascript %}
+    <script type="text/javascript">
+        //Disable #url-input when page is selected
+        $('#page-select').on('change', function() {
+            setUrlDisable();
+            $('#link-type').val('page')
+        });
+
+        //Disable #page-select when url is typed
+        $("#url-input").on('keyup', function() {
+            setPageSelectDisable();
+            $('#link-type').val('url')
+        });
+
+        $(document).ready(function(){
+            setUrlDisable();
+            setPageSelectDisable();
+        });
+
+        function setUrlDisable() {
+            var val = $('#page-select').val();
+            val == 0 ? $("#url-input").prop('disabled', false) : $("#url-input").prop('disabled', true);
+        }
+
+        function setPageSelectDisable() {
+            var len = $("#url-input").val().length;
+            len > 0 ? $("#page-select").prop('disabled', true) : $("#page-select").prop('disabled', false);
+        }
+    </script>
+{% endblock %}

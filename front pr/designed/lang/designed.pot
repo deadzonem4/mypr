@@ -1,0 +1,1065 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-mp-info.php:1
+msgid "1 Columns"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-custom-menu.php:1
+#: designed/functions/layout-blocks/ml-mp-info.php:1
+msgid "2 Columns"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-custom-menu.php:1
+#: designed/functions/layout-blocks/ml-mp-info.php:1
+msgid "3 Columns"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-custom-menu.php:1
+#: designed/functions/layout-blocks/ml-mp-info.php:1
+msgid "4 Columns"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-custom-menu.php:1
+#: designed/functions/layout-blocks/ml-mp-info.php:1
+msgid "5 Columns"
+msgstr ""
+
+#. Text in function
+#: designed/redux-framework/redux-themnific.php:1
+msgid "<p class=\"description\">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>"
+msgstr ""
+
+#. Text in echo
+#: designed/includes/mag-authorinfo.php:5
+msgid "About the Author"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Ad Banner"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-ads-300.php:63
+msgid "Ad Code:"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Ad Target URL"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-ads-block.php:63
+#: designed/functions/layout-blocks/ml-mosaic.php:65
+msgid "Add margin at the bottom"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-main-slider.php:82
+#: designed/functions/layout-blocks/ml-small-slider.php:77
+#: designed/functions/layout-blocks/ml-text-block.php:113
+#: designed/functions/layout-blocks/ml-text-block-action.php:122
+#: designed/functions/layout-blocks/ml-text-block-full.php:113
+msgid "Add margin at the bottom."
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-facebook.php:1
+msgid "Adds support for Facebook Like Box."
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-ads-block.php:1
+msgid "Ads (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-ads-block.php:1
+#: designed/functions/widgets/widget-ads-125.php:40
+msgid "Advertisement"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Advertisement - override Post Static Ad (set in Admin panel)"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-ads-300.php:76
+msgid "Alt text:"
+msgstr ""
+
+#. Text in echo
+#: designed/archive.php:26
+msgid "Archive"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Audio"
+msgstr ""
+
+#. Text in echo
+#: designed/archive.php:31
+msgid "Author"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-blogauthor.php:60
+msgid "Author Name:"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-blogauthor.php:64
+msgid "Bio:"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-blog-classic.php:1
+msgid "Blog (for Wide Column)"
+msgstr ""
+
+#. Text in echo
+#: designed/includes/uni-404-content.php:3
+msgid "Blog Posts"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-text-block-action.php:70
+msgid "Button - Link URL (link to any page)"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-text-block-action.php:63
+msgid "Button - Title (Label)"
+msgstr ""
+
+#. Text in function
+#: designed/redux-framework/redux-themnific.php:153
+msgid "By %s"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-text-block-action.php:1
+msgid "Call To Action (Full Width)"
+msgstr ""
+
+#. Text in echo
+#: designed/includes/uni-404-content.php:29
+msgid "Categories"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-text-block.php:62
+#: designed/functions/layout-blocks/ml-text-block-full.php:62
+msgid "Center text"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-widgets.php:40
+msgid "Choose widget section"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-clear-block.php:1
+msgid "Clear (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-clear-block.php:1
+msgid "Colored"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-clear-block.php:1
+msgid "Colored (No Margins)"
+msgstr ""
+
+#. Text in echo
+#: designed/comments.php:34
+msgid "Comments are closed."
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-ads-block.php:34
+#: designed/functions/layout-blocks/ml-text-block.php:50
+#: designed/functions/layout-blocks/ml-text-block-action.php:50
+#: designed/functions/layout-blocks/ml-text-block-full.php:50
+msgid "Content"
+msgstr ""
+
+#. Text in echo
+#: designed/redux-framework/redux-themnific.php:142
+#: designed/redux-framework/redux-themnific.php:146
+msgid "Current theme preview"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-custom-menu.php:1
+msgid "Custom Menu (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/redux-framework/redux-themnific.php:1
+msgid "Customize &#8220;%s&#8221;"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "Dismiss this notice"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-text-block.php:55
+#: designed/functions/layout-blocks/ml-text-block-action.php:55
+#: designed/functions/layout-blocks/ml-text-block-full.php:55
+msgid "Do not create the paragraphs automatically. \"wpautop\" disable."
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Enter product price, do not forget currency sign ($, €, ¥ etc.)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Enter some label; e.g. Buy Now, Buy from"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:507
+msgid "Events"
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-featured.php:1
+#: designed/functions/widgets/widget-featured-slider.php:1
+#: designed/functions/widgets/widget-tabs.php:1
+msgid "Featured posts widget."
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-mosaic.php:42
+msgid "Filter by Category"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-blog-classic.php:44
+#: designed/functions/layout-blocks/ml-home-1.php:43
+#: designed/functions/layout-blocks/ml-home-2.php:43
+#: designed/functions/layout-blocks/ml-home-3.php:43
+#: designed/functions/layout-blocks/ml-home-4.php:43
+#: designed/functions/layout-blocks/ml-main-slider.php:39
+#: designed/functions/layout-blocks/ml-mp-info.php:51
+#: designed/functions/layout-blocks/ml-small-slider.php:46
+msgid "Filter by Category:"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Footer 1"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Footer 2"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Footer 3"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Footer 4"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Footer Menu"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Free 1"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Free 2"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Free 3"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Free usage in Layout Creator"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-text-block.php:90
+#: designed/functions/layout-blocks/ml-text-block-action.php:99
+#: designed/functions/layout-blocks/ml-text-block-full.php:90
+msgid "Image"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-ads-125.php:100
+msgid "Image 2 URL"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-ads-125.php:114
+msgid "Image 3 URL"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-ads-125.php:128
+msgid "Image 4 URL"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Image Size & Position"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-ads-block.php:44
+#: designed/functions/widgets/widget-ads-125.php:87
+#: designed/functions/widgets/widget-ads-300.php:68
+msgid "Image URL"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-mp-info.php:1
+msgid "Info Posts (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Insert the URL you wish to link to"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+#: designed/functions.php:499
+msgid "Install Plugins"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+#: designed/functions.php:499
+msgid "Install Required Plugins"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+#: designed/functions.php:499
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#. Text in echo
+#: designed/single-content.php:119
+msgid "Last modified"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-tabs.php:40
+msgid "Latest"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Link"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-home-1.php:1
+msgid "Mag 1 (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-home-2.php:1
+msgid "Mag 2 (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-home-3.php:1
+msgid "Mag 3 (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-home-4.php:1
+msgid "Mag 4 (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Main Menu"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-main-slider.php:1
+msgid "Main Slider (Full Width)"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Master Magazine"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-custom-menu.php:50
+msgid "Menu Name"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-blog-classic.php:68
+msgid "More Posts - Link Title (optional)"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-blog-classic.php:75
+#: designed/functions/layout-blocks/ml-home-1.php:64
+#: designed/functions/layout-blocks/ml-home-2.php:63
+#: designed/functions/layout-blocks/ml-home-3.php:63
+#: designed/functions/layout-blocks/ml-home-4.php:64
+msgid "More Posts - URL to archive (optional)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-mosaic.php:1
+msgid "Mosaic"
+msgstr ""
+
+#. Text in function
+#: designed/single-content.php:94
+msgid "Next"
+msgstr ""
+
+#. Text in echo
+#: designed/includes/mag-nextprev.php:32
+msgid "Next Story"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#. Text in echo
+#: designed/404.php:11
+#: designed/archive.php:66
+#: designed/index.php:46
+msgid "Nothing found here"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-blog-classic.php:58
+#: designed/functions/layout-blocks/ml-home-1.php:58
+#: designed/functions/layout-blocks/ml-home-2.php:57
+#: designed/functions/layout-blocks/ml-home-3.php:57
+#: designed/functions/layout-blocks/ml-home-4.php:58
+#: designed/functions/layout-blocks/ml-main-slider.php:52
+#: designed/functions/layout-blocks/ml-mp-info.php:78
+#: designed/functions/layout-blocks/ml-small-slider.php:59
+msgid "Number of posts:"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-blog-classic.php:84
+#: designed/functions/layout-blocks/ml-home-1.php:73
+#: designed/functions/layout-blocks/ml-home-2.php:72
+#: designed/functions/layout-blocks/ml-home-3.php:72
+#: designed/functions/layout-blocks/ml-home-4.php:73
+#: designed/functions/layout-blocks/ml-main-slider.php:72
+#: designed/functions/layout-blocks/ml-small-slider.php:67
+msgid "Offset posts"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-blog-classic.php:1
+#: designed/functions/layout-blocks/ml-mosaic.php:1
+#: designed/functions/layout-blocks/ml-mp-info.php:1
+#: designed/functions/layout-blocks/ml-text-block.php:1
+#: designed/functions/layout-blocks/ml-text-block-action.php:1
+#: designed/functions/layout-blocks/ml-text-block-full.php:1
+msgid "Optional Subtitle"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-main-slider.php:33
+msgid "Optional Title (not visible on the front-end)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Optional usage"
+msgstr ""
+
+#. Text in echo
+#: designed/includes/uni-404-content.php:21
+msgid "Pages"
+msgstr ""
+
+#. Text in function
+#: designed/page.php:22
+msgid "Pages:"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Paste plain video URL (YouTube or Vimeo); e.g. http://vimeo.com/115014610  "
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Paste target URL"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Paste target link (URL)"
+msgstr ""
+
+#. Text in echo
+#: designed/404.php:13
+#: designed/archive.php:68
+#: designed/index.php:48
+#: designed/search.php:39
+msgid "Perhaps You will find something interesting from these lists..."
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-text-block.php:71
+#: designed/functions/layout-blocks/ml-text-block-action.php:80
+#: designed/functions/layout-blocks/ml-text-block-full.php:71
+msgid "Pick a background color"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-text-block.php:79
+#: designed/functions/layout-blocks/ml-text-block-action.php:88
+#: designed/functions/layout-blocks/ml-text-block-full.php:79
+msgid "Pick a link & text color"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-custom-menu.php:57
+#: designed/functions/layout-blocks/ml-mp-info.php:70
+msgid "Pick number of columns"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-main-slider.php:1
+#: designed/functions/layout-blocks/ml-small-slider.php:1
+msgid "Plain Slider"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#. Text in function
+#: designed/includes/mag-topnav.php:33
+msgid "Please select featured categories (for ticker) in theme admin panel. You can select as much categories as you want."
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+#: designed/functions.php:499
+msgid "Plugin activated successfully."
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-tabs.php:39
+msgid "Popular"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Post Formats"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Post sidebar"
+msgstr ""
+
+#. Text in function
+#: designed/single-content.php:94
+msgid "Previous"
+msgstr ""
+
+#. Text in echo
+#: designed/includes/mag-nextprev.php:13
+msgid "Previous Story"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Product Options"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Product: \"Buy\" label"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Product: Price"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Product: Target URL"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Quote"
+msgstr ""
+
+#. Text in echo
+#: designed/functions.php:505
+msgid "Read More"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-blogauthor.php:72
+msgid "Read More Text (optional):"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-blogauthor.php:76
+msgid "Read More URL (optional):"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-mosaic.php:1
+msgid "Recent Posts"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Redux Framework"
+msgstr ""
+
+#. Text in echo
+#: designed/includes/mag-relatedposts.php:2
+msgid "Related Posts"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+#: designed/functions.php:499
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "Return to the Dashboard"
+msgstr ""
+
+#. Text in echo
+#: designed/footer.php:76
+msgid "Scroll to top"
+msgstr ""
+
+#. Text in echo
+#: designed/search.php:10
+msgid "Search Results"
+msgstr ""
+
+#. Text in echo
+#: designed/searchform.php:2
+msgid "Search..."
+msgstr ""
+
+#. Text in function
+#: designed/redux-framework/redux-themnific.php:1
+msgid "Section via hook"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-main-slider.php:62
+msgid "Select styling for main slider"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Shop Sidebar"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Shortcodes Ultimate"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Show featured image in Single post"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Sidebar"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Sidebar (Sticky)"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Sidebar widget section (displayed on posts / blog)"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Sidebar widget section (displayed on shop pages)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Sidebar/Featured Image Options"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-main-slider.php:1
+#: designed/functions/layout-blocks/ml-small-slider.php:1
+msgid "Slider With Navigation"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-small-slider.php:1
+msgid "Small Slider (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+#: designed/functions.php:499
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#. Text in echo
+#: designed/page.php:37
+#: designed/single.php:91
+msgid "Sorry, no posts matched your criteria"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-custom-menu.php:43
+msgid "Subitle (optional)"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-blog-classic.php:38
+#: designed/functions/layout-blocks/ml-home-1.php:37
+#: designed/functions/layout-blocks/ml-home-2.php:37
+#: designed/functions/layout-blocks/ml-home-3.php:37
+#: designed/functions/layout-blocks/ml-home-4.php:37
+#: designed/functions/layout-blocks/ml-mosaic.php:36
+#: designed/functions/layout-blocks/ml-mp-info.php:45
+#: designed/functions/layout-blocks/ml-small-slider.php:40
+#: designed/functions/layout-blocks/ml-text-block.php:43
+#: designed/functions/layout-blocks/ml-text-block-action.php:43
+#: designed/functions/layout-blocks/ml-text-block-full.php:43
+msgid "Subtitle (optional)"
+msgstr ""
+
+#. Text in echo
+#: designed/archive.php:39
+msgid "Tag Archive"
+msgstr ""
+
+#. Text in function
+#: designed/redux-framework/redux-themnific.php:155
+msgid "Tags"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-ads-125.php:104
+msgid "Target 2 URL"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-ads-125.php:118
+msgid "Target 3 URL"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-ads-125.php:132
+msgid "Target 4 URL"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-ads-block.php:52
+#: designed/functions/widgets/widget-ads-125.php:91
+#: designed/functions/widgets/widget-ads-300.php:72
+msgid "Target URL"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-text-block.php:1
+msgid "Text & Divider** (Free)"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-text-block-full.php:1
+msgid "Text & Divider** (Full Width)"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-blogauthor.php:1
+msgid "Themnific - About us"
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-ads-125.php:1
+msgid "Themnific - Ads 125px 4x"
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-ads-300.php:1
+msgid "Themnific - Ads Widget 300px/Free"
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-facebook.php:1
+msgid "Themnific - Facebook Box"
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-featured.php:1
+msgid "Themnific - Featured"
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-featured-slider.php:1
+msgid "Themnific - Featured Slider"
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-social.php:1
+msgid "Themnific - Social Networks"
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-tabs.php:1
+msgid "Themnific - Tabs"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Themnific Post Options"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "There are one or more required or recommended plugins to install, update or activate."
+msgstr ""
+
+#. Text in function
+#: designed/redux-framework/redux-themnific.php:158
+msgid "This <a href=\"%1$s\">child theme</a> requires its parent theme, %2$s."
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-social.php:1
+msgid "This is Social Networks widget."
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-blogauthor.php:1
+msgid "This is a Blog Info widget"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-ads-125.php:78
+#: designed/functions/widgets/widget-ads-300.php:59
+msgid "Title"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-ads-block.php:27
+#: designed/functions/layout-blocks/ml-blog-classic.php:31
+#: designed/functions/layout-blocks/ml-custom-menu.php:36
+#: designed/functions/layout-blocks/ml-home-1.php:30
+#: designed/functions/layout-blocks/ml-home-2.php:30
+#: designed/functions/layout-blocks/ml-home-3.php:30
+#: designed/functions/layout-blocks/ml-home-4.php:30
+#: designed/functions/layout-blocks/ml-mosaic.php:29
+#: designed/functions/layout-blocks/ml-mp-info.php:38
+#: designed/functions/layout-blocks/ml-small-slider.php:33
+#: designed/functions/layout-blocks/ml-text-block.php:36
+#: designed/functions/layout-blocks/ml-text-block-action.php:36
+#: designed/functions/layout-blocks/ml-text-block-full.php:36
+#: designed/functions/layout-blocks/ml-widgets.php:34
+msgid "Title (optional)"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-mosaic.php:54
+msgid "Title URL to archive/any page (optional)"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-blogauthor.php:56
+#: designed/functions/widgets/widget-social.php:36
+msgid "Title:"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-clear-block.php:1
+msgid "Trasparent"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "Update Required"
+msgstr ""
+
+#. Text in function
+#: designed/class-tgm-plugin-activation.php:1
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-clear-block.php:42
+msgid "Use this block to clear the floats between two or more separate blocks vertically."
+msgstr ""
+
+#. Text in function
+#: designed/functions/widgets/widget-ads-125.php:1
+#: designed/functions/widgets/widget-ads-300.php:1
+msgid "Use this widget to add any type of Ad as a widget."
+msgstr ""
+
+#. Text in function
+#: designed/redux-framework/redux-themnific.php:154
+msgid "Version %s"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-text-block.php:101
+#: designed/functions/layout-blocks/ml-text-block-action.php:110
+#: designed/functions/layout-blocks/ml-text-block-full.php:101
+msgid "Vertical Padding"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Video"
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "Video URL"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Views"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/layout-blocks/ml-ads-block.php:99
+#: designed/functions/widgets/widget-ads-125.php:34
+#: designed/functions/widgets/widget-ads-125.php:35
+#: designed/functions/widgets/widget-ads-125.php:37
+#: designed/functions/widgets/widget-ads-125.php:38
+msgid "Visit Sponsor"
+msgstr ""
+
+#. Text in echo
+#: designed/search.php:35
+msgid "We could not find any results for your search"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Widget section in footer - center"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Widget section in footer - left"
+msgstr ""
+
+#. Text in function
+#: designed/functions.php:499
+msgid "Widget section in footer - right"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-widgets.php:1
+msgid "Widgets (for Narrow Column)"
+msgstr ""
+
+#. Text in echo
+#: designed/functions.php:490
+msgid "Written by "
+msgstr ""
+
+#. Text in function
+#: designed/functions/posttypes/post-metabox.php:1
+msgid "You can add 728px wide image here - paste URL of the image"
+msgstr ""
+
+#. Text in echo
+#: designed/functions/widgets/widget-blogauthor.php:68
+msgid "Your Image URL"
+msgstr ""
+
+#. Text in function
+#: designed/redux-framework/redux-themnific.php:158
+msgid "http://codex.wordpress.org/Child_Themes"
+msgstr ""
+
+#. Text in function
+#: designed/functions/layout-blocks/ml-clear-block.php:1
+msgid "none"
+msgstr ""

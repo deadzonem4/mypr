@@ -1,0 +1,57 @@
+{% extends "ZingCoreFrontBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row ml25 mr25 mt10">
+            <div class="col-lg-offset-4 col-lg-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1" >
+                {% if error %}
+                    <div class="bg-danger p10 mb10">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <h1 class="login-title mt10">Вход</h1>
+                <form role="form" action="{{ path("fos_user_security_check_front") }}{% if r %}?r={{ r }}{% endif %}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                    <div class="form-group mt20 mb15">
+                        <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="Потребителско име" />
+                    </div>
+
+                    <div class="form-group mb15">
+                        <input class="form-control" type="password" id="password" name="_password" required="required" placeholder="Парола" />
+                    </div>
+
+                    <div class="form-group mb20">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label tyle="font-size:12px; cursor:pointer; color: #555;" for="remember_me">
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                    Запомни ме
+                                </label>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <a class="link-login" style="margin-top: 0px;display:inline-block; color: #6A9ACB;" href="/forgotten-password">Забравена парола</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="btn-login" type="submit" value="Вход" id="_submit" name="_submit">
+                    </div>
+                    <div class="clear"></div>
+                </form>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+{% endblock %}
+
+{% block head %}
+    <meta name="robots" content="noindex" />
+{% endblock %}
+
+{% block javascript %}
+    {{ include('ZingCorePageBundle:Default:Available/Layout/load_javascript.html.twig') }}
+{% endblock %}
+
+{% block header %}
+    {{ include('ZingCorePageBundle:Default:Available/Layout/load_css.html.twig') }}
+{% endblock %}

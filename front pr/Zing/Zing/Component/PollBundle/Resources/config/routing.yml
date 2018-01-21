@@ -1,0 +1,35 @@
+zing_component_poll_poll_index:
+      path:     /admincp/poll
+      defaults: { _controller: ZingComponentPollBundle:PollAdmin:index }
+
+zing_component_poll_poll_view:
+      path:     /admincp/poll/view/{poll_id}
+      defaults: { _controller: ZingComponentPollBundle:PollAdmin:view }
+
+zing_component_poll_poll_remove:
+      path:     /admincp/poll/remove/{poll_id}
+      defaults: { _controller: ZingComponentPollBundle:PollAdmin:remove }
+
+zing_component_poll_poll_settings:
+      path:     /admincp/poll/settings
+      defaults: { _controller: ZingComponentPollBundle:PollAdmin:settings }
+
+zing_component_poll_question_index:
+      path:     /admincp/poll/question
+      defaults: { _controller: ZingComponentPollBundle:PollQuestionAdmin:index }
+
+zing_component_poll_question_create:
+      path:     /admincp/poll/question/create
+      defaults: { _controller: ZingComponentPollBundle:PollQuestionAdmin:create }
+
+zing_component_poll_question_edit:
+      path:     /admincp/poll/question/edit/{poll_question_id}
+      defaults: { _controller: ZingComponentPollBundle:PollQuestionAdmin:edit }
+
+zing_component_poll_question_remove:
+      path:     /admincp/poll/question/remove/{poll_question_id}
+      defaults: { _controller: ZingComponentPollBundle:PollQuestionAdmin:remove }
+
+zing_component_poll_api_answer:
+      path:     /poll/api/answer
+      defaults: { _controller: ZingComponentPollBundle:PollApiFront:answer }

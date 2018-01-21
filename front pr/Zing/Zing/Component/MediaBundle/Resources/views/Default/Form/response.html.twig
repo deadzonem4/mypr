@@ -1,0 +1,8 @@
+{% if response %}
+    <div class="image-loader"></div>
+    <div class="image-response-error" class="text-danger"></div>
+    <div class="response_container">
+        <div class="crop_images_container"></div>
+        <div class="existing_images_container">{% if existing_images %}{{existing_images|raw}}{% endif %}</div>
+    </div>
+{% endif %}

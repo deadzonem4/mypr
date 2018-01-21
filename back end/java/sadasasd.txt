@@ -1,0 +1,53 @@
+package s1301561006;
+
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class S1301561006 extends Applet{
+	
+	public void init(){
+		new T(1000,Color.YELLOW).start();
+	}
+	
+	class T extends Thread{
+		
+		int vreme;
+		Color col;
+		
+		T(int t,Color c){
+			vreme=t;
+			col=c;
+		}
+		
+		public void run(){
+			while(true){
+				
+				try {
+					draw1();
+					sleep(vreme);
+					draw2();
+					sleep(vreme);
+				} catch (InterruptedException e) {
+					
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		public void draw1(){
+			Graphics g=getGraphics();
+			g.setColor(col);
+			g.drawRect(50, 50, 50, 50);
+			g.drawRect(100, 100, 50, 50);
+			
+		}
+		public void draw2(){
+			Graphics g=getGraphics();
+			g.setColor(Color.BLUE);
+			g.drawRect(50, 100, 50, 50);
+			g.drawRect(100, 50, 50, 50);
+		}
+	}
+
+}

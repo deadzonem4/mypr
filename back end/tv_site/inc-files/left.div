@@ -1,0 +1,12 @@
+﻿<div id="left">
+&nbsp; <a href="."> Начало </a> <br>
+&nbsp; <a href="list_tv.php" title="Списък на телевизорите"> Списък </a> <br>
+&nbsp; <a href="slide_show.php" title="Последователно показване на снимките на телевизорите"> Слайдшоу </a> <br>
+<?php if (isset($_SESSION["username"]))
+	if ($_SESSION['usertype']==1)
+	{
+	?>
+&nbsp;<a href="insert_tv.php" title="Въвеждане на данните за телевизор"> Добавяне </a> <br>
+&nbsp; <a href="logout.php"> Изход </a> <br>
+<?php } ?>
+</div>

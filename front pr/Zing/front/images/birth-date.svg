@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>20376FA0-5189-4B3E-9141-E7401945E431</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Question-Poll" transform="translate(-975.000000, -579.000000)">
+            <g id="Group-12" transform="translate(730.000000, 210.000000)">
+                <g id="Group-8">
+                    <g id="Group-4" transform="translate(245.000000, 369.000000)">
+                        <circle id="Oval-8" fill="#000000" opacity="0.200000003" cx="8.47939587" cy="8.47939587" r="8.47939587"></circle>
+                        <g id="002-close-envelope" transform="translate(4.241000, 5.048252)" fill-rule="nonzero" fill="#FFFFFF">
+                            <path d="M4.49675619,4.62181789 L3.38413023,3.62086419 L0.202996422,6.42366661 C0.318627296,6.53392998 0.474728975,6.60259699 0.646890498,6.60259699 L8.34662188,6.60259699 C8.51814101,6.60259699 8.6736003,6.53392998 8.78858878,6.42366661 L5.60938215,3.62086419 L4.49675619,4.62181789 Z" id="Shape"></path>
+                            <path d="M8.79051596,0.178930378 C8.67488508,0.068006749 8.5194258,0 8.34662188,0 L0.646890498,0 C0.475371369,0 0.319912083,0.0686670087 0.20428121,0.180250898 L4.49675619,3.96155819 L8.79051596,0.178930378 Z" id="Shape"></path>
+                            <polygon id="Shape" points="0 0.579708016 0 6.06514559 3.10468895 3.35345901"></polygon>
+                            <polygon id="Shape" points="5.88882343 3.35345901 8.99351238 6.06514559 8.99351238 0.577727236"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,223 @@
+zing_core_page:
+    title.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    description.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    title_description.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    title_image_description.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    slider.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    fonio_index_image_description.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    breadcrumbs.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    menu.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    google_maps.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    contact.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    fonio_banner.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    multiply_images.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    registration.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    forgotten_password.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    store.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    pagination.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    store_categories.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    store_product.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    news.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    news_article.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    news_categories.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    store_checkout.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    store_latests_products.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    fonio_index_clients.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    fonio_index_warranty.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    news_latests.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    landing_box.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    facebook_likebox.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    fonio_free_test.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    user_profile_dashboard.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    user_profile_orders.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    user_profile_change_password.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    search.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    fonio_index_image_title.html.twig:
+       dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+
+
+    wear.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+
+    help_close.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    wear_aids.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    hear_lose.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    ekip.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    poll.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    home_top.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    home_bottom.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    wear_aids_bottom.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"
+
+    help_close_bottom.html.twig:
+      dependency:
+            - "zing.core.page.page"
+            - "zing.core.page.layout"

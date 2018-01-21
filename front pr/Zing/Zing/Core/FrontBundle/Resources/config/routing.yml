@@ -1,0 +1,20 @@
+fos_user_security_front:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_security_check_front:
+    path:     /login_check
+    defaults: { _controller: FOSUserBundle:Security:check}
+    requirements:
+       _method: POST
+
+fos_user_security_logout_front:
+    path:     /logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
+
+fos_user_security_login_front:
+    path:     /login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+zing_form_submission:
+    path:     /submission/{type}/{bundle}/{manager}/{method}
+    defaults: { _controller: ZingCoreFrontBundle:Front:submission }

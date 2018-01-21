@@ -1,0 +1,9 @@
+{
+    "name":"ContactBundle",
+    "version":"0.1",
+    "status": true,
+    "friendly_name": "CONTACT",
+    "icon": "fa fa-users animated",
+    "admin_route": "/admincp/contact",
+    "type": "Component"
+}

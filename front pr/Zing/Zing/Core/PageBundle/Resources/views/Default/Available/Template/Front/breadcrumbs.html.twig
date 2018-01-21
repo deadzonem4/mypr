@@ -1,0 +1,8 @@
+<div class="breadcrumbs" itemprop="breadcrumb">
+    <p>
+		{% for name, path in breadcrumb %}
+			{% if loop.index > 1 %}<i class="fa fa-angle-right"></i>{% endif %}
+	        <a href="{{ path }}">{{ name }}</a>
+		{% endfor %}
+    </p>
+</div><!-- /.breadcrumbs -->

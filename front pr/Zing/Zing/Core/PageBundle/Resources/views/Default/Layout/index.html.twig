@@ -1,0 +1,36 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    <div class="col-lg-12">
+        <div class="box layouts">
+            <form method="post">
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+                <input type="hidden" name="page" value="{{ page }}" />
+
+                {{ include('ZingCoreCoreBundle:Default/Common:error_messages.html.twig') }}
+
+                <div class="box-title">{% trans %}Layout{% endtrans %} <span class="help">/ {% trans %}Select Layout{% endtrans %}</span></div>
+                <div class="box-content">
+                    <div class="row">
+                        {% for layout in layouts %}
+                            {% if file_exists(layout_file_path~'Preview/'~layout.getLayoutFile()) %}
+                                {% set layout_id = layout.getId() %}
+                                {{ include('ZingCorePageBundle:Default/Available/Layout/Preview:' ~ layout.getLayoutFile()) }}
+                            {% endif %}
+                        {% endfor %}
+                    </div><!-- /.row -->
+                    <hr />
+                    <div class="row">
+                        <div class="col-xlg-1 col-lg-2 col-md-3 col-sm-3"><input type="submit" class="btn btn-block btn-form" value="Update"></div>
+                        <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1"><a href="/admincp/pages/layout/page/{{ page }}/block" class="btn btn-cancel">{% trans %}Cancel{% endtrans %}</a></div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{asset('bundles/zing/admin/js/jweblayout.js')}}"></script>
+{% endblock %}

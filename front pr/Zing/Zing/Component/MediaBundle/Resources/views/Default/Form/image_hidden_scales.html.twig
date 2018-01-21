@@ -1,0 +1,7 @@
+{% for k, scale in scales %}
+    <input class="hidden-image-holder" type="hidden" value="/{{ scale['name'] }}" name="{{ type }}[image][{{ k }}][name][]">
+    <input type="hidden" value="{{ scale['w'] }}" name="{{ type }}[image][{{ k }}][w][]">
+    <input type="hidden" value="{{ scale['h'] }}" name="{{ type }}[image][{{ k }}][h][]">
+    <input type="hidden" value="{{ scale['preview'] }}" name="{{ type }}[image][{{ k }}][preview][]">
+    <input type="hidden" value="{{ scale['flag'] }}" name="{{ type }}[image][{{ k }}][flag][]">
+{% endfor %}

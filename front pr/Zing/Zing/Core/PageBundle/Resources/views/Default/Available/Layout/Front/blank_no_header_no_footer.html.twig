@@ -1,0 +1,10 @@
+{% extends "ZingCoreFrontBundle::layout_no_header_no_footer.html.twig" %}
+
+{% block body %}
+
+    {% for blocks in blocks[1] %}
+        {% set page_block = blocks.getBlock().getBlockType().getTemplateName() %}
+        {{ include('ZingCorePageBundle:Default:Available/Template/Front/' ~ page_block) }}
+    {% endfor %}
+
+{% endblock %}

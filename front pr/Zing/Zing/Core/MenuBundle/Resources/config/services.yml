@@ -1,0 +1,16 @@
+parameters:
+   zing.core.menu.category.class: Zing\Core\MenuBundle\Controller\Manager\Category
+   zing.core.menu.menu.class: Zing\Core\MenuBundle\Controller\Manager\Menu
+
+services:
+   zing.core.menu.category:
+       class: %zing.core.menu.category.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.menu.menu:
+       class: %zing.core.menu.menu.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"

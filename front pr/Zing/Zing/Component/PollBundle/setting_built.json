@@ -1,0 +1,9 @@
+{
+    "name":"PollBundle",
+    "version":"0.1",
+    "status": true,
+    "friendly_name": "POLL",
+    "icon": "fa fa-list-alt animated",
+    "admin_route": "/admincp/poll",
+    "type": "Component"
+}

@@ -1,0 +1,125 @@
+body{
+  overflow-x: hidden;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Lato', sans-serif!important;
+}
+body a,body a:hover,body a:focus{
+  text-decoration:none;
+}
+h1,h2,h3,h4,h5,h6{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body button:focus, body input:focus, body textarea:focus, body select:focus{
+  outline: none;
+}
+.hamburger{
+  display:none;
+}
+.main-menu{
+  float: right;
+  display: inline;
+  margin-top: 35px;
+}
+.main-menu > li{
+  display: inline;
+  list-style: none;
+  letter-spacing: 1px;
+  padding: 0px 7px;
+}
+.main-menu a{
+  padding: 7px;
+  font-size: 14px;
+  color: #FFF;
+  font-weight:400;
+  cursor:pointer;
+}
+#menu-item{
+  position: relative;
+}
+.glyphicon-menu-hamburger{
+  color: #fff;
+  font-size: 24px;
+}
+#menu-item>a:after{
+    font-family: 'Glyphicons Halflings';
+    content: "\e259";
+    margin-left: 5px;
+    font-size: 10px;
+}
+#menu-item .sub-menu{
+  display: none;
+    position: absolute;
+    background: #eee;
+    z-index: 20;
+    padding: 0px;
+    width: 230px;
+    top: 35px;
+    left: 0;
+    box-shadow: 0px 3px 8px #BBB;
+}
+#menu-item .sub-menu a{
+  display: block;
+  padding: 12px 15px;
+  transition:all 0.2s linear;
+}
+#menu-item .sub-menu a:hover,
+#menu-item .sub-menu a:active{
+  border:none;
+  background: #FFF;
+}
+.main-menu a:hover{
+  border-bottom: solid 2px rgba(228, 228, 228, 0.35);
+}
+#menu-item .sub-menu li{
+  border:none;
+  display: block;
+}
+#header{
+  background-color: #000;
+}
+@media only screen and (max-width: 767px) {
+.main-menu{
+  top:76px;
+}
+.hamburger{
+  display:block;
+  font-size:20px;
+  margin:30px 15px;
+  float:right;
+}
+.main-menu-container{
+  display:none;
+  position: absolute;
+  right: 0;
+  background: #f15875;
+  top: 85px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+.main-menu{
+  width:100%;
+  margin-top: 20px;
+  padding-left: 0px;
+}
+.main-menu li{
+  margin-bottom: 15px;
+  width: 100%;
+  display: block;
+  border-right: none;
+}
+#menu-item{
+  position:static;
+}
+#menu-item .sub-menu{
+  width:100%;
+  padding:10px 0;
+  background: #c1e7f5 ;
+  top: 115px;
+}
+#menu-item .sub-menu a:hover{
+  background-color: #a9d9ea;
+}

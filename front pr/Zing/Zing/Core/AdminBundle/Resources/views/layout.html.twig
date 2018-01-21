@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Dashboard | AdminCP</title>
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link href="{{asset('bundles/zing/admin/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('bundles/zing/admin/css/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="{{asset('bundles/zing/admin/css/sidebar.min.css')}}" rel="stylesheet">
+        <link href="{{asset('bundles/zing/admin/css/animate.min.css')}}" rel="stylesheet">
+        <link href="{{asset('bundles/zing/admin/css/jweb.css')}}" rel="stylesheet">
+        <link href="{{asset('bundles/zing/admin/css/theme-default.css')}}" rel="stylesheet">
+        <link href="{{asset('bundles/zing/admin/css/jquery.Jcrop.css')}}" rel="stylesheet">
+        <link href="{{asset('bundles/zing/admin/css/jquery.Jcrop.custom.css')}}" rel="stylesheet">
+
+        {% block head %}{% endblock %}
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="left pushed">
+        {% trans_default_domain "zing" %}
+
+        <header>
+            <a class="header-logo" href="/admincp"><img src="{{asset('bundles/zing/admin/images/')}}logo.png" alt="AdminCP"/></a>
+            <a class="header-logo-small" href="/admincp"><img src="{{asset('bundles/zing/admin/images/')}}logo-small.png" alt="AdminCP"/></a>
+
+            <aside>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-5">
+                            <div class="page">{% trans %}Menu{% endtrans %}</div>
+                        </div><!-- /.col-lg-6 -->
+
+                        <div class="col-lg-6 col-md-6 col-sm-7 text-right">
+                            <div class="profile pull-right">
+                                <a class="profile-avatar pull-left" href="#"><i class="fa fa-user"></i></a>
+                                <div class="dropdown pull-right">
+                                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">
+                                        {{ request_service('security.context').getToken().getUser() }}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li><a role="menuitem" tabindex="-1" href="#">{% trans %}Profile{% endtrans %}</a></li>
+                                        <li class="divider"></li>
+                                        <li><a role="menuitem" tabindex="-1" href="/admincp/logout">{% trans %}Logout{% endtrans %}</a></li>
+                                    </ul>
+                                </div>
+                            </div><!-- /.profile -->
+
+                            <ul class="list-inline header-nav pull-right">
+                                <li><a href="/" rel="home" data-toggle="tooltip" data-placement="bottom" data-trigger="hover focus" title="{% trans %}To Web{% endtrans %}" target="_blank"><i class="fa fa-paper-plane-o"></i></a></li>
+                            </ul><!-- /.header-nav -->
+                        </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </aside>
+        </header>
+
+        <aside class="ui sidebar nav active">
+            <div class="sidebar-title">{% trans %}Navigation{% endtrans %}</div>
+            <ul class="sidebar-nav list-unstyled">
+                <li><a href="/admincp" {% if path == '/admincp' %}class="active"{% endif %}><i class="fa fa-dashboard"></i> <span>{% trans %}Dashboard{% endtrans %}</span></a></li>
+                <li><a href="/admincp/settings/general" {% if '/admincp/settings' in path %}class="active"{% endif %}><i class="fa fa-sliders animated"></i> <span>{% trans %}Settings{% endtrans %}</span></a></li>
+                <li><a href="/admincp/users" {% if '/admincp/users' in path %}class="active"{% endif %}><i class="fa fa-user animated"></i> <span>{% trans %}Users{% endtrans %}</span></a></li>
+                <li><a href="/admincp/pages" {% if '/admincp/pages' in path %}class="active"{% endif %}><i class="fa fa-book animated"></i> <span>{% trans %}Pages{% endtrans %}</span></a></li>
+                <li><a href="/admincp/menus" {% if '/admincp/menus'in path  %}class="active"{% endif %}><i class="fa fa-bars animated"></i> <span>{% trans %}Menu{% endtrans %}</span></a></li>
+                {#<li><a href="/admincp/components" {% if '/admincp/components' in path %}class="active"{% endif %}><i class="fa fa-th-large animated"></i> <span>{% trans %}Components{% endtrans %}</span></a></li>#}
+                <li><a href="/admincp/dev" {% if '/admincp/dev' in path %}class="active"{% endif %}><i class="fa fa-wrench animated"></i> <span>{% trans %}Dev{% endtrans %}</span></a></li>
+            </ul><!-- /.sidebar-nav -->
+
+            <hr />
+
+            <div class="sidebar-title">{% trans %}Components{% endtrans %}</div>
+            <ul class="sidebar-nav list-unstyled">
+                {% for component in components %}
+                    <li><a href="{{ component['admin_route'] }}" {% if component['admin_route']  in path %} class="active"{% endif %}><i class="{{ component['icon'] }}"></i> <span>{{ component['friendly_name'] }}</span></a></li>
+                {% endfor %}
+            </ul><!-- /.sidebar-nav -->
+        </aside><!-- /.nav -->
+
+        <aside class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="main">
+						{% block body %}{% endblock %}
+                    </div><!-- /.main -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </aside><!-- /.content -->
+
+        {{ include('ZingCoreAdminBundle:Confirm:confirm.html.twig') }}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="{{asset('bundles/zing/admin/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('bundles/zing/admin/js/sidebar.min.js')}}"></script>
+        <script src="{{asset('bundles/zing/admin/js/confirm.js')}}"></script>
+        <script src="{{asset('bundles/zing/admin/js/jweb.js')}}"></script>
+        <script src="{{asset('bundles/zing/admin/js/jwebAjax.js')}}"></script>
+        <script src="{{asset('bundles/zing/admin/js/jwebfilters.js')}}"></script>
+        <script src="{{asset('bundles/zing/admin/js/jquery-ui.min.js')}}"></script>
+        <script src="{{asset('bundles/zing/admin/js/jquery.ui.touch-punch.min.js')}}"></script>
+
+
+
+        {% block javascript %}{% endblock %}
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.ui.sidebar').sidebar();
+                $('.table').checkAll();
+
+                //init on desctop
+                if (!window.matchMedia || (window.matchMedia("(min-width: 767px)").matches)) {
+                    $('.header-nav a').tooltip();
+                    $('.options a').tooltip();
+                }
+
+                $(document).customForms({
+                    'checkbox'   : true,
+                    'radio'      : true,
+                    'select'     : true,
+                    'file'       : true,
+                    'fileBtnText': 'Select File'
+                });
+
+
+                //TODO: jwebnotes
+
+                //get notes_list node
+                var notes_list = $('.notes-list');
+
+                //set note height
+                $('.notes-list').height($(window).height() - 240);
+
+                notes_list.scrollTop = notes_list.scrollHeight;
+
+                $('.second-sidebar').addClass('animated');
+                $('#notes-trigger').on('click', function() {
+                    $(this).toggleClass('active');
+                    $('.second-sidebar').toggleClass('fadeInRightBig').toggle();
+
+                    //scroll to bottom of notes_list
+                    notes_list.stop().animate({
+                        scrollTop: notes_list[0].scrollHeight
+                    }, 1000);
+                });
+            });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						

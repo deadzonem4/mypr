@@ -1,0 +1,127 @@
+{% if blocks.getBlock().getContentByType('static')['per_page'] %}
+
+    {% set per_page = blocks.getBlock().getContentByType('static')['per_page'] %}
+    {% set pagination_range = blocks.getBlock().getContentByType('static')['pagination_range'] %}
+
+    {% if not per_page %}
+        {% set per_page = 10 %}
+    {% endif %}
+
+    {% if not pagination_range %}
+        {% set pagination_range = 3 %}
+    {% endif %}
+
+    {% set product_manager = request_service('zing.component.simplestore.product') %}
+    {% set category_manager = request_service('zing.component.simplestore.category_url') %}
+
+    {{ product_manager.setPaginationPerPageDefault(per_page) }}
+    {% set pagination = product_manager.pagination(product_manager.getPaginationPerPageFromGet(), pagination_range) %}
+
+    {# Call media image manager #}
+    {% set image_manager   = request_service('zing.component.media.image') %}
+
+
+    <div class="row products-bg">
+        {% if category_manager.getCategoryByCurrentUrl().getCategory().getContentByType('bg')['name'] %}
+            <div class="col-lg-12 col-md-12 col-sm-12 mt10">
+                <div class="products-top-text">{{category_manager.getCategoryByCurrentUrl().getCategory().getContentByType('bg')['name']|raw}}</div>
+                <hr class="bt0 mb0 mt0" />
+            </div><!-- /.col-lg-12 -->
+        {% endif %}
+
+        <div class="col-lg-5 col-md-4 hidden-sm">
+            {% set custom_class = 'mt10' %}
+            {{ product_manager.getPaginationTemplate(pagination['pagination'], custom_class)|raw }}
+        </div><!-- /.col-lg-5 -->
+
+        <div class="col-lg-4 col-md-5 col-sm-7 text-right mt5">
+            <form method="get">
+                <label>Сортирай по:</label>
+                <select name="order" class="form-control form-control-products trigger-sort" style="width: 60%;">
+                    <option value="promoted" {% if product_manager.getPaginationOrderFromGet() == 'promoted' %} selected{% endif %}>Намалени</option>
+                    <option value="newest" {% if product_manager.getPaginationOrderFromGet() == 'newest' %} selected{% endif %}>Най-нови</option>
+                    <option value="priceup" {% if product_manager.getPaginationOrderFromGet() == 'priceup' %} selected{% endif %}>Цена - най-ниска</option>
+                    <option value="pricedown" {% if product_manager.getPaginationOrderFromGet() == 'pricedown' %} selected{% endif %}>Цена - най-висока</option>
+                    {#<option value="views" {% if product_manager.getPaginationOrderFromGet() == 'views' %} selected{% endif %}>Най-търсени</option>#}
+                    {#<option value="exquisite" {% if product_manager.getPaginationOrderFromGet() == 'exquisite' %} selected{% endif %}>Препоръчани</option>#}
+                </select>
+
+                {% for request_name, request_value in product_manager.filterGetRequest(['order', 'page'])  %}
+                    <input type="hidden" name="{{ request_name }}" value="{{ request_value }}" />
+                {% endfor %}
+            </form>
+        </div><!-- /.col-lg-4 -->
+
+        <div class="col-lg-3 col-md-3 col-sm-5 text-right mb5 mt5">
+            <form method="get">
+                <label>Показвай по:</label>
+                <select name="perpage" class="form-control form-control-products trigger-per-page" style="width: 30%;">
+                    {% for i in [3*4, 3*5, 3*6] %}
+                        <option value="{{ i }}" {% if product_manager.getPaginationPerPageFromGet() == i %} selected{% endif %}>{{ i }}</option>
+                    {% endfor %}
+                </select>
+                {% for request_name, request_value in product_manager.filterGetRequest(['perpage', 'page'])  %}
+                    <input type="hidden" name="{{ request_name }}" value="{{ request_value }}" />
+                {% endfor %}
+            </form>
+        </div><!-- /.col-lg-3 -->
+    </div><!-- /.row products-bg -->
+        {% if category_manager.getCategoryByCurrentUrl().getCategory().getContentByType('bg')['description'] %}
+			<div class="category-text">{{category_manager.getCategoryByCurrentUrl().getCategory().getContentByType('bg')['description']|raw}}</div>
+        {% endif %}
+    <div class="row mt10">
+        <ul class="products-list list-unstyled row">
+            {% for product in product_manager.getProductsFromPagination(pagination['offset'], pagination['limit']) %}
+                <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="product">
+                        {% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+                        {% if product.getContentByType('static')['image'][0]['name'][0] %}
+                            {% set image = product.getContentByType('static')['image'][0]['name'][0] %}
+                        {% endif %}
+
+
+                        {# Set default article image #}
+                        {% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+                        {# Get the article 300px width image #}
+                        {% set images300px = image_manager.getImagesByWidth(300, product.getContentByType('static')['image']) %}
+
+                        {# If article has main image, set the image #}
+                        {% if product.getContentByType('static')['main_image'] is not null %}
+                            {# Loop in all 300px width images #}
+                            {% for image300px in images300px %}
+
+                                {# Check if the looped image is equal with the main image name #}
+                                {% if product.getContentByType('static')['main_image'] in image300px['name'] %}
+
+                                    {# Assign the choosen main image #}
+                                    {% set image = '/' ~ image300px['name'] %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+
+
+                        <a rel="bookmark" href="/store{{ category_manager.fullCategoryPath(product.getCategory().getUrlByType('bg')) ~ product.getUrl()[0].getUrl() }}"><img src="{{ image }}" alt="{{ product.getContentByType('bg')['title'] }}" /></a>
+                        <a rel="bookmark" href="/store{{ category_manager.fullCategoryPath(product.getCategory().getUrlByType('bg')) ~ product.getUrl()[0].getUrl() }}" class="product-inf">{{ product.getContentByType('bg')['title']|truncate(50) }}</a><!-- /.product-inf -->
+                        <div class="product-p">
+                            <span class="product-price">{{ product.calculatePrice()|number_format(2, '.') }} {{ product.getCurrency() }}</span>
+                            {% if product.calculatePrice() != product.getPrice() %}
+                                <span class="product-old-price">{{ product.getPrice()|number_format(2, '.') }} {{ product.getCurrency() }}</span>
+                            {% endif %}
+                        </div>
+                        <a class="view-all btn-primary" rel="bookmark" href="/store{{ category_manager.fullCategoryPath(product.getCategory().getUrlByType('bg')) ~ product.getUrl()[0].getUrl() }}">Виж<span class="fa fa-angle-right product-fa"></span></a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="row products-bg mb30">
+        <div class="row mt10">
+            <div class="col-lg-5 ml10">
+                {{ product_manager.getPaginationTemplate(pagination['pagination'])|raw }}
+            </div><!-- /.col-lg-5 -->
+        </div><!-- /.row -->
+    </div><!-- /.row products-bg -->
+
+{% endif %}

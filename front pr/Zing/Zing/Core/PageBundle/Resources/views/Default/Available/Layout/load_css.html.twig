@@ -1,0 +1,15 @@
+{% set files = [] %}
+{% for pos in blocks %}
+    {% for block in pos %}
+        {% set file_name = '/bundles/zing/admin/css/' ~block.getBlock().getBlockType().getTemplateName()|replace({ ('.html.twig'):''})~ '.js' %}
+        {% if file_exists_in_web(file_name) %}
+            {% if file_name not in files %}
+                {% set files = files | merge([file_name]) %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{% for file in files %}
+    <link href="{{ file }}" rel="stylesheet">
+{% endfor %}

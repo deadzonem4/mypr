@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>C8E0C7AD-FBF8-48BC-B9CA-114133B1B741</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <filter x="-30.0%" y="-25.0%" width="160.0%" height="160.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Detail-view-2" transform="translate(-113.000000, -80.000000)">
+            <g id="info-button" filter="url(#filter-1)" transform="translate(117.000000, 83.000000)">
+                <path d="M16.8880811,2.89720348 C13.0247614,-0.965686104 6.76095329,-0.966116221 2.89720348,2.89720348 C-0.966116221,6.76052317 -0.965686104,13.0243313 2.89720348,16.8880811 C6.76052317,20.7505406 13.0243313,20.7509707 16.8880811,16.8880811 C20.7509707,13.0243313 20.7505406,6.76095329 16.8880811,2.89720348 Z" id="Shape" stroke="#DCDCDC" stroke-width="0.5" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <path d="M11.1825661,14.1938221 C11.1825661,14.9065276 10.6049177,15.484176 9.89221219,15.484176 C9.17950669,15.484176 8.60185825,14.9065276 8.60185825,14.1938221 L8.60185825,9.03240634 C8.60185825,8.31970085 9.17950669,7.7420524 9.89221219,7.7420524 C10.6049177,7.7420524 11.1825661,8.31970085 11.1825661,9.03240634 L11.1825661,14.1938221 Z" id="Path" fill="#000000" opacity="0.5"></path>
+                <path d="M9.86941593,6.82676134 C9.12617206,6.82676134 8.63067615,6.30029693 8.6461604,5.65038867 C8.63067615,4.96908179 9.12617206,4.45853174 9.88447006,4.45853174 C10.6431982,4.45853174 11.1232098,4.9695119 11.1391242,5.65038867 C11.1386941,6.30029693 10.6436283,6.82676134 9.86941593,6.82676134 Z" id="Path" fill="#000000" opacity="0.5"></path>
+            </g>
+        </g>
+    </g>
+</svg>

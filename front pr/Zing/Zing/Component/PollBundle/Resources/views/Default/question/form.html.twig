@@ -1,0 +1,182 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    {{ include('ZingComponentPollBundle:Default:tabs.html.twig') }}
+    {% set action = zing_form_action %}
+    <div class="col-lg-12">
+        <div class="box">
+            {{ include('ZingCoreCoreBundle:Default/Common:error_messages.html.twig') }}
+
+            <form class="block-form" id="force-submission-form" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+
+                <div class="box-title">{{ action }} question</div>
+                <div class="box-content">
+                    <div class="row">
+
+                        {% if poll_question %}
+
+                            {% set question_question                    = poll_question.getQuestion() %}
+                            {% set question_status                      = poll_question.getStatus() %}
+                            {% set question_main_image                  = poll_question.getContentByType('static')['main_image'] %}
+
+                        {% else %}
+
+                            {% set question_question                 = post_request['zing_poll_question_question'] %}
+                            {% set question_status                      = post_request['zing_poll_question_status'] %}
+                            {% set question_main_image                  = post_request['static']['main_image'] %}
+
+                        {% endif %}
+
+                        <div class="col-xlg-3 col-lg-6 col-md-6">
+                            <div class="title mb20 xlg-mt56">Details</div>
+
+                            <div class="form-group">
+                                <label>Question</label>
+                                <input value="{{ question_question }}" type="text" name="zing_poll_question_question" class="form-control" placeholder="Question" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Active</label>
+                                <br />
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-toggle-active {% if question_status == 1 %} active{% endif %}">
+                                        <input name="zing_poll_question_status" type="radio" value="1" {% if question_status == 1 %} checked{% endif %}>Yes
+                                    </label>
+                                    <label class="btn btn-sm btn-toggle-unactive {% if question_status == 0 %} active{% endif %}">
+                                        <input name="zing_poll_question_status" type="radio" value="0" {% if question_status == 0 %} checked{% endif %}>No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xlg-3 col-lg-6 col-md-6">
+                            <div class="title mb20 xlg-mt56">Gallery</div>
+
+                            <div class="form-group">
+                                <label>Main Image</label>
+                                <select name="static[main_image]" class="form-control main-image-event">
+                                    <option value="0">-- Select Main Image --</option>
+
+                                    {% if question_main_image is not null %}
+                                        <option value="{{ question_main_image }}" selected>{{ question_main_image }}</option>
+                                    {% endif %}
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="ajax_var" data-user-key="{{ user_key }}"></div>
+
+                                <label>Images</label>
+                                <div class="media-bundle-block">
+                                    {# Create the image form and prepare image info for API #}
+                                    {{ media_image.imageForm(
+                                    {
+                                        'folder'        : 'zing_block/',
+                                        'type'          : 'static',
+                                        'multiply'      : 100,
+                                        'preview'       : poll_question.getContentByType( 'static' )['image'],
+                                        'progress'      : true,
+                                        'response'      : true,
+                                        'scale_size'    : [
+                                        [800, 800],
+                                        [400, 400],
+                                        [300, 300, 'preview'],
+                                        [280, 280],
+                                        [224, 224]
+                                        ],
+                                        'crop_scale'    : [500, 500]
+                                    })|raw}}
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+
+                    <hr />
+                    <div class="row">
+                        <div class="col-xlg-1 col-lg-2 col-md-2 col-sm-3">
+                            <input class="btn btn-block btn-form force_submission" type="submit" name="zing_dev_block_template_submit" value="{{ action }}" />
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-2"><a href="#" class="btn btn-cancel">Cancel</a></div>
+                    </div><!-- /.row -->
+                </div><!-- /.box-content -->
+            </form>
+        </div><!-- /.box -->
+    </div><!-- /.col-lg-12 -->
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $('.force_submission').click(function() {
+            document.getElementById('force-submission-form').submit();
+        });
+    </script>
+
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="{{asset('bundles/zing/admin/js/jquery.Jcrop.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/jquery.Jcrop.multiple.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/js/hb.image.js')}}"></script>
+    <script src="{{asset('bundles/zing/admin/ckeditor/ckeditor.js')}}"></script>
+    {#<script src="{{asset('bundles/zing/admin/ckeditor/adapters/jquery.js')}}"></script>#}
+
+    <script type="text/javascript">
+        CKEDITOR.replace('ckedited');
+        $('.tabs').tabs();
+
+
+        var a = {"Ё":"YO","Й":"I","Ц":"TS","У":"U","К":"K","Е":"E","Н":"N","Г":"G","Ш":"SH","Щ":"SCH","З":"Z","Х":"H","Ъ":"'","ё":"yo","й":"i","ц":"ts","у":"u","к":"k","е":"e","н":"n","г":"g","ш":"sh","щ":"sch","з":"z","х":"h","ъ":"'","Ф":"F","Ы":"I","В":"V","А":"a","П":"P","Р":"R","О":"O","Л":"L","Д":"D","Ж":"ZH","Э":"E","ф":"f","ы":"i","в":"v","а":"a","п":"p","р":"r","о":"o","л":"l","д":"d","ж":"zh","э":"e","Я":"Ya","Ч":"CH","С":"S","М":"M","И":"I","Т":"T","Ь":"'","Б":"B","Ю":"YU","я":"ya","ч":"ch","с":"s","м":"m","и":"i","т":"t","ь":"'","б":"b","ю":"yu"};
+
+        function transliterate(word){
+            return word.split('').map(function (char) {
+                return a[char] || char;
+            }).join("");
+        }
+
+        $(document).on('keyup', '.force-url-generate', function() {
+            $(this).closest('li').find('.url-generate').val('/'+transliterate($(this).val().toLowerCase()).replace(/[^a-zA-Z0-9-\s]/g, '').replace(/\s+/g, '-'));
+        });
+
+        $(document).on('change', '.triger-discount-type', function() {
+            if($(this).val() != 0) {
+                $('.discount-field').show();
+            } else {
+                $('.discount-field').hide();
+            }
+        });
+
+        $(document).on('click', '.image_cropping', function() {
+            updateMainImageField(true);
+        });
+
+        $(document).on('click', '.image_remove', function() {
+            $('.main-image-event option[value="'+$(this).closest('.existing-image').find('img').attr('src')+'"]').remove();
+        });
+        updateMainImageField(false);
+        function updateMainImageField(loop) {
+
+            if(!$( ".existing-image").not('.looped').length > 0 && loop) {
+                setTimeout(function(){updateMainImageField(loop)}, 1500);
+            } else {
+                $( ".existing-image" ).not('.looped').each(function( index ) {
+                    var img       = $(this).find('img');
+                    var img_src   = img.attr('src');
+                    var src = img_src.substr(img_src.lastIndexOf('/') + 1);
+
+                    var append_to_main_image = true;
+                    $( ".main-image-event option" ).each(function() {
+                        if($(this).text() == img_src) {
+                            append_to_main_image = false;
+                        }
+                    });
+                    if(append_to_main_image === true) {
+                        $('.main-image-event').append('<option value="'+src+'">'+src+'</option>');
+                    }
+                });
+                $( ".existing-image").addClass('looped');
+            }
+        }
+
+    </script>
+{% endblock %}

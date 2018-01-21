@@ -1,0 +1,39 @@
+git init
+ls -la /all files
+git status
+git add .
+git commit -m
+git log
+git diff// show updates on file
+git checkout -- file name/ remove changes
+git checkout branch name //switch to this branch or create
+git rm file name
+git rm --cached -r <dir name> //remove file without local remove
+git reset HEAD //връщане от staging
+git reset --hard <sha1-commit-id> remove commits to apointed
+git update-ref -d HEAD //remove all commits
+git commit --amend -m // commit again 
+git branch // shows branches
+git branch -d name of the branch
+git merge name of the branch //sva changes to the current branch from apionted branch
+git checkout -b name of the branch //create new branch and switches to it
+git commit -am "" //add all changes
+git clone -b name of branch git link
+git remote
+git remote add github https://github.com/deadzonem4/Repo.git
+git push -u github master 
+
+
+//gulp
+cd ~/Desktop
+cd file name
+npm install
+gulp
+
+//ftp zip
+ssh s24us@24s.us -p6543
+
+въвеждане на парола
+ls -la
+навигиране до файла и 
+zip nameofzip.zip file.txt(original)

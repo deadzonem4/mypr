@@ -1,0 +1,73 @@
+zing_component_simplestore_simplestore:
+      path:     /admincp/store
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreAdmin:index }
+
+zing_component_simplestore_simplestore_orders:
+      path:     /admincp/store/order/{order_id}
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreAdmin:order }
+
+zing_component_simplestore_simplestore_remove_order:
+      path:     /admincp/store/order/remove/{order_id}
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreAdmin:remove }
+
+zing_component_simplestore_product_index:
+      path:     /admincp/store/product
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreProductAdmin:index }
+
+zing_component_simplestore_product_create:
+      path:     /admincp/store/product/create
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreProductAdmin:create }
+
+zing_component_simplestore_product_edit:
+      path:     /admincp/store/product/edit/{product_id}
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreProductAdmin:edit }
+
+zing_component_simplestore_product_remove:
+      path:     /admincp/store/product/remove/{product_id}
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreProductAdmin:remove }
+
+zing_component_simplestore_category_index:
+      path:     /admincp/store/category
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreCategoryAdmin:index }
+
+zing_component_simplestore_category_create:
+      path:     /admincp/store/category/create
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreCategoryAdmin:create }
+
+zing_component_simplestore_category_edit:
+      path:     /admincp/store/category/edit/{category_id}
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreCategoryAdmin:edit }
+
+zing_component_simplestore_category_remove:
+      path:     /admincp/store/category/remove/{category_id}
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreCategoryAdmin:remove }
+
+zing_component_simplestore_category_reorder:
+      path:     /admincp/store/category/reorder
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreCategoryAdmin:reorder }
+
+zing_component_simplestore_category_api_reorder:
+      path:     /admincp/store/category/api/reorder
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreCategoryApiAdmin:reorder }
+
+zing_component_simplestore_manufacture_index:
+      path:     /admincp/store/manufacture
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreManufactureAdmin:index }
+
+zing_component_simplestore_manufacture_create:
+      path:     /admincp/store/manufacture/create
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreManufactureAdmin:create }
+
+zing_component_simplestore_manufacture_edit:
+      path:     /admincp/store/manufacture/edit/{manufacture_id}
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreManufactureAdmin:edit }
+
+zing_component_simplestore_manufacture_remove:
+      path:     /admincp/store/manufacture/remove/{manufacture_id}
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStoreManufactureAdmin:remove }
+
+zing_component_simplestore_simplestore_seo_route:
+      path:     /store/{seo_route}
+      defaults: { _controller: ZingComponentSimpleStoreBundle:SimpleStorePageFront:index }
+      requirements:
+         seo_route: "(.*)"

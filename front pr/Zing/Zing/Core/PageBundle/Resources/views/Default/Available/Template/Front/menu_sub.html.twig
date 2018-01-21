@@ -1,0 +1,11 @@
+<li {% if menu.getUrl() == path %}class="current"{% endif %}>
+	<a href="{{ menu.getUrl() }}"><i class="fa fa-angle-right"></i> {{ menu.getName() }}</a>
+	{% if menu.getChild()[0] is defined %}
+		{% set menus = menu.getChild() %}
+		<ul class="list-unstyled">
+			{% for menu in menus %}
+        		{{ include('ZingCorePageBundle:Default:Available/Template/Front/menu_sub.html.twig') }}
+			{% endfor %}
+		</ul>
+	{% endif %}
+</li>

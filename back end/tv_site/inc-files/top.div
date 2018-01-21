@@ -1,0 +1,16 @@
+<div id="top" align="right"> <h1 align="center"> Онлайн магазин за телевизори </h1>
+<?php
+if (!isset($_SESSION["username"]))
+{
+?>
+<form action="login.php" method="post">
+Потребител: <input type="text" name="username"
+value="admin">;
+Парола: <input type="password" name="passwd" value="admin"> <input type="submit" value="Вход">&nbsp;
+</form>
+<?php 
+}
+else echo $_SESSION["personname"] . " 
+<a href='logout.php'> Изход </a>&nbsp;";
+?>
+</div>

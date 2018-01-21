@@ -1,0 +1,7 @@
+{
+    "name":"SettingBundle",
+    "version":"0.1",
+    "status":true,
+
+    "zing_setting_email": "zing@zing.zing"
+}

@@ -1,0 +1,14 @@
+.post-content-404 {
+  min-height: 70vh;
+
+  .svg-icon.return-home {
+    display: inline-block;
+    position: relative;
+    bottom: 1px;
+    width: 8px;
+    height: 8px;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}

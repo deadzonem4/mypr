@@ -1,0 +1,23 @@
+<form class="block_content" method="post">
+    {% set google_maps = request_service('zing.component.googlemaps.googlemaps') %}
+    {% set maps = google_maps.getAllGoogleMaps() %}
+
+    {% set static = block.getContentByType( 'static' ) %}
+    {% set choosen_map = to_string(static['map']) %}
+
+    <div class="form-group">
+        <label>Map</label>
+        <select class="form-control" name="static[map]">
+            {% for map in maps %}
+                <option value="{{ map.getId() }}" {% if map.getId() == choosen_map %}selected{% endif %}>{{ map.getName() }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <input class="btn btn-lg btn-form save-trigger" type="submit" name="save" value="SAVE" style="padding-left: 50px; padding-right: 50px;" />
+        </div>
+    </div>
+</form>

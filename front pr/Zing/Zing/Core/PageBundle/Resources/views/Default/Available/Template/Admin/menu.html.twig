@@ -1,0 +1,62 @@
+<form class="block_content" method="post">
+    <ul class="tabs-title nav nav-tabs">
+        {% for key, active_language in active_languages %}
+            <li {% if key == 0 %} class="active"{% endif %}>
+                <a href="javascript:;">
+                    <img src="{{asset('bundles/zing/admin/images/')}}flags/{{ active_language['language'] }}.png" alt="{{ active_language['language'] }}">
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="tabs-content">
+        <ul class="list-unstyled mb0">
+            {% set menu_category_manager = request_service('zing.core.menu.category') %}
+            {% set menu_categories = menu_category_manager.getAllCategories() %}
+            {% set static = block.getContentByType( 'static' ) %}
+            {% set menu = to_string(static['menu']) %}
+            {% set menu_type = to_string(static['type']) %}
+
+            {% for key, active_language in active_languages %}
+                {# Assign current active language in loop #}
+                {% set type = active_language['language'] %}
+
+                {# Get block contents by current active language #}
+                {% set content = block.getContentByType( type ) %}
+
+                {# Assign the field values #}
+                {% set title = to_string(content['title']) %}
+
+                <li>
+                    <div class="form-group">
+                        <label>Title <span class="help">/ Not required</span></label>
+                        <input name="{{ type }}[title]" type="text" class="form-control" placeholder="Title {{ type|upper }}" value="{{ title }}">
+                    </div>
+                </li>
+            {% endfor %}
+                    
+            <div class="form-group">
+                <label>Menu</label>
+                <select class="form-control" name="static[menu]">
+                    {% for category in menu_categories %}
+                        <option value="{{ category.getId() }}" {% if menu == category.getId() %}selected{% endif %}>{{ category.getName() }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Type</label>
+                <select class="form-control" name="static[type]">
+                    <option value="h" {% if menu_type == 'h' %}selected{% endif %}>Horizontal</option>
+                    <option value="v" {% if menu_type == 'v' %}selected{% endif %}>Vertical</option>
+                </select>
+            </div>
+        </ul>
+    </div><!-- /.tabs-content -->
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <input class="btn btn-lg btn-form save-trigger" type="submit" name="save" value="SAVE" style="padding-left: 50px; padding-right: 50px;" />
+        </div>
+    </div>
+</form>

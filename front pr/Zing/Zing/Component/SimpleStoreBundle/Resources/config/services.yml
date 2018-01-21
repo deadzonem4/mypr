@@ -1,0 +1,78 @@
+parameters:
+   zing.component.simplestore.category.class: Zing\Component\SimpleStoreBundle\Controller\Manager\Category
+   zing.component.simplestore.category_content.class: Zing\Component\SimpleStoreBundle\Controller\Manager\CategoryContent
+   zing.component.simplestore.category_url.class: Zing\Component\SimpleStoreBundle\Controller\Manager\CategoryUrl
+   zing.component.simplestore.manufacture.class: Zing\Component\SimpleStoreBundle\Controller\Manager\Manufacture
+   zing.component.simplestore.manufacture_content.class: Zing\Component\SimpleStoreBundle\Controller\Manager\ManufactureContent
+   zing.component.simplestore.product.class: Zing\Component\SimpleStoreBundle\Controller\Manager\Product
+   zing.component.simplestore.product_content.class: Zing\Component\SimpleStoreBundle\Controller\Manager\ProductContent
+   zing.component.simplestore.product_url.class: Zing\Component\SimpleStoreBundle\Controller\Manager\ProductUrl
+   zing.component.simplestore.product_cart.class: Zing\Component\SimpleStoreBundle\Controller\Manager\ProductCart
+   zing.component.simplestore.product_order.class: Zing\Component\SimpleStoreBundle\Controller\Manager\ProductOrder
+   zing.component.simplestore.sitemap.class: Zing\Component\SimpleStoreBundle\Controller\Manager\Sitemap
+
+services:
+   zing.component.simplestore.sitemap:
+       class: %zing.component.simplestore.sitemap.class%
+       arguments:
+           service_container: "@service_container"
+
+   zing.component.simplestore.category:
+       class: %zing.component.simplestore.category.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.simplestore.category_content:
+       class: %zing.component.simplestore.category_content.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.simplestore.category_url:
+       class: %zing.component.simplestore.category_url.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.simplestore.manufacture:
+       class: %zing.component.simplestore.manufacture.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.simplestore.manufacture_content:
+       class: %zing.component.simplestore.manufacture_content.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.simplestore.product:
+       class: %zing.component.simplestore.product.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.simplestore.product_content:
+       class: %zing.component.simplestore.product_content.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.simplestore.product_url:
+       class: %zing.component.simplestore.product_url.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.component.simplestore.product_cart:
+       class: %zing.component.simplestore.product_cart.class%
+       arguments:
+           session: "@session"
+           service_container: "@service_container"
+
+   zing.component.simplestore.product_order:
+       class: %zing.component.simplestore.product_order.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"

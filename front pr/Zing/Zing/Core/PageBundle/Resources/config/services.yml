@@ -1,0 +1,79 @@
+parameters:
+   zing.core.page.layout.class: Zing\Core\PageBundle\Controller\Manager\Layout
+   #zing.core.page.block_template.class: Zing\Core\PageBundle\Controller\Manager\BlockTemplate
+   zing.core.page.block_type.class: Zing\Core\PageBundle\Controller\Manager\BlockType
+   zing.core.page.block_position.class: Zing\Core\PageBundle\Controller\Manager\BlockPosition
+   zing.core.page.page_block.class: Zing\Core\PageBundle\Controller\Manager\PageBlock
+   zing.core.page.page_layout.class: Zing\Core\PageBundle\Controller\Manager\PageLayout
+   zing.core.page.block_content.class: Zing\Core\PageBundle\Controller\Manager\BlockContent
+   zing.core.page.block.class: Zing\Core\PageBundle\Controller\Manager\Block
+   zing.core.page.page.class: Zing\Core\PageBundle\Controller\Manager\Page
+   zing.core.page.page_content.class: Zing\Core\PageBundle\Controller\Manager\PageContent
+   zing.core.page.sitemap.class: Zing\Core\PageBundle\Controller\Manager\Sitemap
+   #zing.core.page.block.class: Zing\Core\PageBundle\Controller\Manager\Block
+
+services:
+   zing.core.page.sitemap:
+       class: %zing.core.page.sitemap.class%
+       arguments:
+           service_container: "@service_container"
+
+   zing.core.page.layout:
+       class: %zing.core.page.layout.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.page.page_layout:
+       class: %zing.core.page.page_layout.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.page.block_type:
+       class: %zing.core.page.block_type.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.page.page:
+       class: %zing.core.page.page.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.page.block_position:
+       class: %zing.core.page.block_position.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.page.page_block:
+       class: %zing.core.page.page_block.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.page.page_content:
+       class: %zing.core.page.page_content.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.page.block_content:
+       class: %zing.core.page.block_content.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+   zing.core.page.block:
+       class: %zing.core.page.block.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"
+
+#   zing.core.page.block:
+#       class: %zing.core.page.block.class%
+#       arguments:
+#           doctrine: "@doctrine"
+#           service_container: "@service_container"

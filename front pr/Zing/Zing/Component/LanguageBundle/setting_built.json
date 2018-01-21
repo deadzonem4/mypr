@@ -1,0 +1,9 @@
+{
+    "name":"LanguageBundle",
+    "version":"0.1",
+    "status":false,
+    "friendly_name": "LANGUAGES",
+    "icon": "fa fa-language animated",
+    "admin_route": "/admincp/languages",
+    "type": "Component"
+}

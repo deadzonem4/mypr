@@ -1,0 +1,32 @@
+{% set news_category_manager = request_service('zing.component.news.category') %}
+{% set category_manager = request_service('zing.component.news.category_url') %}
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+<div class="col-xs-12">
+    <div class="box-title yellow">Категории</div>
+
+    {% for category in news_category_manager.getAllCategoriesByCategoryOrderAndStatus(1) %}
+        {% if category.getUrlByType('bg') in currentPath %}
+            {% set active = ' active' %}
+        {% else %}
+            {% set active = '' %}
+        {% endif %}
+
+        {% if category.getParent() == null %}
+            <div class="categories-title-box">
+                <a href="/news{{ category_manager.fullCategoryPath(category.getUrlByType('bg')) }}" class="blog-categories-title blog-categories-title-yellow{{ active }}">{{ category.getName() }}
+            {% if category.countChildProducts() > 0 %}
+                    <span class="label label-news">
+                        {{ category.countChildProducts() }}
+                    </span>
+            {% endif %}
+                </a>
+            </div>
+            {% if category.getChild()[0] is defined %}
+                {% set categories = category.getChild() %}
+                {{ include('ZingCorePageBundle:Default:Available/Template/Front/news_categories_sub.html.twig') }}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
+

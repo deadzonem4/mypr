@@ -1,0 +1,119 @@
+{% if post_success %}
+	{#<div class="alert alert-success" role="alert">Вие успешно се записахте за тест на слуха. <br />Ще се свържем с Вас на посочения телефон, за да ви запазим час!</div>#}
+	<!-- Facebook Pixel Code -->
+	<script>
+	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+	n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+	document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+	fbq('init', '1822263004674922');
+	fbq('track', "CompleteRegistration");</script>
+	<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=1822263004674922&ev=PageView&noscript=1"
+	/></noscript>
+	<!-- Google Code for Sign up Conversion Page -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	var google_conversion_id = 866653823;
+	var google_conversion_language = "en";
+	var google_conversion_format = "3";
+	var google_conversion_color = "ffffff";
+	var google_conversion_label = "7KNiCMLEnmwQ_6ygnQM";
+	var google_conversion_value = 1.00;
+	var google_conversion_currency = "BGN";
+	var google_remarketing_only = false;
+	/* ]]> */
+	</script>
+	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+	</script>
+	<noscript>
+	<div style="display:inline;">
+	<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/866653823/?value=1.00&amp;currency_code=BGN&amp;label=7KNiCMLEnmwQ_6ygnQM&amp;guid=ON&amp;script=0"/>
+	</div>
+	</noscript>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="registerTestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header line-green text-center">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">ВИЕ СЕ ЗАПИСАХТЕ УСПЕШНО</h4>
+		  </div>
+		  <div class="modal-body text-center">
+			Ще се свържем с Вас на посочения телефон!
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+{% endif %}
+
+{% if post_error %}
+	{% set zing_form_errors = post_error %}
+{% endif %}
+
+
+<form method="post" id="register_test" action="#register_test">
+	<input type="hidden" name="zing_verify_code" value="{{ zing_verify_code }}" />
+	<input type="hidden" name="t" value="component" />
+	<input type="hidden" name="b" value="client_request" />
+	<input type="hidden" name="c" value="client_request" />
+	<input type="hidden" name="m" value="save" />
+
+	<div class="form-group">
+		<label>Вие сте:<span class="text-danger"></span></label>
+		<select type="text" name="zing_client_request_title_name" class="form-control {% if zing_form_errors['zing_client_request_title_name'] %}danger-field{% endif %}">
+			<option value="Г-н" {% if request['zing_client_request_title_name'] == 'Г-н' %}selected{% endif %}>Г-н</option>
+			<option value="Г-жа" {% if request['zing_client_request_title_name'] == 'Г-жа' %}selected{% endif %}>Г-жа</option>
+		</select>
+		{% if zing_form_errors['zing_client_request_title_name'] %}<p class="text-danger">{{ zing_form_errors['zing_client_request_title_name'] }}</p>{% endif %}
+	</div>
+
+	<div class="form-group">
+		
+		<input value="{{ request['zing_client_request_first_name'] }}" type="text" name="zing_client_request_first_name" placeholder="Име*" class="form-control {% if zing_form_errors['zing_client_request_first_name'] %}danger-field{% endif %}" />
+		{% if zing_form_errors['zing_client_request_first_name'] %}<p class="text-danger">{{ zing_form_errors['zing_client_request_first_name'] }}</p>{% endif %}
+	</div>
+
+	<div class="form-group">
+		
+		<input value="{{ request['zing_client_request_last_name'] }}" type="text" name="zing_client_request_last_name" placeholder="Фамилия*" class="form-control {% if zing_form_errors['zing_client_request_last_name'] %}danger-field{% endif %}" />
+		{% if zing_form_errors['zing_client_request_last_name'] %}<p class="text-danger">{{ zing_form_errors['zing_client_request_last_name'] }}</p>{% endif %}
+	</div>
+
+	<div class="form-group">
+		
+		<input value="{{ request['zing_client_request_city'] }}" type="text" name="zing_client_request_city" placeholder="Град*" class="form-control {% if zing_form_errors['zing_client_request_city'] %}danger-field{% endif %}" />
+		{% if zing_form_errors['zing_client_request_city'] %}<p class="text-danger">{{ zing_form_errors['zing_client_request_city'] }}</p>{% endif %}
+	</div>
+
+	<div class="form-group">
+		
+		<input value="{{ request['zing_client_request_phone'] }}" type="text" name="zing_client_request_phone" placeholder="Телефон*" class="form-control {% if zing_form_errors['zing_client_request_phone'] %}danger-field{% endif %}" />
+		{% if zing_form_errors['zing_client_request_phone'] %}<p class="text-danger">{{ zing_form_errors['zing_client_request_phone'] }}</p>{% endif %}
+	</div>
+
+	<div class="form-group">
+		
+		<input value="{{ request['zing_client_request_email'] }}" type="text" name="zing_client_request_email" placeholder="E-mail*" class="form-control {% if zing_form_errors['zing_client_request_email'] %}danger-field{% endif %}" />
+		{% if zing_form_errors['zing_client_request_email'] %}<p class="text-danger">{{ zing_form_errors['zing_client_request_email'] }}</p>{% endif %}
+	</div>
+
+{{request['zing_client_request_subscribe']}}
+
+	<div class="form-group">
+		<label>
+			<input type="checkbox" name="zing_client_request_subscribe" value="1" {% if request['zing_client_request_subscribe'] == 1 %}checked{% endif %}>
+			Абонирайте се за бюлетин.
+		</label>
+	</div>
+
+	<div class="form-group">
+		<input class="btn btn-send-message" type="submit" value="Изпрати">
+		<img class="fa-arrow-circle-o-right"src="{{asset('bundles/zing/front/images/arrow-right.png')}}">
+	</div>
+</form>

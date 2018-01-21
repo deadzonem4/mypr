@@ -1,0 +1,92 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 0 25px;
+  font-size: 18px;
+  font-size: #343436;
+  color: @input-color;
+  background-color: #e1e1e1;
+  background-image: none;
+  border-radius: 25px;
+  @shadow: 0 -2px 0 #c7c7c7, 1px 3px 0 white, inset 0 1px 6px rgba(0, 0, 0, 0.62);
+  .box-shadow(@shadow);
+
+  // &:focus {
+  //   @shadow: 1px 3px 0 white, inset 0 1px 6px rgba(0, 0, 0, 0.95);
+  // .box-shadow(@shadow);
+  // }
+ 
+  // Placeholder
+  .placeholder();
+
+  // Reset height for `textarea`s
+  // textarea& {
+  //   height: auto;
+  // }
+}
+
+.form-submit {
+  text-align: center;
+}
+
+.has-icon {
+  position: relative;
+
+    .form-control {
+      padding-left: 90px;
+    }
+
+    .icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      .size(70px, 50px);
+      text-align: center;
+      line-height: 45px;
+      .border-left-radius(25px);
+      #gradient .vertical(#f5f5f5, #e0e0e0, 0, 100%);
+      .box-shadow(inset -2.1px 2.1px 3px white);
+    }
+}
+
+// // Feedback states
+// .has-success {
+//   .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
+// }
+// .has-warning {
+//   .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
+// }
+// .has-error {
+//   .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
+// }
+
+@media screen and (min-width: @screen-sm-min) {
+  
+    .form-group {
+      margin-bottom: 50px;
+    }
+
+    .form-submit {
+      margin-top: 62px;
+    }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+  
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    .form-submit {
+      margin-top: 42px;
+    }
+}

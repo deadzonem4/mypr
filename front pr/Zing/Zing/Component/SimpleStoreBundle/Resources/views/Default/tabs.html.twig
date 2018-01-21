@@ -1,0 +1,6 @@
+<div class="submenu">
+    <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1"><a class="box {% if path == '/admincp/store' %} tabactive{% endif %}" href="/admincp/store"><i class="fa fa-shopping-cart animated"></i> <span>{% trans %}Orders{% endtrans %}</span></a></div>
+    <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1"><a class="box {% if 'product' in path %} tabactive{% endif %}" href="/admincp/store/product"><i class="fa fa-folder animated"></i> <span>{% trans %}Product{% endtrans %}</span></a></div>
+    <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1"><a class="box {% if 'category' in path %} tabactive{% endif %}" href="/admincp/store/category"><i class="fa fa-list animated"></i> <span>{% trans %}Category{% endtrans %}</span></a></div>
+    <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1"><a class="box {% if 'manufacture' in path %} tabactive{% endif %}" href="/admincp/store/manufacture"><i class="fa fa-gear animated"></i> <span>{% trans %}Manufacture{% endtrans %}</span></a></div>
+</div><!-- /.submenu -->

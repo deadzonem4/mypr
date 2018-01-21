@@ -1,0 +1,144 @@
+
+.comments-grid {
+	width: 885px;
+	padding-bottom: 70px;
+	max-width: 100%;
+}
+
+.the-comment {
+	position: relative;
+	height: 120px;
+	margin-bottom: 20px;
+	overflow: hidden;
+	.text-center;
+	.border-radius(8px);
+	background-color: #fff;
+	.box-shadow(0 3px 3px #e2e2e2);
+	@transition: box-shadow 1000ms ease-in-out, height 500ms ease-in-out;
+	.transition(@transition);
+
+		&:hover,
+		&.opened {
+
+				.content {
+					color: #999;
+				}
+		}
+
+		&:not(.opened):hover,
+		.hovered & {
+			.box-shadow(0 10px 17px #e3e3e3);
+		}
+
+		.tgl-comment {
+			display: block;
+			.size(100%);
+			.element-center;
+			.border-radius(8px);
+			border: 38px solid #fff;
+			z-index: 2;
+		}
+
+		.content {
+			color: #bcbcbc;
+			font-size: 18px;
+			overflow: hidden;
+			padding: 40px;
+			line-height: 1.2;
+			.transition(color 1000ms ease-in-out);
+		}
+		
+		p {
+			margin-bottom: 17px;
+		}
+
+		.comment-foot {
+			.text-center;
+
+				figure {
+					display: inline-block;
+					margin: 30px 0;
+					.size(40px);
+					overflow: hidden;
+					.border-radius(50%);
+				}
+		}
+
+		.time {
+			font-size: 12px;
+		}
+
+		.agreen {
+			display: inline-block;
+			padding: 0 20px;
+			color: #797979;
+			font-size: 15px;
+			border: 1px solid #f0f0f0;
+			line-height: 30px;
+			.border-radius(15px);
+			.transition(none);
+
+				&:hover {
+					color: #000;
+					border-color: #000;
+				}
+
+				&:active {
+					border-color: #f0f0f0;
+					#gradient .vertical(#efefef, #e0dfdf);
+					@shadow: 0 1px 5px #aaa, inset 0 1px 0 white;
+					.box-shadow(@shadow);
+				}
+		}
+
+		.icons {
+			font-size: 0;
+			margin:  20px -10px -20px;
+
+				a {
+					display: inline-block;
+					vertical-align: middle;
+					padding: 10px;
+					.opacity(.26);
+
+						&:hover {
+							.opacity(1);
+						}
+				}
+		}
+}
+
+
+.coments-shadow {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+	height: 70px;
+	#gradient .vertical(fade(#fafafa, 10%), fade(#fafafa, 100%), 0, 100%);
+}
+
+
+@media screen and (max-width: @screen-xs-max) {
+	
+		.comments-grid {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
+		.the-comment {
+			max-width: 320px;
+			.center-block;
+
+				.tgl-comment {
+					border-left-width: 20px;
+					border-right-width: 20px;
+				}
+
+				.content {
+					padding-left: 20px;
+					padding-right: 20px;
+				}
+		}
+}

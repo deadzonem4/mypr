@@ -1,0 +1,21 @@
+parameters:
+#    zing_core_core.example.class: Zing\Core\CoreBundle\Example
+     zing.core.twig.extension.class: Zing\Core\CoreBundle\Twig\Extension
+
+services:
+    zing.core.core.locale_listener:
+        class: Zing\Core\CoreBundle\EventListener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }
+    zing.core.twig.extension:
+       class: %zing.core.twig.extension.class%
+       arguments:
+           kernel: "@kernel"
+           service_container: "@service_container"
+       tags:
+         - { name: twig.extension }
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+           - { name: twig.extension }

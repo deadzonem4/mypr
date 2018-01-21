@@ -1,0 +1,11 @@
+{% extends "ZingCoreAdminBundle::layout.html.twig" %}
+{% trans_default_domain "zing" %}
+
+{% block body %}
+    <div class="row">
+        <div class="submenu">
+            <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1"><a class="box" href="/admincp/dev/layout"><i class="fa fa-gear animated"></i> <span>{% trans %}Layout{% endtrans %}</span></a></div>
+            <div class="col-xlg-1 col-lg-1 col-md-1 col-sm-1"><a class="box" href="/admincp/dev/blocktype"><i class="fa fa-gear animated"></i> <span>{% trans %}Block type{% endtrans %}</span></a></div>
+        </div><!-- /.submenu -->
+    </div><!-- /.row -->
+{% endblock %}

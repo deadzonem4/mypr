@@ -1,0 +1,9 @@
+parameters:
+    zing.component.client_request.client_request.class: Zing\Component\ClientRequestBundle\Controller\Manager\ClientRequest
+
+services:
+   zing.component.client_request.client_request:
+       class: %zing.component.client_request.client_request.class%
+       arguments:
+           doctrine: "@doctrine"
+           service_container: "@service_container"

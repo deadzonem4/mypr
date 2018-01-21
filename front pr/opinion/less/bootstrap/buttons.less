@@ -1,0 +1,129 @@
+//
+// Buttons
+// --------------------------------------------------
+
+
+// Base styles
+// --------------------------------------------------
+
+.btn {
+  display: inline-block;
+  font-weight: @btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  // border: 1px solid transparent;
+  white-space: nowrap;
+  .text-uppercase;
+  .avenir-light;
+  .button-size(17px; 46px; 18px; 26px;);
+  .user-select(none);
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-default {
+  color: #747474;
+  @shadow: 0 2px 4px #aaa, inset 0 1px 0 white;
+  .box-shadow(@shadow);
+  #gradient .vertical(#eeeeee, #eeeeee, 0, 100%);
+    
+    &:hover {
+      #gradient .vertical(#e6e6e6, #dcdbdb, 0, 100%);
+    }
+
+    &:active {
+      @shadow: 1px 1.7px 0 white, inset 0 2px 4px rgba(0, 0, 0, 0.62);
+      .box-shadow(@shadow);
+      #gradient .vertical(#efefef, #e0dfdf, 0, 100%);
+      
+    }
+}
+// .btn-primary {
+//   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+// }
+// // Success appears as green
+// .btn-success {
+//   .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+// }
+// // Info appears as blue-green
+// .btn-info {
+//   .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+// }
+// // Warning appears as orange
+// .btn-warning {
+//   .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+// }
+// // Danger and error appear as red
+// .btn-danger {
+//   .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+// }
+
+
+// Link buttons
+// -------------------------
+
+// Make a button look and behave like a link
+// .btn-link {
+//   color: @link-color;
+//   font-weight: normal;
+//   border-radius: 0;
+
+//   &,
+//   &:active,
+//   &.active,
+//   &[disabled],
+//   fieldset[disabled] & {
+//     background-color: transparent;
+//     .box-shadow(none);
+//   }
+//   &,
+//   &:hover,
+//   &:focus,
+//   &:active {
+//     border-color: transparent;
+//   }
+//   &:hover,
+//   &:focus {
+//     color: @link-hover-color;
+//     text-decoration: @link-hover-decoration;
+//     background-color: transparent;
+//   }
+//   &[disabled],
+//   fieldset[disabled] & {
+//     &:hover,
+//     &:focus {
+//       color: @btn-link-disabled-color;
+//       text-decoration: none;
+//     }
+//   }
+// }
+
+
+// Button Sizes
+// --------------------------------------------------
+
+// .btn-lg {
+//   // line-height: ensure even-numbered height of button next to large input
+//   .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @btn-border-radius-large);
+// }
+// .btn-sm {
+//   // line-height: ensure proper height of button next to small input
+//   .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+// }
+// .btn-xs {
+//   .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @btn-border-radius-small);
+// }
+
+
+// Block button
+// --------------------------------------------------
+
+// .btn-block {
+//   display: block;
+//   width: 100%;
+// }

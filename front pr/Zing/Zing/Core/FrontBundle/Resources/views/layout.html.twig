@@ -1,0 +1,665 @@
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+{# ----- For Google Analytics A/B Test code ----- #}
+{% set gaTestCode = '' %}
+{% if ('/signia-iphone' in currentPath) or ('/testvai-phonak-venture' in currentPath) or ('/chui-zvucite-na-jivota' in currentPath) %}
+	{% set gaTestCode = "ga('require', 'GTM-W9XMRFL');" %}
+{% endif %}
+{# ---------------------------------------------- #}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="description" content="{{ meta['description'] }}" />
+{#        <meta name="keywords" content="{{ meta['keywords'] }}" />#}
+		<meta name="google-site-verification" content="P3iwihrT-ZX-WZ_genDL0eLnsySzRMVwSnBjbCTW8yk" />
+		<meta itemprop="url" content="{{ uri }}"/>
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<link href="{{asset('bundles/zing/admin/css/bootstrap.min.css')}}" rel="stylesheet">
+		<link href="{{asset('bundles/zing/admin/css/font-awesome.min.css')}}" rel="stylesheet">
+		<link href="{{asset('bundles/jRating/jquery/jRating.jquery.css')}}" rel="stylesheet">
+{% if '/news' in currentPath %}
+		<link href="{{asset('bundles/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet">
+{% endif %}
+		<link href="{{asset('bundles/zing/admin/css/prettyPhoto.css')}}" rel="stylesheet">
+		<link href="{{asset('bundles/zing/front/css/style.min.css')}}?v=2" rel="stylesheet">
+
+		{% if canonical %}
+			{% if not rel_prev and not rel_next %}
+				<link href="{{ canonical }}" rel="canonical" />
+			{% else %}
+				{% if not app.request.get('page') %}
+					<link href="{{ canonical }}" rel="canonical" />
+				{% else %}
+					<meta name="robots" content="noindex" />
+				{% endif %}
+				{% if rel_prev %}
+					{% if rel_prev == 1 %}
+						<link href="http://fonio.bg{{ currentPath }}" rel="prev" />
+					{% else %}
+						<link href="http://fonio.bg{{ currentPath }}?page={{ rel_prev }}" rel="prev" />
+					{% endif %}
+				{% endif %}
+				{% if rel_next %}
+					<link href="http://fonio.bg{{ currentPath }}?page={{ rel_next }}" rel="next" />
+				{% endif %}
+			{% endif %}
+		{% else %}
+			{% if noindex %}
+				<meta name="robots" content="noindex" />
+			{% endif %}
+		{% endif %}
+
+		{% block head %}{% endblock %}
+
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<title>{{ meta['title'] }}</title>
+
+		<script type="text/javascript">
+			{# ----- Changed regarding the Google Analytics A/B Test code ----- #}
+			{{ google_analytics|replace({'%gatest%': gaTestCode})|raw }}
+			{# ---------------------------------------------------------------- #}
+		</script>
+
+		<script src="//load.sumome.com/" data-sumo-site-id="b2202da69b44d55f626e8db79549803723bb568013929eb999127ec69b4d5cd9" async="async"></script>
+
+		<!-- Facebook Pixel Code -->
+		<script>
+		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+		n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+		document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+		fbq('init', '1822263004674922');
+		fbq('track', "PageView");</script>
+		<noscript><img height="1" width="1" style="display:none"
+		src="https://www.facebook.com/tr?id=1822263004674922&ev=PageView&noscript=1"
+		/></noscript>
+		<!-- End Facebook Pixel Code -->
+
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-W8Z6P46');</script>
+		<!-- End Google Tag Manager -->
+
+
+			<!-- Hotjar Tracking Code for asda.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:585670,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+	</head>
+	<body itemscope itemtype="http://schema.org/WebSite">
+	<!-- {{ currentPath }} -->
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8Z6P46"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		{% set menu = request_service("zing.core.menu.menu") %}
+				<header>
+					<div class="bb-top">
+            <div class="container">
+                <div class="telephone-box appear">
+                    <img src="{{asset('bundles/zing/front/images/speech-bubble.svg')}}">
+                    <div class="telephone-text">
+                        <p>Безплатен телефон</p>
+                        <a href="tel:080020123">0800 20 123</a>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <form method="get" action="/search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+                        <div class="search">
+                            <meta itemprop="target" content="/search?k={k}"/>
+                                <input name="k" class="search-input" type="search" placeholder="Търсене..." itemprop="query-input">
+                                    <button class="search-btn"><img src="{{asset('bundles/zing/front/images/search.svg')}}"></button>
+                            </div><!-- /.search -->
+                    </form>
+                    </button>
+                </div>
+                <div class="telephone-box disappear">
+                    <img src="{{asset('bundles/zing/front/images/speech-bubble.svg')}}" alt="0800 20 123">
+                    <div class="telephone-text">
+                        <p>Безплатен телефон</p>
+                         <a href="tel:080020123">0800 20 123</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-navigation">
+            <div class="container">
+                <nav class="navbar">
+                    <div class="nav-menu">
+                        <div class="navbar-header">
+                            <a  href="/" title="FonioBg" rel="home">
+                               <div class="logo"></div>
+                           </a>
+                            <ul class="mobile-ul">
+                               	<li><a href="#"><img src="{{asset('bundles/zing/front/images/calendar.svg')}}"></a></li>
+                               	<li><a href="/contact"><img src="{{asset('bundles/zing/front/images/email.svg')}}"></a></li>
+                               	<li><a href="/centrove-za-sluha"><img src="{{asset('bundles/zing/front/images/location.svg')}}"></a></li>
+                            </ul>
+                            <button type="button" class="navbar-toggle collapsed button-custom" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse custom" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-left">
+                                <li><a class="menu-element" href="/zaguba-na-sluha" rel="bookmark">Слухова загуба</a></li>
+                                <li><a class="menu-element" href="/az-nosia-sluhovi-aparati" rel="bookmark">Слухови апарати</a></li>
+                                <li><a class="menu-element" href="/store/sluhovi-aparati" rel="bookmark">Магазин</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a class="menu-element" href="#"><img src="{{asset('bundles/zing/front/images/calendar.svg')}}">Запиши час</a></li>
+                                <li><a class="menu-element" href="/centrove-za-sluha"><img src="{{asset('bundles/zing/front/images/location.svg')}}">Намери център</a></li>
+                                <li><a class="menu-element" href="/contact"><img src="{{asset('bundles/zing/front/images/email.svg')}}">Контакт</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+					{# <div class="row bb-bottom">
+						<div class="col-lg-7 col-md-7 col-sm-6 hidden-xs">
+							<ul class="list-inline top-links">
+								{% set top_menu = menu.getAllMenusByCategoryId(5) %}
+								{% for m in top_menu %}
+									<li {% if m.getName() == 'Безвъзмездна помощ' %}class="hidden-sm"{% endif %}><a href="{{ m.getUrl() }}">{{ m.getName() }}</a></li>
+									{% if not loop.last %}
+										<li {% if m.getName() == 'Безвъзмездна помощ' %}class="hidden-sm"{% endif %}>|</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div><!-- /.col-md-6 -->
+
+						<div class="col-lg-5 col-md-5 col-sm-6 hidden-xs">
+							<ul class="list-inline text-right top-links">
+								{% if not request_service('security.context').isGranted('IS_AUTHENTICATED_FULLY') %}
+									<li><a href="/login">Вход312312</a></li>
+									<li>|</li>
+									<li><a href="/registration">Регистрация</a></li>
+									<li>|</li>
+								{% else %}
+									<li><a href="/profile">Профил</a></li>
+									<li>|</li>
+									<li><a href="/logout">Изход</a></li>
+									<li>|</li>
+								{% endif %}
+
+								{% if has_service('zing.component.SimpleStore.product_cart') %}
+									{% set product_cart = request_service('zing.component.SimpleStore.product_cart') %}
+
+									<li>
+										<a href="/store/checkout?forcecart=true"><i class="fa fa-shopping-cart"></i>Количка -
+											{% if product_cart.getTotalPrice() != 0 %}
+												{{ product_cart.getTotalPrice() - product_cart.getShipping() }} {{ product_cart.getCurrency() }}
+											{% else %}
+												0 {{ product_cart.getCurrency() }}
+											{% endif %}
+										</a>
+									</li>
+								{% endif %}
+							</ul>
+						</div><!-- /.col-md-6 -->
+
+						<div class="visible-xs col-xs-12">
+							<ul class="list-inline text-right top-links">
+								<li><a href="/za-nas">За нас</a></li>
+								<li>|</li>
+								<li><a href="/contact">Контакти</a></li>
+								<li>|</li>
+								{% if not request_service('security.context').isGranted('IS_AUTHENTICATED_FULLY') %}
+									<li><a href="/login">Вход312312</a></li>
+									<li>|</li>
+									<li><a href="/registration">Регистрация</a></li>
+									<li>|</li>
+								{% else %}
+									<li><a href="/profile">Профил</a></li>
+									<li>|</li>
+									<li><a href="/logout">Изход</a></li>
+									<li>|</li>
+								{% endif %}
+
+								{% if has_service('zing.component.SimpleStore.product_cart') %}
+									{% set product_cart = request_service('zing.component.SimpleStore.product_cart') %}
+
+									<li>
+										<a href="/store/checkout?forcecart=true"><i class="fa fa-shopping-cart"></i>Количка -
+											{% if product_cart.getTotalPrice() != 0 %}
+												{{ product_cart.getTotalPrice() - product_cart.getShipping() }} {{ product_cart.getCurrency() }}
+											{% else %}
+												0 {{ product_cart.getCurrency() }}
+											{% endif %}
+										</a>
+									</li>
+								{% endif %}
+
+							</ul>
+						</div><!-- /.visible-xs -->
+					</div><!-- /.row --> #}
+
+					{# <div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-4 col-sm-offset-4 col-md-offset-0 col-xs-12">
+							<div class="logo">
+								<a href="/" rel="home"><img src="{{asset('bundles/zing/front/images/logo.png')}}" alt="Fonio" /></a>
+							</div><!-- /.logo -->
+						</div><!-- /.col-md-3 -->
+
+
+						<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+							<div class="row hidden-xs">
+								<div class="col-lg-8 col-md-7 col-sm-8 col-xs-12">
+									<form method="get" action="/search" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+										<div class="search">
+											<meta itemprop="target" content="/search?k={k}"/>
+											<input name="k" class="search-input" type="search" placeholder="Търси..." itemprop="query-input">
+											<button class="search-btn"><i class="fa fa-search"></i></button>
+										</div><!-- /.search -->
+									</form>
+								</div><!-- /.col-md-7 -->
+
+								<div class="col-lg-4 col-md-5 col-sm-4 hidden-xs">
+									<span class"icon-phone"><i class="fa fa-phone phone-top mt25 ml30"></i></span>
+									<div class="call-inf">
+										<p>Безплатен телефон</p>
+										<a href="tel:+35980020123">0800 20 123</a>
+									</div>
+								</div><!-- /.col-md-5 -->
+							</div><!-- /.row -->
+
+							<div class="row">
+								<nav class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+									<ul class="list-inline list-unstyled top-nav mt15 mb10">
+										{% set main_menu = menu.getAllMenusByCategoryId(1) %}
+										{% set main_menu_count = main_menu|length %}
+										{% set index = 0 %}
+										{% for m in main_menu %}
+											{% set index = index + 1 %}
+											<li {% if m.getUrl() == path %}class="current"{% endif %}><a href="{{ m.getUrl() }}">{{ m.getName() }}</a></li>
+											{% if index<main_menu_count %}
+											<li>|</li>
+											{% endif %}
+										{% endfor %}        <!-- Comment break          #} 
+
+										{# <li class="bordered"><a href="/bezplaten-pregled">БЕЗПЛАТЕН ТЕСТ НА СЛУХА</a></li>
+									</ul>
+								</nav><!-- /.col-md-12 -->
+
+								<div class="visible-xs">
+									<nav class="navbar navbar-default mt10" role="navigation">
+
+											<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+												<ul class="nav navbar-nav pull-left">
+													{% for m in main_menu %}
+														<li {% if m.getUrl() == path %}class="current"{% endif %}><a href="{{ m.getUrl() }}">{{ m.getName() }}</a></li>
+													{% endfor %}
+													{# <li><a href="/bezplaten-pregled">Безпaлатен преглед</a></li> #}
+												{# </ul>
+											</div><!-- /.navbar-collapse -->
+
+											<div class="navbar-header">
+												<button type="button" class="navbar-toggle ml30" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+													<span class="sr-only">Toggle navigation</span>
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+													<span class="icon-bar"></span>
+												</button>
+											</div>
+
+
+										<div class="call-inf mt0 visible-xs-call">
+											<p>Безплатен телефон</p>
+											<a href="tel:+35980020123"><i class="fa fa-phone mr5"></i> 0800 20 123</a>
+										</div>
+									</nav>
+								</div><!-- /.visible-xs -->
+							</div><!-- /.row -->
+						</div><!-- /.col-md-9 -->
+					</div><!-- /.row --> #} 
+				</header>
+
+				<main>
+					{% block body %}{% endblock %}
+				</main>
+
+				{# <footer>
+					<div class="row ml30 mr30 bb-bottom">
+						<section class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+							<a href="#" class="footer-logo"><img src="{{asset('bundles/zing/front/images/logo_gray.png')}}" alt="Fonio" height="70px;" /></a>
+							<span class="footer-text hidden-xs">
+								Център за слуха FONIO е новият дистрибутор на PHONAK за България и е специализиран в търговията на дребно със стоки, които подпомагат живота на хората с намален слух.
+							</span>
+						</section><!-- /.col-md-4 -->
+
+						<section class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+							<div class="footer-title">Информация</div>
+							<ul class="footer-list list-unstyled ml20">
+								{% set footer_menu_1 = menu.getAllMenusByCategoryId(3) %}
+								{% for m in footer_menu_1 %}
+									<li><a href="{{ m.getUrl() }}">{{ m.getName() }}</a></li>
+								{% endfor %}
+							</ul>
+						</section><!-- /.col-md-2 -->
+
+						<section class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+							<div class="footer-title">Пазаруване</div>
+							<ul class="footer-list list-unstyled ml20">
+								{% set footer_menu_2 = menu.getAllMenusByCategoryId(4) %}
+								{% for m in footer_menu_2 %}
+									<li><a href="{{ m.getUrl() }}">{{ m.getName() }}</a></li>
+								{% endfor %}
+							</ul>
+						</section><!-- /.col-md-2 -->
+
+						<section class="col-lg-2 col-md-2 col-sm-4 hidden-sm col-xs-12">
+							<div class="footer-title">Контакти</div>
+							<ul class="footer-list list-unstyled ml20">
+								<li class="mb10"><a href="/contact">Намери нашите центрове</a></li>
+								<li><i class="fa fsize18 fa-phone"></i><strong>0800 20 123</strong></li>
+								<li><i class="fa fa-envelope"></i>office@fonio.bg</li>
+								<li class="visible-xs">
+									<div class="social-links">
+										<a class="facebook tooltips" title="Facebook" href="https://www.facebook.com/fonio.bg/" target="_blank"><i class="fa fa-lg fa-facebook"></i></a>
+										<a class="twitter tooltips" title="Twitter" href="https://twitter.com/FonioBg" target="_blank"><i class="fa fa-lg fa-twitter"></i></a>
+										<a class="googleplus tooltips" title="Google+"  href="https://plus.google.com/u/0/115788036853439126539" target="_blank"><i class="fa fa-lg fa-google-plus"></i></a>
+										<a class="linkedin tooltips" title="LinkedIn" href="https://www.linkedin.com/company/hearing-center-fonio" target="_blank"><i class="fa fa-lg fa-linkedin"></i></a>
+									</div>
+								</li>
+							</ul>
+						</section><!-- /.col-md-4 -->
+
+						<section class="col-lg-2 col-md-2 col-sm-4 hidden-sm col-xs-12 hidden-xs large">
+							<div class="footer-title">Последвайте ни</div>
+							<div class="social-links">
+								<a class="facebook tooltips" title="Facebook" href="https://www.facebook.com/fonio.bg/" target="_blank"><i class="fa fa-lg fa-facebook"></i></a>
+								<a class="linkedin tooltips" title="LinkedIn" href="https://www.linkedin.com/company/hearing-center-fonio" target="_blank"><i class="fa fa-lg fa-linkedin"></i></a>
+								<a class="googleplus tooltips" title="Google+"  href="https://plus.google.com/u/0/115788036853439126539" target="_blank"><i class="fa fa-lg fa-google-plus"></i></a>
+								<a class="twitter tooltips" title="Twitter" href="https://twitter.com/FonioBg" target="_blank"><i class="fa fa-lg fa-twitter"></i></a>
+							</div>
+						</section><!-- /.col-md-2 -->
+
+						<section class="visible-sm col-sm-12">
+							<div class="footer-title ml0">Контакти</div>
+							<ul class="footer-list list-inline mb20">
+								<li class="mr20"><a href="/contact">Намери нашите центрове</a></li>
+								<li class="mr20"><i class="fa fsize18 fa-phone"></i><strong>0800 20 123</strong></li>
+								<li class="mr20"><i class="fa fa-envelope"></i>office@fonio.bg</li>
+								<li class="mr20">
+									<div class="social-links">
+										<a class="facebook tooltips" title="Facebook" href="https://www.facebook.com/fonio.bg/" target="_blank"><i class="fa fa-lg fa-facebook"></i></a>
+										<a class="twitter tooltips" title="Twitter" href="https://twitter.com/FonioBg" target="_blank"><i class="fa fa-lg fa-twitter"></i></a>
+										<a class="googleplus tooltips" title="Google+"  href="https://plus.google.com/u/0/115788036853439126539" target="_blank"><i class="fa fa-lg fa-google-plus"></i></a>
+										<a class="linkedin tooltips" title="LinkedIn" href="https://www.linkedin.com/company/hearing-center-fonio" target="_blank"><i class="fa fa-lg fa-linkedin"></i></a>
+									</div>
+								</li>
+							</ul>
+						</section><!-- /.col-md-4 -->
+					</div><!-- /.row -->
+
+					<div class="row ml30 mr30 lh40">
+						<div class="col-sm-12 hidden-xs">
+							<span class="footer-bottom-left">Copyright ©{{ current_year }} fonio.bg, All right reserved!</span>
+						</div><!-- /.col-sm-12 -->
+					</div><!-- /.row -->
+				</footer> #}
+				<footer id="footer">
+			        <div class="container">
+			        <div class="bb-bottom row">
+			            <section class="col-sm-4">
+			                <a href="#" class="footer-logo"><img src="{{asset('bundles/zing/front/images/footer-logo.png')}}" alt="Fonio"></a>
+			                <p class="footer-text">
+											Център за слуха FONIO е новият дистрибутор на PHONAK за България и е специализиран в търговията на дребно със стоки, които подпомагат живота на хората с намален слух.
+										</p>
+			            </section><!-- /.col-md-4 -->
+
+			            <section class="col-sm-2">
+			                <div class="footer-title">Информация</div>
+			                <ul class="footer-list list-unstyled ">
+			                    <li><a href="/za-nas">За нас</a></li>
+			                    <li><a href="/sertifikati">Сертификати</a></li>
+			                    <li><a href="/bezuzmezdna-pomosht">Помощ</a></li>
+			                    <li><a href="/contact">Контакти</a></li>
+			                </ul>
+			            </section><!-- /.col-md-2 -->
+
+			            <section class="col-sm-2">
+			                <div class="footer-title">Пазаруване</div>
+			                <ul class="footer-list list-unstyled">
+			                    <li><a href="/kak-da-porucham">Как да поръчам?</a></li>
+			                    <li><a href="/dostavka-i-plashtane">Доставка и плащане</a></li>
+			                    <li><a href="/vrushtane-i-zamiana">Връщане и замяна</a></li>
+			                    <li><a href="/terms-of-use">Общи условия</a></li>
+			                </ul>
+			            </section><!-- /.col-md-2 -->
+
+			            <section class="col-sm-2">
+			                <div class="footer-title">Контакти</div>
+			                <ul class="footer-list email-tel list-unstyled">
+			                    <li class="contact"><img class="footer-img-dis" src="{{asset('bundles/zing/front/images/speech-bubble.svg')}}"><span>Телефон</span><a href="tel:080020123">080020123</a></li>
+			                    <li class="contact">
+			                    	<img class="footer-img-dis" src="{{asset('bundles/zing/front/images/group-44.svg')}}">
+			                    	<img src="{{asset('bundles/zing/front/images/fonio-email.png')}}">
+			                    </li>
+			                </ul>
+			            </section><!-- /.col-md-4 -->
+
+			            <section class="col-sm-2">
+			                <div class="footer-title">Следвайте ни</div>
+			                <div class="social-links-index">
+			                    <a class="facebook tooltips" title="" href="https://www.facebook.com/fonio.bg/" target="_blank" data-original-title="Facebook"><img src="{{asset('bundles/zing/front/images/fb.svg')}}"></a>
+			                    <a class="linkedin tooltips" title="" href="https://www.linkedin.com/company/hearing-center-fonio" target="_blank" data-original-title="LinkedIn"><img src="{{asset('bundles/zing/front/images/in.svg')}}"></a>
+			                    <a class="googleplus tooltips" title="" href="https://plus.google.com/u/0/115788036853439126539" target="_blank" data-original-title="Google+"><img src="{{asset('bundles/zing/front/images/goo.svg')}}"></a>
+			                    <a class="twitter tooltips" title="" href="https://twitter.com/FonioBg" target="_blank" data-original-title="Twitter"><img src="{{asset('bundles/zing/front/images/tw.svg')}}"></a>
+			                </div>
+			            </section><!-- /.col-md-2 -->
+			        </div>
+			        <div class="copyright clearfix">
+			            <div class="row">
+			                <div class="col-sm-6">
+			                    <span class="footer-bottom-left">Copyright ©2017 fonio.bg, All right reserved!</span>
+			                </div>
+			                <div class="col-sm-6 three-web text-right">
+			                    <a target="_blank" href="http://3web-studio.com/#!home">
+			                        <img src="{{asset('bundles/zing/front/images/3-web-1.png')}}" alt="3web">
+			                        <span>Design & Development</span>
+			                    </a>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			    </footer>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="{{asset('bundles/zing/admin/js/jquery.cycle.all.js')}}"></script>
+		<script src="{{asset('bundles/zing/admin/js/bootstrap.min.js')}}"></script>
+		<script src="{{asset('bundles/jRating/jquery/jRating.jquery.min.js')}}"></script>
+		{% if '/news' in currentPath %}
+			<script src="{{asset('bundles/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+			<script src="{{asset('bundles/bootstrap-select/js/bootstrap-select-bg_BG.min.js')}}"></script>
+			<script src="{{asset('bundles/flexisel/jquery.flexisel.js')}}"></script>
+		{% endif %}
+		<script src="{{asset('bundles/zing/admin/js/jquery.prettyPhoto.js')}}"></script>
+
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-500944e36bbd583b" async="async"></script>
+		{% if '/test-na-sluha' in currentPath %}
+			<script src="{{asset('bundles/zing/front/js/poll.js')}}"></script>
+		{% endif %}
+		{% block javascript %}
+		{% endblock %}
+
+		<script type="text/javascript">
+			// Sllider Init
+			$('.slider').each(function() {
+				$(this).cycle({
+					fx: 'fade',
+					slideExpr: 'li'
+				});
+			});
+
+			// Zopim Init
+//            window.$zopim||(function(d,s){var z=$zopim=function(c){
+//            z._.push(c)},$=z.s=
+//            d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+//            _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+//            $.src='//v2.zopim.com/?2XwNBdvEHBb2Pjg6hsSPxLJ7dPXDakB4';z.t=+new Date;$.
+//            type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+
+			// Tooltips
+			if($('.tooltips').length)
+			{
+				$('.tooltips').tooltip(
+				{
+					container: 'body',
+					placement: 'top',
+					trigger: 'hover'
+				});
+			}
+
+			// Bootstrap Select
+			if($('.selectpicker').length)
+			{
+				$('.selectpicker').selectpicker(
+				{
+					container: 'body',
+					width: '100%',
+					size: 6
+				});
+
+				$('.selectpicker').on('changed.bs.select',function(e,clickedIndex,newValue,oldValue)
+				{
+					$(this).closest('form').submit();
+				});
+			}
+
+			// Flexisel carousel
+			if($('#blog-images').length)
+			{
+				$('#blog-images').flexisel(
+				{
+					visibleItems: 3, //  The initial number of visible items in the carousel
+					itemsToScroll: 1,
+					animationSpeed: 500, // Speed of the scrolling animation
+					autoPlay: false, // Auto scrolling
+					autoPlaySpeed: 3000, // Speed of auto scrolling
+					pauseOnHover: true, // Whether or not pause the auto sliding on mouse over
+					multipleSlides: true, // Use more than one slide while scrolling (scroll by visibleItems-slides)
+					enableResponsiveBreakpoints: true, // Enable responsive breakpoints
+					responsiveBreakpoints: {
+						feature: {
+							changePoint: 320,
+							visibleItems: 1
+						},
+						portrait: {
+							changePoint: 480,
+							visibleItems: 1
+						},
+						landscape: {
+							changePoint: 640,
+							visibleItems: 2
+						},
+						tablet: {
+							changePoint: 769,
+							visibleItems: 2
+						},
+						nexusatablet: {
+							changePoint: 801,
+							visibleItems: 2
+						},
+						desktop: {
+							changePoint: 992,
+							visibleItems: 3
+						}
+					}
+				});
+
+				if($('#blog-images > li > img[data-url]').length && $('.main-view > img').length)
+				{
+					$('#blog-images > li > img[data-url]').on('click',function(ev)
+					{
+						ev.preventDefault();
+
+						$('.main-view > img').prop('src',$(this).data('url'));
+
+						$('#blog-images > li > img[data-url]').removeClass('active');
+						$(this).addClass('active');
+
+						return false;
+					});
+				}
+			}
+
+			if($('#registerTestModal').length)
+			{
+				$('#registerTestModal').modal('show');
+			}
+
+			if($('.inner-content img, .inner-content iframe').length)
+			{
+				$('.inner-content img, .inner-content iframe').each(function(){
+					if($( window ).width() < '801')
+					 {
+						if(this.width > 300)
+						{
+							$(this).addClass('img-forse-rezise');
+						}
+
+					}
+				});
+			}
+		</script>
+		
+		<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us13.list-manage.com","uuid":"4bfecb4021d2df356db960774","lid":"a28b2265ca"}) })</script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.navigation li ').each(function(){
+					if( $(this).hasClass('current')){
+						$(this).children('ul').css('display','block');
+						$(this).parentsUntil('.navigation').css('display','block');
+					}
+					else {
+						$(this).children('ul').css('display','none')
+					}
+				});	
+			});
+
+		</script>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

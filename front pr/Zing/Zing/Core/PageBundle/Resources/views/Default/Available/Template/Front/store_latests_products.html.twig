@@ -1,0 +1,62 @@
+{% set limit = blocks.getBlock().getContentByType('static')['limit'] %}
+
+{% if limit is null %}
+    {% set limit = 4 %}
+{% endif %}
+
+{% set product_manager = request_service('zing.component.simplestore.product') %}
+{% set category_manager = request_service('zing.component.simplestore.category_url') %}
+
+{# Call media image manager #}
+{% set image_manager   = request_service('zing.component.media.image') %}
+
+
+<div class="col-md-12">
+    <div class="clearfix"></div>
+    <div class="box-title green">Продукти</div>
+</div>
+
+{% for product in product_manager.getLastProductsBy({'status' : 1}, limit) %}
+
+    {# Set default article image #}
+    {% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+    {# Get the article 300px width image #}
+    {% set images300px = image_manager.getImagesByWidth(300, product.getContentByType('static')['image']) %}
+
+    {# If article has main image, set the image #}
+    {% if product.getContentByType('static')['main_image'] is not null %}
+
+        {# Loop in all 300px width images #}
+        {% for image300px in images300px %}
+
+            {# Check if the looped image is equal with the main image name #}
+            {% if product.getContentByType('static')['main_image'] in image300px['name'] %}
+
+                {# Assign the choosen main image #}
+                {% set image = '/' ~ image300px['name'] %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 {%if loop.last %}hidden-sm{% endif %}">
+        <div class="box">
+            <a rel="bookmark" href="/store{{ category_manager.fullCategoryPath(product.getCategory().getUrlByType('bg')) ~ product.getUrl()[0].getUrl() }}">
+                <img class="width100" src="{{image}}" alt="{{ product.getContentByType('bg')['title']|truncate(20) }}" style="min-height: 240px;">
+                <span class="box-title-text">{{ product.getContentByType('bg')['title']|truncate(50) }}</span>
+            </a>
+
+            <div class="row">
+                <div class="col-md-12" style="height: 40px;">
+                    <div style="padding: 10px;">
+                        <span class="product-price">{{ product.calculatePrice()|number_format(2, '.') }} {{ product.getCurrency() }}</span>
+                        {% if product.calculatePrice() != product.getPrice() %}
+                            <span class="product-old-price">{{ product.getPrice()|number_format(2, '.') }} {{ product.getCurrency() }}</span>
+                        {% endif %}
+                    </div>
+                    <a rel="bookmark" class="view-all btn-primary" style="right: 13px;" href="/store{{ category_manager.fullCategoryPath(product.getCategory().getUrlByType('bg')) ~ product.getUrl()[0].getUrl() }}">Виж<span class="fa fa-angle-right product-fa"></span></a>
+                </div>
+            </div>
+        </div><!-- /.box -->
+    </div><!-- /.col-md-3 box -->
+{% endfor %}

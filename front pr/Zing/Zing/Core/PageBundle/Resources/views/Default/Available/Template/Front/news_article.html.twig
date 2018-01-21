@@ -1,0 +1,136 @@
+{% set image_manager        = request_service('zing.component.media.image') %}
+{% set news_manager         = request_service('zing.component.news.news') %}
+{% set news                 = news_manager.getNewsByUrl(news_manager.getNewsUrl())  %}
+
+{% set news_content = news.getContentByType('bg') %}
+{% set news_main_image = news.getContentByType('static')['main_image'] %}
+{% set news_images = news.getContentByType('static')['image'] %}
+
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+{% set currentPath = app.request.uri %}
+{% set debug = 0 %}
+
+<div class="row" itemscope itemtype="http://schema.org/Article">
+    <div class="col-xs-12">
+        <div class="box-title green">
+            <h1 itemprop="name headline" class="big-news-title">{{ news_content['title'] }}</h1>
+            <time class="big-news-date" datetime="{{ news.getDateAdded()|date('Y-m-d\\TH:i:sP') }}" itemprop="datePublished">{{ news.getDateAdded()|date("d.m.Y") }}</time>
+            <div class="clearfix"></div>
+        </div>
+	</div>
+    <div class="col-xs-12">
+        {# Set default article image #}
+        {% set image_large = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+        {# Get the article 1120px width image #}
+        {% set images1120px = image_manager.getImagesByWidth(1120, news.getContentByType('static')['image']) %}
+
+        {# If article has main image, set the image #}
+        {% if news.getContentByType('static')['main_image'] is not null %}
+
+            {# Loop in all 1120px width images #}
+            {% for image1120px in images1120px %}
+
+                {# Split image name to exclude extension in check below #}
+                {% set main_image = news.getContentByType('static')['main_image']|split('.') %}
+
+                {# Check if the looped image is equal with the main image name #}
+                {% if main_image[0] in image1120px['name'] %}
+
+                    {# Assign the choosen main image #}
+                    {% set image_large = '/' ~ image1120px['name'] %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if image_large=='/bundles/zing/admin/images/noimage.jpeg'%}
+
+            {# Get the article 660px width image #}
+            {% set images660px = image_manager.getImagesByWidth(660, news.getContentByType('static')['image']) %}
+
+            {# Loop in all 660px width images #}
+            {% for image660px in images660px %}
+
+                {# Split image name to exclude extension in check below #}
+                {% set main_image = news.getContentByType('static')['main_image']|split('.') %}
+
+                {# Check if the looped image is equal with the main image name #}
+                {% if main_image[0] in image660px['name'] %}
+
+                    {# Assign the choosen main image #}
+                    {% set image_large = '/' ~ image660px['name'] %}
+                {% endif %}
+            {% endfor %}<pre>Large image: {{ image_large }}</pre>
+        {% endif %}
+
+        <div class="main-view big-news-image">
+            <img itemprop="image" src="{{ image_large }}" alt="{{ news_content['title'] }}" class="img-responsive">
+        </div>
+
+        <div class="row">
+        	<div class="col-xs-12 blog-images-green">
+                {% set images373px = image_manager.getImagesByWidth(373, news_images) %}
+
+                {% if images373px|length > 2 %}
+                    {% set use_carousel = true %}
+                {% else %}
+                    {% set use_carousel = false %}
+                {% endif %}
+
+                {% if use_carousel %}
+                <ul id="blog-images">
+                {% endif %}
+
+                {% for k, image373px in images373px %}
+
+                    {# Set default article image #}
+                    {% set image = '/bundles/zing/admin/images/noimage.jpeg' %}
+
+                    {% if image_manager.getImagesByWidth(1120, news_images)[k]['name'] is not null %}
+                        {% set image = '/' ~ image_manager.getImagesByWidth(1120, news_images)[k]['name'] %}
+                    {% elseif image_manager.getImagesByWidth(660, news_images)[k]['name'] is not null %}
+                        {% set image = '/' ~ image_manager.getImagesByWidth(660, news_images)[k]['name'] %}
+                    {% endif %}
+
+                    {% if image_large in image %}
+                        {% set active = ' active' %}
+                    {% else %}
+                        {% set active = '' %}
+                    {% endif %}
+
+                    {% if use_carousel%}
+                        <li>
+                            <img class="img-responsive{{ active }}" src="/{{ image373px['name'] }}" data-url="{{ image }}" alt="{{ news_content['title'] }}">
+                        </li>
+                    {% else %}
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                   <img class="img-responsive{{ active }}" src="/{{ image373px['name'] }}" data-url="{{ image }}" alt="{{ news_content['title'] }}">
+                </div>
+                    {% endif %}
+                {% endfor %}
+
+                {% if use_carousel %}
+                </ul>
+                {% endif %}
+      	    </div>
+        </div>
+       <div class="blog-social-links">
+{% if debug==1 %}
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.async = true;
+  js.src = "//connect.facebook.net/bg_BG/sdk.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+            <div class="fb-like" data-href="{{ currentPath }}" data-layout="standard" data-action="like" data-show-faces="true"></div>
+{% else %}
+<iframe src="https://www.facebook.com/plugins/like.php?href={{ currentPath }}&layout=standard&action=like&size=large&show_faces=false&share=true" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+{% endif %}
+       </div>
+ 
+       <div class="big-news-content" itemprop="articleBody">{{ news_content['description']|raw }}</div>
+    </div><!-- /.col-lg-9 -->
+</div>

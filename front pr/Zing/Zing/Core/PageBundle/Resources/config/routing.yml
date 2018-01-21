@@ -1,0 +1,91 @@
+zing_front_front_call_page_index:
+    path:     /
+    defaults: { _controller: ZingCorePageBundle:PageFront:callPageByUrl }
+
+zing_front_front_call_page_by_id:
+    path:     /page/{page_id}
+    defaults: { _controller: ZingCorePageBundle:PageFront:callPageById }
+
+zing_page_admin_layout_page:
+    path:     /admincp/pages/layout/page/{page_id}
+    defaults: { _controller: ZingCorePageBundle:LayoutAdmin:layout }
+
+zing_page_admin_layout_block_page:
+    path:     /admincp/pages/layout/page/{page_id}/block
+    defaults: { _controller: ZingCorePageBundle:LayoutAdmin:block }
+
+zing_page_admin_layout_block_page_add_api:
+    path:     /admincp/pages/layout/page/{page_id}/block/add/api
+    defaults: { _controller: ZingCorePageBundle:BlockApiAdmin:blockAddApi }
+
+zing_page_admin_layout_block_page_add_content_api:
+    path:     /admincp/pages/layout/page/{page_id}/block/add_content/api
+    defaults: { _controller: ZingCorePageBundle:BlockApiAdmin:blockAddContentApi }
+
+zing_page_admin_layout_block_page_order_api:
+    path:     /admincp/pages/layout/page/{page_id}/block/order/api
+    defaults: { _controller: ZingCorePageBundle:BlockApiAdmin:blockOrderApi }
+
+zing_page_admin_layout_block_page_sort_api:
+    path:     /admincp/pages/layout/page/{page_id}/block/sort/api
+    defaults: { _controller: ZingCorePageBundle:BlockApiAdmin:blockSortApi }
+
+zing_page_admin_layout_block_page_remove_api:
+    path:     /admincp/pages/layout/page/{page_id}/block/remove/api
+    defaults: { _controller: ZingCorePageBundle:BlockApiAdmin:blockRemoveApi }
+
+zing_page_admin_edit:
+    path:     /admincp/pages/edit/{page_id}
+    defaults: { _controller: ZingCorePageBundle:PageAdmin:edit }
+
+zing_page_admin_create:
+    path:     /admincp/pages/create
+    defaults: { _controller: ZingCorePageBundle:PageAdmin:create }
+
+zing_page_admin_remove:
+    path:     /admincp/pages/remove/{page_id}
+    defaults: { _controller: ZingCorePageBundle:PageAdmin:remove }
+
+zing_page_admin_index:
+    path:     /admincp/pages
+    defaults: { _controller: ZingCorePageBundle:PageAdmin:index }
+
+#Dev layout crud
+zing_page_dev_layout_remove:
+    path: /admincp/dev/layout/remove/{layout_id}
+    defaults: { _controller: ZingCorePageBundle:LayoutDev:remove }
+
+zing_page_dev_layout_edit:
+    path: /admincp/dev/layout/edit/{layout_id}
+    defaults: { _controller: ZingCorePageBundle:LayoutDev:edit }
+
+zing_page_dev_layout_add:
+    path: /admincp/dev/layout/create
+    defaults: { _controller: ZingCorePageBundle:LayoutDev:create }
+
+zing_page_dev_layout_layout:
+    path: /admincp/dev/layout
+    defaults: { _controller: ZingCorePageBundle:LayoutDev:layout }
+
+#Dev template crud
+zing_page_dev_block_type_index:
+    path: /admincp/dev/blocktype
+    defaults: { _controller: ZingCorePageBundle:BlockTypeDev:blockType }
+
+zing_page_dev_block_type_remove:
+    path: /admincp/dev/blocktype/remove/{block_type_id}
+    defaults: { _controller: ZingCorePageBundle:BlockTypeDev:remove }
+
+zing_page_dev_block_type_edit:
+    path: /admincp/dev/blocktype/edit/{block_type_id}
+    defaults: { _controller: ZingCorePageBundle:BlockTypeDev:edit }
+
+zing_page_dev_block_type_add:
+    path: /admincp/dev/blocktype/create
+    defaults: { _controller: ZingCorePageBundle:BlockTypeDev:create }
+
+zing_front_front_call_page_by_url:
+    path:     /{page_url}
+    defaults: { _controller: ZingCorePageBundle:PageFront:callPageByUrl }
+    requirements:
+       page_url: "(.*)"

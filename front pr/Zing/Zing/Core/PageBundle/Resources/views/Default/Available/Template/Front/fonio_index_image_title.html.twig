@@ -1,0 +1,16 @@
+{# Call media image manager #}
+{% set image_manager   = request_service('zing.component.media.image') %}
+
+{# Get the article 300px width image #}
+{% set images300px = image_manager.getImagesByWidth(300, blocks.getBlock().getContentByType('static')['image']) %}
+
+{% if images300px|length > 0 %}
+    {% set image = '/' ~ images300px[0]['name'] %}
+{% endif %}
+
+<div class="box">
+    <a href="{{ blocks.getBlock().getContentByType('static')['url'] }}">
+        <img class="width100" src="{{ image }}" alt="{{ blocks.getBlock().getContentByType('bg')['title']|striptags }}">
+        <span class="box-title-text">{{ blocks.getBlock().getContentByType('bg')['title']|raw }}</span>
+    </a>
+</div><!-- /.box -->
