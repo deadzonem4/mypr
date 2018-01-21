@@ -19,10 +19,13 @@ git merge name of the branch //sva changes to the current branch from apionted b
 git checkout -b name of the branch //create new branch and switches to it
 git commit -am "" //add all changes
 git clone -b name of branch git link
-git remote
+
+git remote github
 git remote add github https://github.com/deadzonem4/Repo.git
 git push -u github master 
 
+git remote -v /all remotes
+git remote rm remotename //remove remote
 
 //gulp
 cd ~/Desktop
