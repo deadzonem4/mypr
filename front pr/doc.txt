@@ -1,0 +1,60 @@
+Сайт
+http://cleanandclean.london
+Спийд тест
+https://developers.google.com/speed/pagespeed/insights/?hl=bg&url=http%3A%2F%2Fcleanandclean.london%2F&tab=desktop
+Минифайване на снимки
+https://tinypng.com
+
+header.php
+Там се намира html на хедъра
+с <?php wp_head(); ?> показваш че това е хедъра
+с <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?> показваш къде да се визуализира
+хедър менюто
+<img src="<?php echo bloginfo('template_directory'); ?>/assets/images/име на снимката" alt=""/>
+пътят към снимките
+
+foooter.php
+Там се намира html на футъра
+<?php wp_nav_menu( array( 'theme_location' => 'footer-menu-left' ) ); ?> показваш къде да се визуализира
+футър лефт менюто(по същата логика и футър център менюто и лефт менюто, тъй като има 3 менюта във футъра)
+<?php dynamic_sidebar( 'footer-text' ); ?> показваш къде да визуализираш widget-a който се добавя от администрацията
+
+template-home.php
+Това е началната страница прави се като темплейт и се добавя в администацията след като създадеш страницата
+от секцията pages
+<?php get_header(); ?> добавяш хедъра
+<?php get_footer(); ?> добавяш футъра
+<?php echo do_shortcode( '[contact-form-7 id="68" title="Index form"]' ); ?> добавяш къде да ти се визуализира
+плъгина за контактната форма
+
+functions.php
+function register_my_menu() {
+  register_nav_menu('header-menu',__( 'Top Menu Left' ));
+  register_nav_menu('enquire-buttons',__( 'enquire buttons' ));
+  register_nav_menu('services-menu',__( 'Home services menu' ));
+  register_nav_menu('footer-menu-right',__( 'Footer Right' ));
+  register_nav_menu('footer-menu-center',__( 'Footer Center' ));
+  register_nav_menu('footer-menu-left',__( 'Footer Left' ));
+
+}add_action( 'init', 'register_my_menu' ); добавяш менютата които използваш в хедъра и футъра
+
+function arphabet_widgets_init() {
+	register_sidebar( array(
+		'name'          => 'menu',
+		'id'            => 'menu',
+		'before_widget' => '<div>',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="rounded">',
+		'after_title'   => '</h2>',
+	) );	
+добавяш widget-и които можеш да излозваш навсякъде както е използван във футъра
+с коментари горе долу е показано кое за какво се използва
+
+Останалите страници от сайта са създадени от администрацията
+използва се sidebar.php за сайтбар на някои страници като пак се добавя в администрацията след като е създаден
+файлът. Home.php е шаблона за блог страницата където се визуализират създадените постове.
+В този сайт няма такава страница.Single.php е шаблон за детайлния преглед на постовете там е зададено да
+визуализира заглавието съдържанието и снимката на поста. Index.php ти е шаблона за останалите страници 
+които не са блог страница и начална страница.
+
+В assets/dist се намира css и js, а в assets/images снимките

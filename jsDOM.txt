@@ -1,0 +1,75 @@
+----------------------------------------------------Forms-------------------------------------
+Form
+	document.getElementById('myForm')
+
+all Form elements
+	document.getElementById('myForm').elements[]
+
+all elements with that name	
+	document.getElementById('myForm').name
+
+all forms
+	document.forms[]
+
+element with that name value
+	document.getElementById('myForm').name.value
+
+all options of select
+	document.getElementById('myForm').name.opitions
+
+
+selected index of options
+	document.getElementById('myForm').name.selectedIndex
+
+for checkbox
+	document.getElementById('myForm').name.checked
+
+for radio button
+ 	document.querySelector('input[name=r_method]:checked')   .value
+
+--------------------------------Event-----------------------------
+Event lisener
+(function(){
+"use strict";
+
+document.getElementById('id').addEventListener('sumbit', estemateTotal);
+	
+function estemateTotal(event){
+	event.preventDefault();
+}
+
+})();
+----------------------------------Validation------------------------
+(function(){
+"use strict";
+
+document.getElementById('id').addEventListener('submit', estemateTotal);
+	
+function estemateTotal(event){
+	event.preventDefault();
+
+	var state = document.getElementById('id');
+
+	if (state.value === ''){
+		state.focus();
+	}
+
+}
+
+})();
+----------------------------------Show inner content----------------------
+.toFixed(2)
+results.innerHTML = 'Total items' + value + '<br>';
+results.innerHTML += 'Total items' + value + '<br>';
+----------------------------------------Time------------------------------
+document.addEventListener('DOMContentLoaded', function(){
+var c= document.getgetElementById(id);
+setInterval(updateTime, 1000);
+
+function updateTime(){
+var d = new Date();
+c.innerHTML = d.toTimeString().substr(0, 8);
+});
+or custom using get
+d.getHours() + ':' + d.getMinutes() + ':' d.getSeconds();
+}

@@ -1,3 +1,4 @@
+pwd - current path
 git init
 ls -la /all files
 git status
@@ -14,24 +15,28 @@ git reset --hard <sha1-commit-id> remove commits to apointed
 git update-ref -d HEAD //remove all commits
 git commit --amend -m // commit again 
 git branch // shows branches
-git branch -d name of the branch
+git branch -d name of the branch// delete branch
 git merge name of the branch //sva changes to the current branch from apionted branch
 git checkout -b name of the branch //create new branch and switches to it
 git commit -am "" //add all changes
-
+----------Clone repo------------------
 git clone -b name of branch git link
-
+after clone to update git fetch origin and then merge origin/master or use only git pull
+or
 $ git clone git://example.com/myproject
 $ cd myproject
+
 git branch -a //all branches local and remote
-git checkout origin/branchname
-git checkout branchname
+git checkout -b nameofbranch(to create) origin/branchname(to copy)
+git checkout -b nameofbranch(to create)
+git checkout branchname to switch to onother branch
 
 
-
+------------------------Push--------------------------------
 git remote github
 git remote add github https://github.com/deadzonem4/Repo.git
 git push -u github master
+then only git push
  
 
 git remote //all remotes
@@ -50,4 +55,7 @@ ssh s24us@24s.us -p6543
 въвеждане на парола
 ls -la
 навигиране до файла и 
-zip nameofzip.zip file.txt(original)
+zip -r nameofzip.zip file.txt(original)
+
+
+taskkill /im node.exe
