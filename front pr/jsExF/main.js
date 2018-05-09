@@ -552,8 +552,21 @@ function modelDisplay(event){
 	modelList.innerHTML = li;
 
 }
-//-----------------------------------------------------All Makes and Models in table
+//---------------------------------------Add clicked li as p text
+document.querySelector('#list').addEventListener('click', createElem);
 
+function createElem (){
 
+const contaner = document.querySelector('#content');
+console.log(contaner)
+const paragraph = document.createElement('p');
+const node = document.querySelector('#list .active').innerHTML;
+const pText = document.createTextNode(node);
 
+console.log(node);
+paragraph.appendChild(pText);
+contaner.appendChild(paragraph);
 
+paragraph.style.cssText = "color: red; font-size: 20px;";
+
+};

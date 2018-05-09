@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+	background-color: #000;
+}
+main{
+	width: 728px;
+	height: 90px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FFF;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	cursor: pointer;
+	background: url("images/background.png");
+}
+#content{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+	order: 2;
+	width: 18%;
+}
+.happy-hour{
+	order: 1;
+	opacity: 0;
+}
+.every-day{
+	order: 0;
+    background-color: #c41317;
+    border-radius: 24px;
+    padding: 3px 18px 3px 27px;
+    margin-left: -19px;
+    -webkit-animation: scale 1.5s infinite;
+    animation: scale 1.5s infinite;
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+}
+.every-day p{
+	font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+.button{
+	font-family: 'Roboto Condensed', sans-serif;
+    background-color: #b60000;
+    padding: 1px 30px;
+    color: #FFF;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 19px;
+    text-transform: uppercase;
+    transition: all .2s;
+    display: inline-block;
+    margin: 10px 0 0;
+}
+.button:hover{
+	background-color: #e92027;
+}
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.07);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+

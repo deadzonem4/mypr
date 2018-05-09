@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Livescore</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href=style.css>
+    </head>
+    <body>
+        <main>
+            <div id="content">
+                <div class="logo">
+                    <img src="images/logo.png">
+                </div>
+                <div class="event">
+                    <p class="title">Етър Велико Търново vs ФК Септември София</p>
+                    <ul id="table-one" class="odds">
+                        <li><span>1</span><strong>12.77</strong></li>
+                        <li><span>X</span><strong>7.34</strong></li>
+                        <li><span>2</span><strong>3.26</strong></li>
+                    </ul>
+                </div>
+                <div class="event">
+                    <p class="title">ФК Лудогорец Разград vs. Берое Стара Загора</p>
+                    <ul id="table-two" class="odds">
+                        <li><span>1</span><strong>1.30</strong></li>
+                        <li><span>X</span><strong class="active">4.89</strong></li>
+                        <li><span>2</span><strong>8.45</strong></li>
+                    </ul>
+                </div>
+                <div class="event">
+                    <p class="title">Ботев Пловдив vs. ФК Лудогорец Разград</p>
+                    <ul id="table-three" class="odds">
+                        <li><span>1</span><strong>4.31</strong></li>
+                        <li><span>X</span><strong>3.86</strong></li>
+                        <li><span>2</span><strong>1.71</strong></li>
+                    </ul>
+                </div>
+                <div class="event">
+                    <p class="title">ФК Дунав Русе vs. Локомотив Пловдив</p>
+                    <ul id="table-four" class="odds">
+                        <li><span>1</span><strong value='3.12'>3.12</strong></li>
+                        <li><span>X</span><strong>3.31</strong></li>
+                        <li><span>2</span><strong>2.14</strong></li>
+                    </ul>
+                </div>
+                <div class="total">
+                    <label>
+                        <span>Залог</span>
+                        <input type="number" name="entered">
+                    </label>
+                    <label>
+                        <span>Печели</span>
+                        <div id="result"></div>
+                    </label>
+                </div>
+                <div class="button">Вход</div>
+                <div class="privacy">
+                    <img src="images/privacy.png">
+                    <p>Важат правила<br> и условия.</p>
+                </div>
+            </div>
+        </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="main.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>

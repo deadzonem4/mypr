@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+body{
+	background-color: #000;
+}
+main{
+	width: 160px;
+	height: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FFF;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	cursor: pointer;
+}
+.player{
+	margin-left: -320px;
+}
+.logo{
+	margin: 25px 0 33px 0;
+	text-align: center;
+}
+.button{
+	font-family: 'Roboto Condensed', sans-serif;
+    background-color: #b60000;
+    padding: 2px 37px;
+    color: #FFF;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 21px;
+    text-transform: uppercase;
+    transition: all .2s;
+    display: inline-block;
+    margin: 22px 0 12px 0;
+    -webkit-animation: pulse 1.5s infinite;
+    animation: pulse 1.5s infinite;
+}
+.button:hover{
+	background-color: #e92027;
+}
+.privacy img{
+	vertical-align: baseline;
+}
+.privacy p{
+	display: inline-block;
+	text-align: left;
+	font-size: 10px;
+	color: #8d8d8d;
+	line-height: 1;
+	margin-bottom: 0;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 1px 0px 19px rgba(133, 16, 20, 0);
+    }
+
+    100% {
+        box-shadow: 1px 0px 19px rgba(133, 16, 20, 1);
+    }
+}

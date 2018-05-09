@@ -1,0 +1,21 @@
+{
+    "name"            : "fe-test",
+    "version"         : "1.0.0",
+    "description"     : "",
+    "main"            : "index.js",
+    "scripts"         : {
+        "test" : "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository"      : {
+        "type" : "git",
+        "url"  : "git+ssh://git@bitbucket.org/target_traffic/frontend.git"
+    },
+    "author"          : "db@target-traffic.net",
+    "license"         : "ISC",
+    "homepage"        : "https://bitbucket.org/target_traffic/frontend#readme",
+    "devDependencies" : {
+        "grunt"             : "^1.0.2",
+        "grunt-contrib-pug" : "^1.0.0",
+        "grunt-sass"        : "^2.1.0"
+    }
+}
