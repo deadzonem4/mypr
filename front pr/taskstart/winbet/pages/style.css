@@ -1,0 +1,68 @@
+.button-box{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.promotions{
+	background-color: #1e811e;
+	width: calc(25% - 120px);
+	padding: 5px;
+	position: relative;
+	text-align: center;
+	margin: 10px 35px 0 35px;	
+	height: 32px;
+}
+.promotions p{
+	color: #FFF;
+	font-size: 16px;
+	margin: 0;
+}
+.promotions:hover{
+	background-color: #000;
+}
+.promotions:hover>a::after{
+	border-color: transparent transparent transparent #000;
+}
+.promotions:hover .triangle{
+	border-color: transparent #000 transparent transparent;
+}
+/*.green-buttons::before{
+	content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+height: 0;
+border-style: solid;
+border-width: 16px 0 16px 35px;
+border-color: transparent transparent transparent #ffffff;
+}*/
+.left-top{
+    top: 0px;
+    border-width: 0 35px 16px 0;
+}
+.left-bottom{
+    bottom: 0;
+    border-width: 16px 35px 0 0;
+}
+.triangle{
+	left: -35px;
+	content: "";
+    position: absolute;
+    width: 0;
+height: 0;
+border-style: solid;
+border-color: transparent #1e811e transparent transparent;
+}
+.promotions a::after{
+	content: "";
+	content: "";
+    position: absolute;
+   	right: -35px;
+    top: 0;
+    width: 0;
+height: 0;
+border-style: solid;
+border-width: 16px 0 16px 35px;
+border-color: transparent transparent transparent #1e811e;
+}

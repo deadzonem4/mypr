@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+	background-color: #000;
+}
+main{
+	width: 300px;
+	height: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #efefef;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	cursor: pointer;
+    padding: 5px;
+}
+.logo{
+    margin-bottom: 5px;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    width: 49%;
+}
+.logo img{
+    width: 80%;
+}
+.event-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.event{
+    width: calc(50% - 2px);
+    background-color: #b90000;
+    padding: 5px 2px 2px 2px;
+    margin-bottom: 4px;
+}
+.title{
+    color: #FFF;
+    font-size: 11px;
+    font-family: 'Roboto Condensed', sans-serif;
+    max-width: 120px;
+    text-align: left;
+    margin-left: 3px;
+    margin-right: auto;
+    line-height: 1.1;
+    margin-bottom: 3px;
+}
+.odds{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.odds li{
+    background-color: #4f5256;
+    color: #fcd40a;
+    font-family: 'Roboto Condensed', sans-serif;
+    transition: ease all .2s; 
+}
+.odds li:nth-of-type(2){
+    border-bottom: solid 1px #848484;
+    border-top: solid 1px #848484;
+}
+.odds span{
+    float: left;
+    margin-left: 8px;
+    color: #f3f3f4;
+    font-weight: normal;
+    font-size: 12px;
+}
+.odds strong{
+    display: block;
+    padding: 1px 0;
+    font-size: 12px;
+}
+.odds li:hover{
+    background-color: #b90000;
+    color: #FFF;
+}
+.active{
+    background-color: #b90000;
+    color: #FFF;
+}
+.total{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.total label{
+    width: 26%;
+    margin-bottom: 0;
+    text-align: left;
+}
+.total label:nth-of-type(2){
+    text-align: right;
+    width: 45%;
+}
+.total span{
+    display: inline-block;
+    text-align: left;
+    color: #4f5256;
+    font-family: 'Roboto Condensed', sans-serif;
+    vertical-align: middle;
+    font-size: 13px;
+}
+input[name="entered"]{
+    background-color: #4f5256;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    border: none;
+    color: #fcd40a;
+    height: 20px;
+    max-width: 40px;
+    padding: 0 5px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+#result{
+    background-color: #b90000;
+    color: #FFF;
+    height: 20px;
+    max-width: 80px;
+    width: 100%;
+    display: inline-block;
+    vertical-align: bottom;
+    padding: 0 10px;
+    text-align: left;
+}
+.button{
+	font-family: 'Roboto Condensed', sans-serif;
+    background-color: #b60000;
+    width: 25%;
+    color: #FFF;
+    border-radius: 25px;
+    font-weight: 600;
+    padding-top: 1px;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: all .2s;
+    display: inline-block;
+}
+.button:hover{
+	background-color: #e92027;
+}
+.privacy{
+    display: inline-block;
+    width: 49%;
+}
+.privacy img{
+    vertical-align: baseline;
+}
+.privacy p{
+    display: inline-block;
+    text-align: left;
+    font-size: 10px;
+    color: #8d8d8d;
+    line-height: 1;
+    margin-bottom: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+

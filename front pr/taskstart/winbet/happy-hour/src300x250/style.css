@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+	background-color: #000;
+}
+main{
+	width: 300px;
+	height: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FFF;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	cursor: pointer;
+	background: url("images/background.png");
+}
+.happy-hour{
+    margin-top: 15px;
+    -webkit-animation: happyHour 1,5s;
+    animation: happyHour 1.5s;
+}
+.every-day{
+    -webkit-animation: scale 1.5s infinite;
+    animation: scale 1.5s infinite;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+}
+.every-day p{
+	font-family: 'Roboto', sans-serif;
+    font-size: 12.5px;
+    color: #FFF;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+.every-day span{
+    text-transform: uppercase;
+}
+.logo{
+    margin-top: -21px;
+    margin-bottom: 8px;
+    -webkit-animation: logo 3s;
+    animation: logo 3s;
+}
+.logo img{
+    vertical-align: bottom;
+}
+.button{
+	font-family: 'Roboto Condensed', sans-serif;
+    background-color: #b60000;
+    padding: 1px 34px;
+    color: #FFF;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: all .2s;
+    display: inline-block;
+    margin-left: 5px;
+    box-shadow: 1px 0px 19px rgba(0, 0, 0, 1);
+}
+.button:hover{
+	background-color: #e92027;
+}
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.07);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes logo {
+    0% {
+        margin-left: -600px;
+    }
+    75% {
+        margin-left: 40px;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+@keyframes happyHour {
+    0% {
+        margin-right: -600px;
+    }
+    100% {
+        margin-right: 0;
+    }
+}
+
+
